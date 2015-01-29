@@ -1,2 +1,1 @@
-# stajbul
-end project
+# staj-bul
