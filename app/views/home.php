@@ -9,7 +9,7 @@
 		
 		<input ng-model="hello" type="text" />
 		<div>{{ hello }}</div>
-
+Bu bir değişiklik.
 	</div>
 	
 
