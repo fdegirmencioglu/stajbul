@@ -1,28 +1,24 @@
 <!doctype html>
-<html lang="en" ng-app="myApp">
-<head>
-  <meta charset="UTF-8">
-  <title>Stajbul</title>
+<html lang="tr" ng-app="myApp">
+    <head>
+        @include('includes.head')
+    </head>
+    <body class="login">
+        <header class="row">
+        @include('includes.header')
+    </header>
 
-  <link rel="stylesheet" type="text/css" href="css/foundation.css">
-  <link rel="stylesheet" type="text/css" href="css/normalize.css">
-  <script type="text/javascript" src="js/vendor/modernizr.js'"></script>
-</head>
-<body>	
+    <div class="small-12 small-centered medium-8 medium-centered large-5 large-centered columns">
+        @yield('content')
+    </div>
 
-  <div class="small-12 small-centered medium-8 medium-centered large-5 large-centered columns">
-      @yield('content')
-  </div>
-
-	<script type="text/javascript" src="js/vendor/jquery.js"></script>
-	<script type="text/javascript" src="js/vendor/angular.min.js"></script>
-	<script type="text/javascript" src="js/foundation.min.js"></script>
-
-	<script type="text/javascript" src="js/controller/controller.js"></script>
-
-	<script>
-		$(document).foundation();
-	</script>
-
+    
+    
+    
+    <footer class="row">
+        @include('includes.footer')
+    </footer>
+   
+@include('includes.foot')
 </body>
 </html>
