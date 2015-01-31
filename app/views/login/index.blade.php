@@ -31,12 +31,12 @@
                         <input id="checkbox1" type="checkbox"><label for="checkbox1">Hatırlat</label>
                     </div>
                     <div class="large-6 columns">
-                        <a href="#" class="button right">Giriş Yap</a>
+                        <a href="#" class="radius button right">Giriş Yap</a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="large-6 columns">
-                        <a href="javascript:;" id="forget-password" class="forget-password">Şifremi Unuttum!</a>
+                        <a href="javascript:;" data-reveal-id="sifremiUnuttumModal" class="forget-password">Şifremi Unuttum!</a>
                     </div>
                     <div class="large-6 columns">
                         <a href="javascript:;" id="forget-password" class="forget-password right">Onay Kodu İste!</a>
@@ -55,6 +55,28 @@
 
         </div>
     </div>
+</div>
+
+
+<div id="sifremiUnuttumModal" class="reveal-modal" data-reveal>
+    <form class="login-form" action="index.html" method="post">
+        <div class="row">
+            <div class="large-6 large-centered columns">
+                <label>E-Posta:
+                    <input type="text" placeholder="E-posta adresiniz" />
+                </label>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="large-6 large-centered columns">
+                <a href="#" class="radius button right">Gönder</a>
+            </div>
+        </div>
+    </form>
+
+    <a class="close-reveal-modal">&#215;</a>
 </div>
 
 @stop
