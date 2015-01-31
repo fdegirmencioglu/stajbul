@@ -39,16 +39,15 @@
                         <a href="javascript:;" id="forget-password" class="forget-password">Şifremi Unuttum!</a>
                     </div>
                     <div class="large-6 columns">
-                        <a href="javascript:;" id="forget-password" class="forget-password">Onay Kodu İste!</a>
+                        <a href="javascript:;" id="forget-password" class="forget-password right">Onay Kodu İste!</a>
                     </div>
                 </div>
 
 
 
                 <div class="create-account">
-                    <p>
-                        <br>                        
-                        <a href="#" class="button tiny radius alert right">Yeni Hesap oluştur</a>
+                    <p class="text-center">                      
+                        <a href="#">YENİ HESAP OLUŞTUR</a>
                     </p>
                 </div>
             </form>

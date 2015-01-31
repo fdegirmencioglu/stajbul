@@ -1,2 +1,2 @@
 
-<div id="copyright text-right">© Copyright 2015 Staj-Bul</div>
+<div class="copyright">© Copyright 2015 Staj-Bul</div>
