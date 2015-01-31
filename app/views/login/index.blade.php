@@ -59,17 +59,17 @@
 
 
 <div id="sifremiUnuttumModal" class="reveal-modal small" data-reveal>
-    <form class="login-form" action="index.html" method="post">
+    <form data-abide>
         <div class="row">
-            <div class="large-6 large-centered columns">
-                <label>E-Posta:
-                    <input type="text" placeholder="E-posta adresiniz" />
+            <div class="email-field large-6 large-centered columns">
+                <label>E-Posta <small>*</small>
+                    <input type="email" required placeholder="E-posta adresiniz" />
                 </label>
+                <small class="error"Geçerli bir e-posta adresi girilmelidir.</small>
             </div>
         </div>
 
         <div class="row">
-
             <div class="large-6 large-centered columns">
                 <a href="#" class="radius button right">Gönder</a>
             </div>
