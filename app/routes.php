@@ -15,3 +15,5 @@ Route::get('/', function()
 {
     return View::make('login.index');
 });
+
+Route::get('testtablosu', 'TestDenemelikController@getIndex');
