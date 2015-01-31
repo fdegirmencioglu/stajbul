@@ -39,7 +39,7 @@
                         <a href="javascript:;" data-reveal-id="sifremiUnuttumModal" class="forget-password">Şifremi Unuttum!</a>
                     </div>
                     <div class="large-6 columns">
-                        <a href="javascript:;" id="forget-password" class="forget-password right">Onay Kodu İste!</a>
+                        <a href="javascript:;" data-reveal-id="sifremiUnuttumModal" class="right">Onay Kodu İste!</a>
                     </div>
                 </div>
 
@@ -58,7 +58,7 @@
 </div>
 
 
-<div id="sifremiUnuttumModal" class="reveal-modal" data-reveal>
+<div id="sifremiUnuttumModal" class="reveal-modal small" data-reveal>
     <form class="login-form" action="index.html" method="post">
         <div class="row">
             <div class="large-6 large-centered columns">
