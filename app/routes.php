@@ -16,4 +16,5 @@ Route::get('/', function()
     return View::make('login.index');
 });
 
-Route::get('testtablosu', 'TestDenemelikController@getIndex');
+Route::resource('testtablosu', 'TestDenemelikController');
+Route::get('Captcha.captcha', ['uses'=>'CaptchaController@captcha']);
