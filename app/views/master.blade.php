@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="tr" ng-app="myApp">
+<html lang="tr" ng-app="Stajbul">
     <head>
         @include('includes.head')
     </head>
