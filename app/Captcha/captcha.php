@@ -56,8 +56,9 @@ class captcha {
     }
 
     private function randomText() {
+        $sifre = "";
         $sifre = substr(md5(rand(0, 999999999999)), -6);
-        return $sifre;
+        return ($this->code = $sifre);
     }
 
 }
