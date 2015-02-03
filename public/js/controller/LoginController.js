@@ -1,16 +1,21 @@
 app.controller("LoginController", function($scope, $http){
 
 this.adi = "bertan";
-this.type = "";
-$scope.openModal = function(type){
-  this.type = type;
-  //alert(type);
+this.modal_type = "";
+
+$scope.username = '';
+
+$scope.modalType = function(type){
+  this.modal_type = type;
 };
 
-$scope.gonder = function(user){
-  alert(this.type);
-  alert( user.email );
+$scope.gonder = function(){
+  //alert(this.modal_type);
+  //alert( $scope.user.email );
+  console.log(this.modal_type);
+  console.log($scope.username);
 };
+
   // Simple GET request example :
 $http.get('http://localhost:8000/data.json').
   success(function(data, status, headers, config) {
