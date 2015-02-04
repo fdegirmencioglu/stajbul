@@ -22,3 +22,5 @@ Route::resource('testtablosu', 'TestDenemelikController');
 Route::get('Captcha.captcha', ['uses'=>'CaptchaController@captcha']);
 
 Route::resource('sessions', 'SessionsController');
+
+Route::controller('password', 'RemindersController');

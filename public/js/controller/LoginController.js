@@ -14,9 +14,21 @@ $scope.gonder = function(){
   //alert( $scope.user.email );
   console.log(this.modal_type);
   console.log($scope.username);
+  if($scope.username != undefined){
+    //sunucuya post et
+    $http.post('http://localhost:8000/password/remind', { email: $scope.username }).
+    success(function(data, status, headers, config){
+      alert("success data");
+    }).
+    error(function(data, status, headers, config){
+      alert("error data");
+    });
+  }
+
+  
 };
 
-  // Simple GET request example :
+// Simple GET request example :
 $http.get('http://localhost:8000/data.json').
   success(function(data, status, headers, config) {
     // this callback will be called asynchronously

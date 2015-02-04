@@ -19,7 +19,7 @@ class CreateKullaniciTable extends Migration {
  			$table->string('soyadi');
  			$table->string('kullanici_adi');
  			$table->string('sifre');
- 			$table->string('eposta')->unique();
+ 			$table->string('email')->unique();
  			$table->string('website');
  			$table->text('aktivasyon_anahtari');
 			$table->integer('tbl_tnm_rol_id');

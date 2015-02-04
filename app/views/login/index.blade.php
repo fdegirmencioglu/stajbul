@@ -69,6 +69,12 @@
     </div>
 
 
+    <!--<form action="{{ action('RemindersController@postRemind') }}" method="POST">
+    <input type="email" name="email">
+    <input type="submit" value="Send Reminder">
+</form>-->
+
+
 
     <div id="sifremiUnuttumModal" class="reveal-modal small" data-reveal>
         <form data-abide>
