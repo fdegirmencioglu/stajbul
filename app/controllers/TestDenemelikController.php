@@ -9,7 +9,7 @@ class TestDenemelikController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('testTablosu.index');
+		return View::make('testtablosu.index');
 	}
 
 

@@ -33,7 +33,7 @@ class SessionsController extends \BaseController {
 	{
 		/*$input = Input::all();
 		
-		//dd($input);
+		dd($input);
 
 		$attempt = Auth::attempt([
 			'eposta' => $input['email'],
@@ -43,11 +43,15 @@ class SessionsController extends \BaseController {
 		if($attempt) return Redirect::intended('/');
 		//dd($input);
 */
+//dd( Hash::make(Input::get('password')) );
 
-		$auth = User::where('eposta', '=', Input::get('email'))->where('sifre', '=', Input::get('password'))->first();
+	$auth = User::where('email', '=', Input::get('email'))->where('password', '=', Input::get('password'))->first();
+    
+ 
+
     if($auth){
       Auth::login($auth);
-      return Redirect::to('home');
+      return Redirect::to('/password.remind');
     }else{
       return Redirect::to('/');
     }

@@ -1,4 +1,4 @@
-@extends('master')
+@extends('login_master')
 
 @section('content')
 <div class="row" ng-controller="LoginController as loginCntrl">
