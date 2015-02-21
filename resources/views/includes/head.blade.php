@@ -13,8 +13,8 @@
 
 <title>Stajbul</title>
 
-<link rel="stylesheet" type="text/css" href="css/foundation.css">
-<link rel="stylesheet" type="text/css" href="css/normalize.css">
-<link rel="stylesheet" type="text/css" href="css/custom.css"
+<link rel="stylesheet" type="text/css" href="/css/foundation.css">
+<link rel="stylesheet" type="text/css" href="/css/normalize.css">
+<link rel="stylesheet" type="text/css" href="/css/custom.css"
 <link rel="shortcut icon" href="favicon.ico"/>
-<script type="text/javascript" src="js/vendor/modernizr.js'"></script>
+<script type="text/javascript" src="/js/vendor/modernizr.js'"></script>

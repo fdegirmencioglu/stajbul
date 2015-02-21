@@ -74,3 +74,58 @@ a:hover {
     color: #7a8ca5;
     font-size: 13px;
 }
+
+/*NAV TOP BAR*/
+.top-bar {
+    background: none repeat scroll 0 0 #364150 !important;
+}
+.top-bar-section li:not(.has-form) a:not(.button) {
+    background: none repeat scroll 0 0 #364150;
+    line-height: 2.8125rem;
+    padding: 0 0.9375rem;
+}
+.top-bar-section li:not(.has-form) a:not(.button):hover {
+    background-color: #364150;
+    background: #1f2c39;
+    text-decoration: none;
+}
+.top-bar-section .dropdown li:not(.has-form):not(.active) > a:not(.button) {
+        color: #FFFFFF;
+        background: #67809F; 
+}
+.top-bar-section .dropdown li:not(.has-form):not(.active):hover > a:not(.button) {
+    color: #FFFFFF;
+    background-color: #364150;
+    background: #1f2c39; 
+}
+
+//CUSTOM BADGE
+.badge-default {
+    background-color: #d64635;
+    background-image: none;
+    color: white;  
+
+}
+.badge{
+    right: 20px;
+    top: 10px;
+    -webkit-border-radius: 12px !important;
+    -moz-border-radius: 12px !important;
+    border-radius: 12px !important;
+    font-weight: 300;
+    height: 18px;
+    padding: 1px 2px;
+    text-align: center;
+    text-shadow: none !important;
+    background-color: #d64635;
+}
+
+/*Profile İmage*/
+.imgprofile{
+    -webkit-border-radius: 4px !important;
+    -moz-border-radius: 4px !important;
+    border-radius: 4px !important;
+    height: 32px;
+    width: 32px;
+    border: none;
+}

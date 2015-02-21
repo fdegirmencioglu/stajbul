@@ -1,7 +1,7 @@
 @extends('login_master')
 
 
-@section('content2')
+@section('login')
 
 <div class="row" ng-controller="LoginController as loginCntrl">
 	 <div class="large-12 columns">
