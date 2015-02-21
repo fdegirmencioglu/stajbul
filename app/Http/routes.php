@@ -18,6 +18,11 @@ Route::get('/', function()
    return View::make('auth.login');
 });
 
+Route::get('/admin/profile', function()
+{
+   return View::make('admin.profile');
+});
+
 //Route::any('/', array('as' => 'home', 'uses' => 'LoginController@index'));
 
 

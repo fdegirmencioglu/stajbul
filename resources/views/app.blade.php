@@ -44,7 +44,7 @@
                     <li class="has-dropdown not-click"> 
                         <a href=""><img class="imgprofile" src="/images/profilresmim.png" alt=""/></a> 
                         <ul class="dropdown">
-                            <li><a href="#">Profilim</a></li>
+                            <li><a href="/admin/profile">Profilim</a></li>
                         </ul>
                     </li>
                     <li class="not-click"><a><span class="[radius secondary label]">YÖNETİCİ</span></a></li>
@@ -157,6 +157,17 @@
                     </ul>
                 </div> 
             </li>
+            
+            
+            <li class="accordion-navigation"> 
+                <a href="#panel11c"><i class="fa fa-paper-plane fa-fw"></i>&nbsp;İletişim</a> 
+                <div id="panel11c" class="content"> 
+                    <ul class="side-nav">
+                        <li><a href="#"><i class="fa fa-envelope-o fa-fw"></i>&nbsp;Mesaj Gönder</a></li>
+                    </ul>
+                </div> 
+            </li>
+            
 
         </ul> 
     </div>
@@ -193,9 +204,11 @@
                         </ul>
                 </div>
         </div>
-</nav>
+</nav>-->
+<div class="page-content">
 
-@yield('content')-->
+@yield('content')
+</div>
 
 <!-- Scripts -->
 <script type="text/javascript" src="/js/vendor/jquery.js"></script>
