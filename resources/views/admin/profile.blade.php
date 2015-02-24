@@ -1,7 +1,19 @@
 @extends('app')
 
 @section('content')
-<form> 
+
+
+
+    <div ng-view></div>
+
+<!--<div ng-controller="ProfilesController">
+</div>-->
+
+
+
+
+
+<!--<form> 
     <div class="row"> 
         <div class="large-12 columns"> 
             <label>Input Label <input type="text" placeholder="large-12.columns" /> </label> 
@@ -63,5 +75,5 @@
             <label>Textarea Label <textarea placeholder="small-12.columns"></textarea> </label> 
         </div> 
     </div> 
-</form>
+</form>-->
 @endsection

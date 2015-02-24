@@ -18,6 +18,11 @@ Route::get('/', function()
    return View::make('auth.login');
 });
 
+//Route::get('home', 'HomeController@index');
+
+
+
+
 Route::get('/admin/profile', function()
 {
    return View::make('admin.profile');
@@ -25,13 +30,21 @@ Route::get('/admin/profile', function()
 
 //Route::any('/', array('as' => 'home', 'uses' => 'LoginController@index'));
 
+Route::resource('users', 'UserController');
 
-Route::get('home', 'HomeController@index');
+
+
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+
+/*App::missing(function($exception)
+{
+    return File::get(public_path() . '/templates/main.html');
+});*/
 
 
 /*Route::get('login', 'SessionsController@create');

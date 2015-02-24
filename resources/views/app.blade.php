@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="Stajbul">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,9 +20,12 @@
     <script type="text/javascript" src="/js/vendor/modernizr.js'"></script>
 </head>
 <body>
+
+
+
     <header>
-
-
+      <base href="/">
+ 
         <nav class="top-bar" data-topbar role="navigation">
             <ul class="title-area">
                 <li class="name">
@@ -61,7 +64,12 @@
         </nav>
 
     </header>
+
+  
+
+
 <div id="sidebar"><!-- Start sidebar menu -->
+
     <div id="sidebar-wrapper"> <!-- Sidebar with logo and menu -->
 
         <div class="divspace"></div>
@@ -171,6 +179,8 @@
 
         </ul> 
     </div>
+
+
 </div> <!-- End #sidebar -->
 <!--<nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -205,21 +215,32 @@
                 </div>
         </div>
 </nav>-->
-<div class="page-content">
 
-@yield('content')
-</div>
+
+
+
+<!--<div class="page-content">-->
+    @yield('content')
+<!--</div>-->
+
+
 
 <!-- Scripts -->
 <script type="text/javascript" src="/js/vendor/jquery.js"></script>
 <script type="text/javascript" src="/js/vendor/angular.min.js"></script>
+
+<script type="text/javascript" src="/js/vendor/angular-route.min.js"></script>
+
 <script type="text/javascript" src="/js/foundation.min.js"></script>
 
 <script type="text/javascript" src="/js/app.js"></script>
-<script type="text/javascript" src="/js/controller/LoginController.js"></script>
+<script type="text/javascript" src="/js/services/ProfilesFactory.js"></script>
+<script type="text/javascript" src="/js/controller/ProfilesController.js"></script>
 
 <script>
     $(document).foundation();
 </script>
+
+
 </body>
 </html>
