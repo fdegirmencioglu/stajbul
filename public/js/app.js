@@ -6,18 +6,10 @@ app.config(function($routeProvider, $locationProvider){
 		templateUrl: '/templates/main.html',
 		controller: 'ProfilesController'
 	})
-	.when('/password/email', {
-    templateUrl: 'chapter.html',
-    controller: 'ChapterController'
-  })
-  .when('/shop', {
-        templateUrl: 'templates/shop.html', 
-        controller: 'ShoppingController'
-    });
-  /*.otherwise({
+  .otherwise({
       templateUrl: '/templates/main.html',
        controller: 'ProfilesController'          
-  });  */      
+  });  
 
    $locationProvider.html5Mode(true).hashPrefix('!');   
 

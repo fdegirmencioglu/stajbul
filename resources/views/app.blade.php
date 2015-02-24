@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="Stajbul">
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,43 +20,51 @@
     <script type="text/javascript" src="/js/vendor/modernizr.js'"></script>
 </head>
 <body>
-
-
-
     <header>
-      <base href="/">
- 
-        <nav class="top-bar" data-topbar role="navigation">
+
+
+        <nav class="top-bar foundation-bar docs-bar" data-topbar role="navigation">
             <ul class="title-area">
                 <li class="name">
-                    <h1><a href="#"><i class="fa fa-home fa-fw"></i>&nbsp;Ana Sayfa</a></h1>
+                    <h1><a href="/"><img  src="/images/logo_sm.png" alt=""/></a></h1>
                 </li>
+                <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+                <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
             </ul>
 
             <section class="top-bar-section">
 
                 <!-- Left Nav Section -->
-                <ul class="left small-4 medium-2 columns">
+                <ul class="left">
+                    <li class="divider"></li>
                     <li><a href="#"><i class="fa fa-exclamation fa-fw"></i>&nbsp;Bildirimler&nbsp;<span class="badge badge-default">&nbsp;7&nbsp;</span></a></li>
+                    <li class="divider"></li>
                     <li><a href="#"><i class="fa fa-envelope-o fa-fw"></i>&nbsp;Mesajlar&nbsp;<span class="badge badge-default">&nbsp;1&nbsp;</span></a></li>
-                </ul>        
-
-                <ul class="small-4 medium-8 small-offset-3 columns"><li><a href="/"><img  src="/images/logo_sm.png" alt=""/></a></li></ul>
+                    <li class="divider"></li>
+                </ul>  
                 <!-- Right Nav Section -->
-                <ul class="right small-4 medium-2 columns">
+                <ul class="right">
                     <li class="has-dropdown not-click"> 
                         <a href=""><img class="imgprofile" src="/images/profilresmim.png" alt=""/></a> 
                         <ul class="dropdown">
                             <li><a href="/admin/profile">Profilim</a></li>
+
                         </ul>
                     </li>
                     <li class="not-click"><a><span class="[radius secondary label]">YÖNETİCİ</span></a></li>
+                    <li class="divider"></li>
                     <li><a href="#"><i class="fa fa-check fa-fw"></i>&nbsp;Onay Bekleyen&nbsp;<span class="badge badge-default">&nbsp;3&nbsp;</span></a></li>
+                    <li class="divider"></li>
                     <li class="has-dropdown not-click">
-                        <a href="#">ÇIKIŞ</a>
-                        <ul class="dropdown">
-                            <li><a href="#">Çıkış Yap</a></li>
-                        </ul>
+                        <a href="#">Çıkış</a> 
+                        <ul class="dropdown"> 
+                          <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                              <li><a href="/auth/logout">Oturumu Sonlandır</a></li>
+                            </ul>
+                          </li>  
+                        </ul>  
                     </li>
                 </ul>       
 
@@ -64,17 +72,12 @@
         </nav>
 
     </header>
-
-  
-
-
 <div id="sidebar"><!-- Start sidebar menu -->
-
     <div id="sidebar-wrapper"> <!-- Sidebar with logo and menu -->
 
         <div class="divspace"></div>
 
-        <ul class="accordion" data-accordion="myAccordionGroup"> 
+        <ul class="accordion reset-margin-left " data-accordion="myAccordionGroup"> 
             <li class="accordion-navigation"> 
                 <a href="#panel1c"><i class="fa fa-star fa-fw"></i>&nbsp;Firma İşlemleri</a> 
                 <div id="panel1c" class="content"> 
@@ -114,7 +117,7 @@
                 <div id="panel5c" class="content"> 
                     <ul class="side-nav">
                         <li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Yönetim İşlem Sayfası</a></li>
-                        <li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Profilim</a></li>
+                        <li><a href="/admin/profile"><i class="fa fa-play fa-fw"></i>&nbsp;Profilim</a></li>
                     </ul>
                 </div> 
             </li> 
@@ -145,7 +148,7 @@
             </li> 
 
             <li class="accordion-navigation"> 
-                <a href="#panel8c"><i class="fa fa-cog fa-spin"></i>&nbsp;Öğrenci İşlemler</a> 
+                <a href="#panel8c"><i class="fa fa-cog fa-fw"></i>&nbsp;Öğrenci İşlemler</a> 
                 <div id="panel8c" class="content"> 
                     <ul class="side-nav">
                         <li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Staja Başvur</a></li>
@@ -165,8 +168,8 @@
                     </ul>
                 </div> 
             </li>
-            
-            
+
+
             <li class="accordion-navigation"> 
                 <a href="#panel11c"><i class="fa fa-paper-plane fa-fw"></i>&nbsp;İletişim</a> 
                 <div id="panel11c" class="content"> 
@@ -175,12 +178,10 @@
                     </ul>
                 </div> 
             </li>
-            
+
 
         </ul> 
     </div>
-
-
 </div> <!-- End #sidebar -->
 <!--<nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -215,32 +216,21 @@
                 </div>
         </div>
 </nav>-->
+<div class="page-content">
 
-
-
-
-<!--<div class="page-content">-->
     @yield('content')
-<!--</div>-->
-
-
+</div>
 
 <!-- Scripts -->
 <script type="text/javascript" src="/js/vendor/jquery.js"></script>
 <script type="text/javascript" src="/js/vendor/angular.min.js"></script>
-
-<script type="text/javascript" src="/js/vendor/angular-route.min.js"></script>
-
 <script type="text/javascript" src="/js/foundation.min.js"></script>
 
 <script type="text/javascript" src="/js/app.js"></script>
-<script type="text/javascript" src="/js/services/ProfilesFactory.js"></script>
-<script type="text/javascript" src="/js/controller/ProfilesController.js"></script>
+<script type="text/javascript" src="/js/controller/LoginController.js"></script>
 
 <script>
     $(document).foundation();
 </script>
-
-
 </body>
 </html>

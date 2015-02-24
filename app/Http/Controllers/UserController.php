@@ -15,8 +15,8 @@ class UserController extends Controller {
 	 * @return Response
 	 */
 	public function index()
-	{
-		return User::all();
+	{ 
+		return User::all(); 
 	}
 
 	/**
@@ -36,7 +36,7 @@ class UserController extends Controller {
 	 */
 	public function store()
 	{
-		//
+		dd( Input::only('email') );
 	}
 
 	/**
@@ -47,7 +47,7 @@ class UserController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		return $user = User::find($id);
 	}
 
 	/**

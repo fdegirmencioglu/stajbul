@@ -13,19 +13,34 @@
 
 //Route::get('/', 'LoginController@index');
 
+Route::controllers([
+	'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
+]);
+
+
 Route::get('/', function()
-{
-   return View::make('auth.login');
+{  
+	if (Auth::check()) //Kullanıcı sisteme giriş yaptıysa -> home'a git
+ 	{
+		return View::make('admin.profile');
+	}else{             //Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git
+		return View::make('auth.login');
+	} 
+
 });
 
-//Route::get('home', 'HomeController@index');
+Route::get('home', 'HomeController@index');
 
-
-
-
+ 
 Route::get('/admin/profile', function()
 {
-   return View::make('admin.profile');
+	if (Auth::check()) //Kullanıcı sisteme giriş yaptıysa -> home'a git
+ 	{
+		return View::make('admin.profile');
+	}else{             //Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git
+		return View::make('auth.login');
+	}  
 });
 
 //Route::any('/', array('as' => 'home', 'uses' => 'LoginController@index'));
@@ -35,10 +50,6 @@ Route::resource('users', 'UserController');
 
 
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
 
 
 /*App::missing(function($exception)

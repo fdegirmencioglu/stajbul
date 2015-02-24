@@ -14,13 +14,25 @@ app.factory('profilesFactory', function($http){
 			return profiles;
 		},
 		add: function(){
-
+	  	$http.post('http://localhost:8000/users', { email: $scope.username }).
+ 				success(function(data, status, headers, config){
+     		alert("success data");
+  		}).
+   		error(function(err){
+     		alert(err);
+  		});
 		},
 		remove: function(){
 
 		},
 		save: function(){
-
+			$http.post('/users', { email: $scope.username }).
+				success(function(data, status, headers, config){
+	     		alert("saved");
+	  		}).
+	   		error(function(err){ //data, status, headers, config
+	     		alert(err);
+	  		});
 		}
 	}
 });
