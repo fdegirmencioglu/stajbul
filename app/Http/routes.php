@@ -11,12 +11,6 @@
 |
 */
 
-//Route::get('/', 'LoginController@index');
-
-//View::share('currentUser', Auth::User()); 
-
-//View::share('name', 'Bertan');
-
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
@@ -35,7 +29,6 @@ Route::get('/', function()
 });
 
 Route::get('home', 'HomeController@index');
-
  
 //Yönetici Profili
 Route::get('/admin/profile', function()
@@ -47,8 +40,7 @@ Route::get('/admin/profile', function()
 		return View::make('auth.login');
 	}  
 });
-
-
+ 
 //Yeni Yönetici Ekle
 Route::get('/admin/new', function()
 {
@@ -60,32 +52,17 @@ Route::get('/admin/new', function()
 	}  
 });
 
-//Route::any('/', array('as' => 'home', 'uses' => 'LoginController@index'));
+/*Route::get('user/{name}', function($name)
+{
+    //
+})
+->where('name', '[A-Za-z]+');
+*/
+Route::get('/user/{username}', array(
+    'as' => 'profile-user',
+    'uses' => 'UserController@find_user'
+));
+
+//Route::get('users/email/{email}', 'UserController@find_user');
 
 Route::resource('users', 'UserController');
-
-
-
-
-
-
-/*App::missing(function($exception)
-{
-    return File::get(public_path() . '/templates/main.html');
-});*/
-
-
-/*Route::get('login', 'SessionsController@create');
-Route::get('logout', 'SessionsController@destroy');
-
-Route::get('/',['as' => 'home', function()
-{
-    return View::make('login.index');
-}]);
-
-Route::resource('testtablosu', 'TestDenemelikController');
-Route::get('Captcha.captcha', ['uses'=>'CaptchaController@captcha']);
-
-Route::resource('sessions', 'SessionsController');
-
-Route::controller('password', 'RemindersController');*/

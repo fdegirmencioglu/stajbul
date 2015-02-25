@@ -9,6 +9,11 @@ use App\User;
 
 class UserController extends Controller {
 
+	public function find_user(id)
+	{
+		var_dump(id);
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *

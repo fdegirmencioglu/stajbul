@@ -6,25 +6,38 @@
 <div class="row" ng-controller="LoginController as loginCntrl">
 	 <div class="large-12 columns">
         <div class="content">
+
+          <!--<form data-abide method="POST" action="/auth/login" class="login-form" accept-charset="UTF-8" novalidate>-->
+ 
+
         	{!! Form::open(array('url' => '/auth/login', 'class' => 'login-form')) !!}
 
         	  <h3 class="form-title">Oturumu Aç</h3>
-                <div data-alert class="alert-box info radius">
+
+                <!--<div data-alert class="alert-box info radius">
                     Kullanıcı Adı ve Şifre Girmelisiniz.
-                    <a href="#" class="close">&times;</a>
-                </div>
+                    <a href="#" class="close" id="kapat" ng-click="kapat()">&times;</a>
+                </div>-->
+            @foreach($errors->all() as $error)
+              <div data-alert class="alert-box info radius">
+                {{$error}}
+                <a href="#" class="close" id="kapat">&times;</a>
+              </div> 
+            @endforeach
+ 
                 <div class="row">
-                    <div class="large-12 columns">
+                    <div class="large-12 columns email-field">
                         <label>Kullanıcı Adı
-                            <input type="text" name="email" placeholder="Kullanıcı Adınız" />
+                            <input type="text" name="email" ng-model="email" placeholder="Kullanıcı Adınız" required />
                         </label>
+                        <!--<small class="error">Geçerli bir e-posta adresi girin.</small>-->
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="large-12 columns">
+                    <div class="large-12 columns password-field">
                         <label>Şifre
-                            <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Şifreniz" name="password"/>
+                            <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Şifreniz" name="password" ng-model="password" required />
                         </label>
                     </div>
                 </div> 
@@ -51,8 +64,8 @@
                     <p class="text-center">                      
                         <a href="/auth/register">YENİ HESAP OLUŞTUR</a>
                     </p>
-                </div>
-        	{!! Form::close() !!}
+                </div> 
+        	   {!! Form::close() !!}
         </div>
     </div>
 

@@ -6,6 +6,8 @@ app.controller('ProfilesController', function($scope, profilesFactory){
     	console.log( $scope.aktif_kullanici );
   	});
 
+  	//angular.element(document.querySelector('.yourclass'))
+
 
  
 });
