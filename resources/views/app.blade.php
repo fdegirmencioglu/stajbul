@@ -117,6 +117,7 @@
                 <div id="panel5c" class="content"> 
                     <ul class="side-nav">
                         <li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Yönetim İşlem Sayfası</a></li>
+                        <li><a href="/admin/new"><i class="fa fa-play fa-fw"></i>&nbsp;Yönetici Ekleme</a></li>
                         <li><a href="/admin/profile"><i class="fa fa-play fa-fw"></i>&nbsp;Profilim</a></li>
                     </ul>
                 </div> 
@@ -188,6 +189,8 @@
 <div class="page-content"> 
     @yield('content')
 </div>
+ 
+ <input type="hidden" id="current_user_id" name="user_id" ng-model="current_user_id" ng-value="<?php echo Auth::user()->id; ?>"> 
 
  
 <!-- Scripts -->

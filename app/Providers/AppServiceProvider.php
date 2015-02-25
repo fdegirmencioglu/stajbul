@@ -2,6 +2,10 @@
 
 use Illuminate\Support\ServiceProvider;
 
+use View;
+use Auth;
+use App;
+
 class AppServiceProvider extends ServiceProvider {
 
 	/**
@@ -10,8 +14,11 @@ class AppServiceProvider extends ServiceProvider {
 	 * @return void
 	 */
 	public function boot()
-	{
-		//
+	{ 
+		/*$this->app->booted(function()
+	  	{
+	   		View::share('currentUser', Auth::user());
+	  	});*/
 	}
 
 	/**
@@ -29,6 +36,13 @@ class AppServiceProvider extends ServiceProvider {
 			'Illuminate\Contracts\Auth\Registrar',
 			'App\Services\Registrar'
 		);
+
+		/*App::booted(function()
+		{
+    		View::share('currentUser', Auth::user());
+		});*/
+
 	}
+
 
 }

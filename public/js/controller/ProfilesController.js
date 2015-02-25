@@ -1,5 +1,11 @@
-app.controller('ProfilesController', function($scope, $http, profilesFactory){
+app.controller('ProfilesController', function($scope, profilesFactory){
 	$scope.users = profilesFactory.get();
 
-	console.log( $scope.users );
+	profilesFactory.get_current_user().then(function(d) {
+    	$scope.aktif_kullanici = d.data;
+    	console.log( $scope.aktif_kullanici );
+  	});
+
+
+ 
 });

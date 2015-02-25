@@ -15,7 +15,7 @@ class UserController extends Controller {
 	 * @return Response
 	 */
 	public function index()
-	{ 
+	{  
 		return User::all(); 
 	}
 
