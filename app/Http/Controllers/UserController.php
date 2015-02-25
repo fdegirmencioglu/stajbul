@@ -9,11 +9,6 @@ use App\User;
 
 class UserController extends Controller {
 
-	public function find_user(id)
-	{
-		var_dump(id);
-	}
-
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -41,7 +36,7 @@ class UserController extends Controller {
 	 */
 	public function store()
 	{
-		dd( Input::only('email') );
+		//dd( Input::only('email') );
 	}
 
 	/**

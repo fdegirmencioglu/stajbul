@@ -52,17 +52,5 @@ Route::get('/admin/new', function()
 	}  
 });
 
-/*Route::get('user/{name}', function($name)
-{
-    //
-})
-->where('name', '[A-Za-z]+');
-*/
-Route::get('/user/{username}', array(
-    'as' => 'profile-user',
-    'uses' => 'UserController@find_user'
-));
-
-//Route::get('users/email/{email}', 'UserController@find_user');
 
 Route::resource('users', 'UserController');
