@@ -25,7 +25,6 @@ use Symfony\Component\DependencyInjection\Loader\ClosureLoader;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
-use Symfony\Component\HttpKernel\Config\EnvParametersResource;
 use Symfony\Component\HttpKernel\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\MergeExtensionConfigurationPass;
 use Symfony\Component\HttpKernel\DependencyInjection\AddClassesToCachePass;
@@ -60,12 +59,12 @@ abstract class Kernel implements KernelInterface, TerminableInterface
     protected $startTime;
     protected $loadClassCache;
 
-    const VERSION = '2.6.5-DEV';
-    const VERSION_ID = '20605';
+    const VERSION = '2.5.9';
+    const VERSION_ID = '20509';
     const MAJOR_VERSION = '2';
-    const MINOR_VERSION = '6';
-    const RELEASE_VERSION = '5';
-    const EXTRA_VERSION = 'DEV';
+    const MINOR_VERSION = '5';
+    const RELEASE_VERSION = '9';
+    const EXTRA_VERSION = '';
 
     /**
      * Constructor.
@@ -210,8 +209,6 @@ abstract class Kernel implements KernelInterface, TerminableInterface
      * {@inheritdoc}
      *
      * @api
-     *
-     * @deprecated Deprecated since version 2.6, to be removed in 3.0.
      */
     public function isClassInActiveBundle($class)
     {
@@ -605,7 +602,7 @@ abstract class Kernel implements KernelInterface, TerminableInterface
     {
         foreach (array('cache' => $this->getCacheDir(), 'logs' => $this->getLogDir()) as $name => $dir) {
             if (!is_dir($dir)) {
-                if (false === @mkdir($dir, 0777, true) && !is_dir($dir)) {
+                if (false === @mkdir($dir, 0777, true)) {
                     throw new \RuntimeException(sprintf("Unable to create the %s directory (%s)\n", $name, $dir));
                 }
             } elseif (!is_writable($dir)) {
@@ -622,7 +619,6 @@ abstract class Kernel implements KernelInterface, TerminableInterface
         }
 
         $container->addCompilerPass(new AddClassesToCachePass($this));
-        $container->addResource(new EnvParametersResource('SYMFONY__'));
 
         return $container;
     }

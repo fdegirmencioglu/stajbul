@@ -1,19 +1,13 @@
 app.controller("LoginController", function($scope, $http){
 
 this.adi = "bertan";
-this.modal_type = ""; 
+this.modal_type = "";
+
 $scope.username = '';
- 
+
 $scope.modalType = function(type){
-  this.modal_type = type;  
+  this.modal_type = type;
 };
-
-$scope.giris = function(){
-  console.log( $scope.email );
-  console.log( $scope.password );
-
-  //return false;
-}
 
 $scope.gonder = function(){
   //alert(this.modal_type);
@@ -24,16 +18,18 @@ $scope.gonder = function(){
     //sunucuya post et
     $http.post('http://localhost:8000/password/remind', { email: $scope.username }).
     success(function(data, status, headers, config){
-      //alert("success data");
+      alert("success data");
     }).
     error(function(data, status, headers, config){
-      //alert("error data");
+      alert("error data");
     });
-  } 
+  }
+
+  
 };
 
 // Simple GET request example :
-/*$http.get('http://localhost:8000/data.json').
+$http.get('http://localhost:8000/data.json').
   success(function(data, status, headers, config) {
     // this callback will be called asynchronously
     // when the response is available
@@ -43,7 +39,7 @@ $scope.gonder = function(){
   error(function(data, status, headers, config) {
     // called asynchronously if an error occurs
     // or server returns response with an error status.
-  });*/
+  });
 
 });
 

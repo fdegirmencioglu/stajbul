@@ -45,8 +45,6 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         require_once self::$fixturesPath.'/Foo5Command.php';
         require_once self::$fixturesPath.'/FoobarCommand.php';
         require_once self::$fixturesPath.'/BarBucCommand.php';
-        require_once self::$fixturesPath.'/FooSubnamespaced1Command.php';
-        require_once self::$fixturesPath.'/FooSubnamespaced2Command.php';
     }
 
     protected function normalizeLineBreaks($text)
@@ -97,7 +95,7 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
     public function testHelp()
     {
         $application = new Application();
-        $this->assertStringEqualsFile(self::$fixturesPath.'/application_gethelp.txt', $this->normalizeLineBreaks($application->getHelp()), '->getHelp() returns a help message');
+        $this->assertStringEqualsFile(self::$fixturesPath.'/application_gethelp.txt', $this->normalizeLineBreaks($application->getHelp()), '->setHelp() returns a help message');
     }
 
     public function testAll()
@@ -201,14 +199,6 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('foo', $application->findNamespace('f'), '->findNamespace() finds a namespace given an abbreviation');
         $application->add(new \Foo2Command());
         $this->assertEquals('foo', $application->findNamespace('foo'), '->findNamespace() returns the given namespace if it exists');
-    }
-
-    public function testFindNamespaceWithSubnamespaces()
-    {
-        $application = new Application();
-        $application->add(new \FooSubnamespaced1Command());
-        $application->add(new \FooSubnamespaced2Command());
-        $this->assertEquals('foo', $application->findNamespace('foo'), '->findNamespace() returns commands even if the commands are only contained in subnamespaces');
     }
 
     /**
@@ -917,22 +907,6 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         $this->assertContains('before.foo.after.caught.', $tester->getDisplay());
     }
 
-    public function testRunWithDispatcherSkippingCommand()
-    {
-        $application = new Application();
-        $application->setDispatcher($this->getDispatcher(true));
-        $application->setAutoExit(false);
-
-        $application->register('foo')->setCode(function (InputInterface $input, OutputInterface $output) {
-            $output->write('foo.');
-        });
-
-        $tester = new ApplicationTester($application);
-        $exitCode = $tester->run(array('command' => 'foo'));
-        $this->assertContains('before.after.', $tester->getDisplay());
-        $this->assertEquals(ConsoleCommandEvent::RETURN_CODE_DISABLED, $exitCode);
-    }
-
     public function testTerminalDimensions()
     {
         $application = new Application();
@@ -948,22 +922,16 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(array($width, 80), $application->getTerminalDimensions());
     }
 
-    protected function getDispatcher($skipCommand = false)
+    protected function getDispatcher()
     {
         $dispatcher = new EventDispatcher();
-        $dispatcher->addListener('console.command', function (ConsoleCommandEvent $event) use ($skipCommand) {
+        $dispatcher->addListener('console.command', function (ConsoleCommandEvent $event) {
             $event->getOutput()->write('before.');
-
-            if ($skipCommand) {
-                $event->disableCommand();
-            }
         });
-        $dispatcher->addListener('console.terminate', function (ConsoleTerminateEvent $event) use ($skipCommand) {
+        $dispatcher->addListener('console.terminate', function (ConsoleTerminateEvent $event) {
             $event->getOutput()->write('after.');
 
-            if (!$skipCommand) {
-                $event->setExitCode(113);
-            }
+            $event->setExitCode(128);
         });
         $dispatcher->addListener('console.exception', function (ConsoleExceptionEvent $event) {
             $event->getOutput()->writeln('caught.');

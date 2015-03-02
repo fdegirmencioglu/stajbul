@@ -13,8 +13,6 @@ namespace Symfony\Component\Console;
 
 use Symfony\Component\Console\Descriptor\TextDescriptor;
 use Symfony\Component\Console\Descriptor\XmlDescriptor;
-use Symfony\Component\Console\Helper\DebugFormatterHelper;
-use Symfony\Component\Console\Helper\ProcessHelper;
 use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\ArgvInput;
@@ -251,7 +249,24 @@ class Application
      */
     public function getHelp()
     {
-        return $this->getLongVersion();
+        $messages = array(
+            $this->getLongVersion(),
+            '',
+            '<comment>Usage:</comment>',
+            '  [options] command [arguments]',
+            '',
+            '<comment>Options:</comment>',
+        );
+
+        foreach ($this->getDefinition()->getOptions() as $option) {
+            $messages[] = sprintf('  %-29s %s %s',
+                '<info>--'.$option->getName().'</info>',
+                $option->getShortcut() ? '<info>-'.$option->getShortcut().'</info>' : '  ',
+                $option->getDescription()
+            );
+        }
+
+        return implode(PHP_EOL, $messages);
     }
 
     /**
@@ -460,10 +475,10 @@ class Application
     {
         $namespaces = array();
         foreach ($this->commands as $command) {
-            $namespaces = array_merge($namespaces, $this->extractAllNamespaces($command->getName()));
+            $namespaces[] = $this->extractNamespace($command->getName());
 
             foreach ($command->getAliases() as $alias) {
-                $namespaces = array_merge($namespaces, $this->extractAllNamespaces($alias));
+                $namespaces[] = $this->extractNamespace($alias);
             }
         }
 
@@ -708,8 +723,8 @@ class Application
                 $trace = $e->getTrace();
                 array_unshift($trace, array(
                     'function' => '',
-                    'file' => $e->getFile() !== null ? $e->getFile() : 'n/a',
-                    'line' => $e->getLine() !== null ? $e->getLine() : 'n/a',
+                    'file' => $e->getFile() != null ? $e->getFile() : 'n/a',
+                    'line' => $e->getLine() != null ? $e->getLine() : 'n/a',
                     'args' => array(),
                 ));
 
@@ -877,20 +892,16 @@ class Application
         $event = new ConsoleCommandEvent($command, $input, $output);
         $this->dispatcher->dispatch(ConsoleEvents::COMMAND, $event);
 
-        if ($event->commandShouldRun()) {
-            try {
-                $exitCode = $command->run($input, $output);
-            } catch (\Exception $e) {
-                $event = new ConsoleTerminateEvent($command, $input, $output, $e->getCode());
-                $this->dispatcher->dispatch(ConsoleEvents::TERMINATE, $event);
+        try {
+            $exitCode = $command->run($input, $output);
+        } catch (\Exception $e) {
+            $event = new ConsoleTerminateEvent($command, $input, $output, $e->getCode());
+            $this->dispatcher->dispatch(ConsoleEvents::TERMINATE, $event);
 
-                $event = new ConsoleExceptionEvent($command, $input, $output, $e, $event->getExitCode());
-                $this->dispatcher->dispatch(ConsoleEvents::EXCEPTION, $event);
+            $event = new ConsoleExceptionEvent($command, $input, $output, $e, $event->getExitCode());
+            $this->dispatcher->dispatch(ConsoleEvents::EXCEPTION, $event);
 
-                throw $event->getException();
-            }
-        } else {
-            $exitCode = ConsoleCommandEvent::RETURN_CODE_DISABLED;
+            throw $event->getException();
         }
 
         $event = new ConsoleTerminateEvent($command, $input, $output, $exitCode);
@@ -953,8 +964,6 @@ class Application
             new DialogHelper(),
             new ProgressHelper(),
             new TableHelper(),
-            new DebugFormatterHelper(),
-            new ProcessHelper(),
             new QuestionHelper(),
         ));
     }
@@ -1145,29 +1154,5 @@ class Application
         mb_convert_variables($encoding, 'utf8', $lines);
 
         return $lines;
-    }
-
-    /**
-     * Returns all namespaces of the command name.
-     *
-     * @param string $name The full name of the command
-     *
-     * @return array The namespaces of the command
-     */
-    private function extractAllNamespaces($name)
-    {
-        // -1 as third argument is needed to skip the command short name when exploding
-        $parts = explode(':', $name, -1);
-        $namespaces = array();
-
-        foreach ($parts as $part) {
-            if (count($namespaces)) {
-                $namespaces[] = end($namespaces).':'.$part;
-            } else {
-                $namespaces[] = $part;
-            }
-        }
-
-        return $namespaces;
     }
 }

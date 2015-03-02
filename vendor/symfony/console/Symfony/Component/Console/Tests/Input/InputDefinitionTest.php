@@ -341,7 +341,7 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
             new InputOption('foo7', null, InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, '', array(1, 2)),
         ));
         $defaults = array(
-            'foo1' => false,
+            'foo1' => null,
             'foo2' => null,
             'foo3' => 'default',
             'foo4' => null,
@@ -349,7 +349,7 @@ class InputDefinitionTest extends \PHPUnit_Framework_TestCase
             'foo6' => array(),
             'foo7' => array(1, 2),
         );
-        $this->assertSame($defaults, $definition->getOptionDefaults(), '->getOptionDefaults() returns the default values for all options');
+        $this->assertEquals($defaults, $definition->getOptionDefaults(), '->getOptionDefaults() returns the default values for all options');
     }
 
     public function testGetSynopsis()
