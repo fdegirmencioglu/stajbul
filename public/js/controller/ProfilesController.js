@@ -3,16 +3,19 @@ app.controller('ProfilesController', function($scope, $upload, profilesFactory){
 
 	  $scope.first_name = "";
     $scope.last_name = ""; 
-    $scope.kullanici_adi = ""; 
+    $scope.username = ""; 
+    $scope.email = "";
+    $scope.website = "";
+    $scope.display_name = "";
 
 	  profilesFactory.get_current_user().then(function(d) {
-    $scope.aktif_kullanici = d.data;
-
+      $scope.aktif_kullanici = d.data;
     	$scope.first_name = $scope.aktif_kullanici.first_name;
     	$scope.last_name = $scope.aktif_kullanici.last_name; 
-    	//$scope.kullanici_adi = $scope.aktif_kullanici.kullanici_adi;
-
-    	
+    	$scope.username = $scope.aktif_kullanici.username;
+      $scope.email = $scope.aktif_kullanici.email;
+      $scope.website = $scope.aktif_kullanici.website;
+      $scope.display_name = $scope.aktif_kullanici.display_name;
   	});
 
   	//angular.element(document.querySelector('.yourclass'))
@@ -46,10 +49,14 @@ app.controller('ProfilesController', function($scope, $upload, profilesFactory){
     	var aktif_kullanici_id_ = angular.element(document.querySelector('#current_user_id')).val();
     	
     	options = {};
-    	options.adi = $scope.adi;
-    	options.soyadi = $scope.soyadi;
-    	options.kullanici_adi = $scope.kullanici_adi;
-			options.aktif_kullanici_id = aktif_kullanici_id_;
+    	options.first_name = $scope.first_name;
+    	options.last_name = $scope.last_name;
+    	options.username = $scope.username;
+      options.display_name = $scope.display_name;
+      options.email = $scope.email;
+      options.website = $scope.website;
+			
+      options.aktif_kullanici_id = aktif_kullanici_id_;
 
       profilesFactory.save(options);           
    }

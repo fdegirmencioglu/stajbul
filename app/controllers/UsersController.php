@@ -75,7 +75,18 @@ class UsersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+	  // store
+        $user = User::find($id);
+        $user->first_name = Input::get('first_name');
+        $user->last_name  = Input::get('last_name');
+        $user->username = Input::get('username');
+		$user->display_name = Input::get('display_name');
+        $user->email = Input::get('email');
+        $user->website = Input::get('website');
+        $user->save();
+
+        //return redirect('home');
+        return View::make('admin.profile');
 	}
 
 

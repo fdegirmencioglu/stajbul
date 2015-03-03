@@ -46,13 +46,7 @@ app.factory('profilesFactory', function($http){
 
 		},
 		save: function(options){
-	      console.log( options.adi );
-	      console.log( options.soyadi ); 
-	      console.log( options.kullanici_adi );
-	      console.log( options.aktif_kullanici_id );
-      
-
-			$http.put('/users/' + options.aktif_kullanici_id , { adi: options.adi, soyadi: options.soyadi, kullanici_adi: options.kullanici_adi }).
+			$http.put('/users/' + options.aktif_kullanici_id , { first_name: options.first_name, last_name: options.last_name, username: options.username, display_name: options.display_name, email: options.email, website: options.website }).
 				success(function(data, status, headers, config){
 	     		alert("saved");
 	  		}).

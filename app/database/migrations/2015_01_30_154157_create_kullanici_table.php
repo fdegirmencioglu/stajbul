@@ -12,7 +12,7 @@ class CreateKullaniciTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('kullanici', function(Blueprint $table)
+		/*Schema::create('kullanici', function(Blueprint $table)
 		{
 			$table->increments('id');
  			$table->string('adi');
@@ -27,7 +27,7 @@ class CreateKullaniciTable extends Migration {
  			$table->string('resim_yolu');
  			$table->boolean('sil');
 			$table->timestamps();
-		});
+		});*/
 	}
 
 

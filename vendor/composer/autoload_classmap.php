@@ -6,6 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddDisplayNameToUsers' => $baseDir . '/app/database/migrations/2015_03_03_160504_add_display_name_to_users.php',
+    'AddUsernameToUsers' => $baseDir . '/app/database/migrations/2015_03_03_160104_add_username_to_users.php',
+    'AddWebsiteToUsers' => $baseDir . '/app/database/migrations/2015_03_03_162304_add_website_to_users.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
     'Boris\\Boris' => $vendorDir . '/d11wtq/boris/lib/Boris/Boris.php',
     'Boris\\CLIOptionsHandler' => $vendorDir . '/d11wtq/boris/lib/Boris/CLIOptionsHandler.php',
@@ -483,7 +486,6 @@ return array(
     'Jeremeamia\\SuperClosure\\Visitor\\ClosureFinderVisitor' => $vendorDir . '/jeremeamia/SuperClosure/src/Jeremeamia/SuperClosure/Visitor/ClosureFinderVisitor.php',
     'Jeremeamia\\SuperClosure\\Visitor\\MagicConstantVisitor' => $vendorDir . '/jeremeamia/SuperClosure/src/Jeremeamia/SuperClosure/Visitor/MagicConstantVisitor.php',
     'Kullanici' => $baseDir . '/app/models/Kullanici.php',
-    'KullaniciController' => $baseDir . '/app/controllers/KullaniciController.php',
     'Math_BigInteger' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Math/BigInteger.php',
     'MigrationCartalystSentryInstallGroups' => $vendorDir . '/cartalyst/sentry/src/migrations/2012_12_06_225929_migration_cartalyst_sentry_install_groups.php',
     'MigrationCartalystSentryInstallThrottle' => $vendorDir . '/cartalyst/sentry/src/migrations/2012_12_06_225988_migration_cartalyst_sentry_install_throttle.php',
@@ -1643,6 +1645,7 @@ return array(
     'TestCase' => $baseDir . '/app/tests/TestCase.php',
     'TestDenemelikController' => $baseDir . '/app/controllers/TestDenemelikController.php',
     'User' => $baseDir . '/app/models/User.php',
+    'UsersController' => $baseDir . '/app/controllers/UsersController.php',
     'Way\\Generators\\Commands\\ControllerGeneratorCommand' => $vendorDir . '/way/generators/src/Way/Generators/Commands/ControllerGeneratorCommand.php',
     'Way\\Generators\\Commands\\GeneratorCommand' => $vendorDir . '/way/generators/src/Way/Generators/Commands/GeneratorCommand.php',
     'Way\\Generators\\Commands\\MigrationGeneratorCommand' => $vendorDir . '/way/generators/src/Way/Generators/Commands/MigrationGeneratorCommand.php',

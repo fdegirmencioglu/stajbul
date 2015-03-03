@@ -15,7 +15,18 @@ Route::get('logout', 'SessionsController@destroy');
 
 Route::get('/', function()
 {
-    return View::make('login.index');
+	if ( ! Sentry::check())
+	{	
+		// User is not logged in, or is not activated
+		return View::make('login.index');
+	}
+	else
+	{
+		// User is logged in
+		return View::make('home');
+	}
+	
+    
 });
 
 Route::get('/home', function()
