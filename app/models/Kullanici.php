@@ -2,5 +2,5 @@
 
 class Kullanici extends \Eloquent {
 	protected $fillable = [];
-	protected $table = 'kullanici';
+	protected $table = 'users';
 }

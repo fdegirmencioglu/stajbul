@@ -8,10 +8,16 @@
             <!-- BEGIN LOGIN FORM -->
             <form class="login-form" action="{{ action('SessionsController@store') }}" method="post">
                 <h3 class="form-title">Oturumu Aç</h3>
-                <div data-alert class="alert-box info radius">
-                    Kullanıcı Adı ve Şifre Girmelisiniz.
-                    <a href="#" class="close">&times;</a>
-                </div>
+
+                
+                @foreach($errors->all() as $error)
+                  <div data-alert class="alert-box info radius">
+                    {{$error}}
+                    <a href="#" class="close" id="kapat">&times;</a>
+                  </div> 
+                @endforeach
+
+
                 <div class="row">
                     <div class="large-12 columns">
                         <label>Kullanıcı Adı
@@ -30,7 +36,7 @@
 
                 <div class="row">
                     <div class="large-6 columns">      
-                        <input id="checkbox1" type="checkbox"><label for="checkbox1">Hatırlat</label>
+                        <input id="checkbox1" name="hatirla" type="checkbox"><label for="checkbox1">Hatırlat</label>
                     </div>
                     <div class="large-6 columns">
                         <button type="submit" class="radius button right">Giriş Yap</button>

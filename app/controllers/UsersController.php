@@ -51,7 +51,7 @@ class UsersController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		return $user = User::find($id);
 	}
 
 

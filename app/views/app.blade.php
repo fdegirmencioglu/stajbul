@@ -189,7 +189,8 @@
     @yield('content')
 </div>
  
- 
+ <input type="hidden" id="current_user_id" name="user_id" ng-model="current_user_id" ng-value="<?php echo Sentry::getUser()->id; ?>">
+
 
  
 <!-- Scripts -->

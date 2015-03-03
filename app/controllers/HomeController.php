@@ -17,7 +17,18 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
-		return View::make('home');
+		if ( ! Sentry::check())
+		{	
+    		// User is not logged in, or is not activated
+    		return View::make('/');
+		}
+		else
+		{
+    		// User is logged in
+    		return View::make('home');
+		}
+
+		
 	}
 
 }

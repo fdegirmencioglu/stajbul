@@ -31,6 +31,13 @@ class SessionsController extends \BaseController {
 	 */
 	public function store()
 	{
+		$hata_mesaji = '';
+		//hatırla checkbox'ı seçiliyse $hatirla'nın değerini true yapar
+		$hatirla = false;
+		if (Input::get('hatirla') == 'on'){
+			$hatirla = true;
+		}
+
 		try
 		{
 		    // Login credentials
@@ -40,27 +47,42 @@ class SessionsController extends \BaseController {
 		    );
 
 		    // Authenticate the user
-		    $user = Sentry::authenticate($credentials, false);
+		    $user = Sentry::authenticate($credentials, $hatirla);
+
+
+		    return Redirect::to('/home');
+		    //Sentry::authenticateAndRemember($credentials);
 		}
 		catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
 		{
-		    echo 'Login field is required.';
+			return Redirect::back()->withErrors('Kullanıcı alanını boş bırakmayınız.');
+				//return Redirect::to('/')->with('Hata', 'Kullanıcı alanını boş bırakmayınız.');
+		    //$hata_mesaji = 'Kullanıcı alanını boş bırakmayınız.';
 		}
 		catch (Cartalyst\Sentry\Users\PasswordRequiredException $e)
 		{
-		    echo 'Password field is required.';
+			return Redirect::back()->withErrors('Şifre alanını boş bırakmayınız.');
+			//return Redirect::to('/')->with('Hata', 'Şifre alanını boş bırakmayınız.');
+		    //$hata_mesaji = 'Şifre alanını boş bırakmayınız.';
 		}
 		catch (Cartalyst\Sentry\Users\WrongPasswordException $e)
 		{
-		    echo 'Wrong password, try again.';
+			return Redirect::back()->withErrors('Hatalı şifre, tekrar deneyin.');
+
+			//return Redirect::to('/')->with('Hata', 'Hatalı şifre, tekrar deneyin.');
+		    //$hata_mesaji = 'Hatalı şifre, tekrar deneyin.';
 		}
 		catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
 		{
-		    echo 'User was not found.';
+			return Redirect::back()->withErrors('Kullanıcı bulunamadı.');
+			//return Redirect::to('/')->with('Hata', 'Kullanıcı bulunamadı.');
+		    //$hata_mesaji = 'Kullanıcı bulunamadı.';
 		}
 		catch (Cartalyst\Sentry\Users\UserNotActivatedException $e)
 		{
-		    echo 'User is not activated.';
+			return Redirect::back()->withErrors('Kullanıcı aktif değil.');
+			//return Redirect::to('/')->with('Hata', 'Kullanıcı aktif değil.');
+		    //$hata_mesaji = 'Kullanıcı aktif değil.';
 		}
 
 
@@ -91,7 +113,7 @@ class SessionsController extends \BaseController {
     }else{
       return Redirect::to('/');
     }*/
-return Redirect::to('/home');
+
 
 
 	}

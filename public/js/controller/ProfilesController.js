@@ -1,16 +1,16 @@
 app.controller('ProfilesController', function($scope, $upload, profilesFactory){
 	  $scope.users = profilesFactory.get();
 
-	  $scope.adi = "";
-    $scope.soyadi = ""; 
+	  $scope.first_name = "";
+    $scope.last_name = ""; 
     $scope.kullanici_adi = ""; 
 
 	  profilesFactory.get_current_user().then(function(d) {
     $scope.aktif_kullanici = d.data;
 
-    	$scope.adi = $scope.aktif_kullanici.adi;
-    	$scope.soyadi = $scope.aktif_kullanici.soyadi; 
-    	$scope.kullanici_adi = $scope.aktif_kullanici.kullanici_adi;
+    	$scope.first_name = $scope.aktif_kullanici.first_name;
+    	$scope.last_name = $scope.aktif_kullanici.last_name; 
+    	//$scope.kullanici_adi = $scope.aktif_kullanici.kullanici_adi;
 
     	
   	});
