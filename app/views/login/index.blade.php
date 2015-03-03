@@ -27,15 +27,6 @@
                         </label>
                     </div>
                 </div> 
-                <div class="row">
-                    <div class="large-6 columns"><img src="{{ action('CaptchaController@captcha') }}" ></div>
-
-                    
-                    <?php $val= Session::get('captcha');  //echo '<br>'.$val.'<br>';?>
-                    <div class="large-6 columns"><input type="text" placeholder="Güvenlik Kodu {{$val}}" /></div>
-                </div>
-
-
 
                 <div class="row">
                     <div class="large-6 columns">      
@@ -59,7 +50,8 @@
 
                 <div class="create-account">
                     <p class="text-center">                      
-                        <a href="#">YENİ HESAP OLUŞTUR</a>
+                        
+                         <a href="/login/register">YENİ HESAP OLUŞTUR</a>
                     </p>
                 </div>
             </form>
@@ -67,12 +59,6 @@
 
         </div>
     </div>
-
-
-    <!--<form action="{{ action('RemindersController@postRemind') }}" method="POST">
-    <input type="email" name="email">
-    <input type="submit" value="Send Reminder">
-</form>-->
 
 
 

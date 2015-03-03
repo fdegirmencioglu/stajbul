@@ -31,6 +31,42 @@ class SessionsController extends \BaseController {
 	 */
 	public function store()
 	{
+		try
+		{
+		    // Login credentials
+		    $credentials = array(
+		        'email'    => Input::get('email'),
+		        'password' => Input::get('password'),
+		    );
+
+		    // Authenticate the user
+		    $user = Sentry::authenticate($credentials, false);
+		}
+		catch (Cartalyst\Sentry\Users\LoginRequiredException $e)
+		{
+		    echo 'Login field is required.';
+		}
+		catch (Cartalyst\Sentry\Users\PasswordRequiredException $e)
+		{
+		    echo 'Password field is required.';
+		}
+		catch (Cartalyst\Sentry\Users\WrongPasswordException $e)
+		{
+		    echo 'Wrong password, try again.';
+		}
+		catch (Cartalyst\Sentry\Users\UserNotFoundException $e)
+		{
+		    echo 'User was not found.';
+		}
+		catch (Cartalyst\Sentry\Users\UserNotActivatedException $e)
+		{
+		    echo 'User is not activated.';
+		}
+
+
+
+
+
 		/*$input = Input::all();
 		
 		dd($input);
@@ -45,7 +81,7 @@ class SessionsController extends \BaseController {
 */
 //dd( Hash::make(Input::get('password')) );
 
-	$auth = User::where('email', '=', Input::get('email'))->where('password', '=', Input::get('password'))->first();
+	/******************$auth = User::where('email', '=', Input::get('email'))->where('password', '=', Input::get('password'))->first();
     
  
 
@@ -54,8 +90,8 @@ class SessionsController extends \BaseController {
       return Redirect::to('/password.remind');
     }else{
       return Redirect::to('/');
-    }
-
+    }*/
+return Redirect::to('/home');
 
 
 	}
@@ -105,8 +141,10 @@ class SessionsController extends \BaseController {
 	 */
 	public function destroy()
 	{
-		Auth::logout();
-		return Redirect::home();
+		Sentry::logout();
+		//Auth::logout();
+		//return Redirect::home();
+		return Redirect::to('/');
 	}
 
 

@@ -13,14 +13,24 @@
 Route::get('login', 'SessionsController@create');
 Route::get('logout', 'SessionsController@destroy');
 
-Route::get('/',['as' => 'home', function()
+Route::get('/', function()
 {
     return View::make('login.index');
-}]);
+});
 
-Route::resource('testtablosu', 'TestDenemelikController');
-Route::get('Captcha.captcha', ['uses'=>'CaptchaController@captcha']);
+Route::get('/home', function()
+{
+    return View::make('home');
+});
+
+Route::get('/login/register', function()
+{
+    return View::make('login.register');
+});
+
+//Route::resource('testtablosu', 'TestDenemelikController');
+//Route::get('Captcha.captcha', ['uses'=>'CaptchaController@captcha']);
 
 Route::resource('sessions', 'SessionsController');
-
-Route::controller('password', 'RemindersController');
+//Route::controller('password', 'RemindersController');
+Route::resource('users', 'UsersController');
