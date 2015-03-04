@@ -71,9 +71,31 @@ Route::get('/admin/new', function()
 });
 
 
+//Yeni Yönetici Ekle
+Route::get('/admin/list', function()
+{
+	if ( ! Sentry::check())//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
+ 	{
+		return View::make('login.index');
+	}else{              //Kullanıcı sisteme giriş yaptıysa -> home'a git
+		return View::make('admin.list');
+	}  
+});
+
+
 //Route::resource('testtablosu', 'TestDenemelikController');
 //Route::get('Captcha.captcha', ['uses'=>'CaptchaController@captcha']);
 
 Route::resource('sessions', 'SessionsController');
 //Route::controller('password', 'RemindersController');
 Route::resource('users', 'UsersController');
+
+Route::post('/admin/profile', 'UsersController@photo');
+Route::get('get_current_user_photo', 'UsersController@get_photo');
+
+/*Route::post('upload/url/{id}', [
+    'as' => 'photo', 'uses' => 'UsersController@photo'
+]);*/
+
+
+

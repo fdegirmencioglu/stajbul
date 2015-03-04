@@ -20,7 +20,7 @@
     <script type="text/javascript" src="/js/vendor/modernizr.js"></script>
 </head>
 <body>
-    <header>
+    <header ng-controller="ProfilesController">
       <base href="/">
  
         <nav class="top-bar foundation-bar docs-bar" data-topbar role="navigation">
@@ -45,7 +45,10 @@
                 <!-- Right Nav Section -->
                 <ul class="right">
                     <li class="has-dropdown not-click"> 
-                        <a href=""><img class="imgprofile" src="/images/profilresmim.png" alt=""/></a> 
+                        <a href="" >
+                             
+
+                            <img class="imgprofile" width="50px" ng-src="@{{resim_adi}}"   /></a>
                         <ul class="dropdown">
                             <li><a href="/admin/profile">Profilim</a></li>
 

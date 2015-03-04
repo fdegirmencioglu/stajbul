@@ -89,21 +89,22 @@ class UsersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		 $user = User::find($id);
-		 if(Input::get('password') != null){
-		 		//sadece password'ü güncelle
-        $user->password = hash(Input::get('new_password'));
-        $user->save();
-		 }else{
-		 	  // store 
-	      $user->first_name = Input::get('first_name');
-	      $user->last_name  = Input::get('last_name');
-	      $user->username = Input::get('username');
-				$user->display_name = Input::get('display_name');
-	      $user->email = Input::get('email');
-	      $user->website = Input::get('website');
-	      $user->save();
-		 }
+		if(Input::get('change_password') == true){
+		 	//sadece password'ü güncelle
+		 	$user = Sentry::getUserProvider()->findById($id);
+ 			$user->password = Input::get('password'); 
+ 			$user->save();
+		}else{
+		 	// store
+		 			$user = User::find($id); 
+	      	$user->first_name = Input::get('first_name');
+	      	$user->last_name  = Input::get('last_name');
+	      	$user->username = Input::get('username');
+			$user->display_name = Input::get('display_name');
+	      	$user->email = Input::get('email');
+	      	$user->website = Input::get('website');
+	      	$user->save();
+		}
       return View::make('admin.profile');
 	}
 
@@ -133,6 +134,32 @@ class UsersController extends \BaseController {
 	    }
 
 	    return $hash;
+	}
+
+
+
+	public function photo()
+	{
+		$image = Input::file('image');
+		$destinationPath = 'public/uploads/';
+		$filename = $image->getClientOriginalName();
+		Input::file('image')->move($destinationPath, $filename);
+
+		$user_image = new UserImage;
+		$user_image -> resim_adi = $filename;
+		$user_image -> resim_yolu = $destinationPath;
+		$user_image -> user_id = Sentry::getUser()->id; 
+		$save_flag = $user_image->save();
+		if($save_flag){
+			return Redirect::back();
+		} 
+	}
+
+	public function get_photo(){ 
+		//Aktif kullanıcıyı bul
+		$current_user_id = Sentry::getUser()->id;  
+		//Aktif kullanıcının resim bilgilerini getir
+		return UserImage::where('user_id', '=', $current_user_id)->get();
 	}
 
 

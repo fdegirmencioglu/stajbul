@@ -92,6 +92,7 @@ return array(
     'ClassPreloader\\Parser\\NodeTraverser' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Parser/NodeTraverser.php',
     'CreateKullaniciTable' => $baseDir . '/app/database/migrations/2015_01_30_154157_create_kullanici_table.php',
     'CreatePasswordRemindersTable' => $baseDir . '/app/database/migrations/2015_02_04_095329_create_password_reminders_table.php',
+    'CreateUserImagesTable' => $baseDir . '/app/database/migrations/2015_03_04_110419_create_user_images_table.php',
     'Crypt_AES' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/AES.php',
     'Crypt_Base' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/Base.php',
     'Crypt_Blowfish' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/Blowfish.php',

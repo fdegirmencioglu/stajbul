@@ -3,7 +3,25 @@ app.factory('profilesFactory', function($http){
 	var aktif_kullanici = [];
 
 	return{ 
+		load_current_user_image: function(){ 
+				return $http.get('/get_current_user_photo')
+					.success(function(response){
+						 return response;
+					});
+		},
+		change_password: function(options){
+			$http.put('/users/' + options.aktif_kullanici_id , { change_password: options.change_password, password: options.password }).
+				success(function(data, status, headers, config){
+	     		alert("şifre değiştirilmiştir"); 
+		      var passModel = angular.element(document.querySelector('#passModal'));       
+		      passModel.foundation('reveal', 'close');
 
+	  		}).
+	   		error(function(err){ //data, status, headers, config
+	     		alert(err);
+	  		});
+
+		},
 		getHello:function(){
 			return "hello";
 		},
@@ -36,7 +54,7 @@ app.factory('profilesFactory', function($http){
 		add: function(options){
 	  	$http.post('/users', { first_name: options.first_name, last_name: options.last_name, username: options.username, display_name: options.display_name, email: options.email, website: options.website, add_manager: options.add_manager, password: options.password }).
  				success(function(data, status, headers, config){
-     		alert("success data");
+     		alert("veri eklenmiştir.");
   		}).
    		error(function(err){
      		alert(err);
@@ -48,7 +66,7 @@ app.factory('profilesFactory', function($http){
 		save: function(options){
 			$http.put('/users/' + options.aktif_kullanici_id , { first_name: options.first_name, last_name: options.last_name, username: options.username, display_name: options.display_name, email: options.email, website: options.website }).
 				success(function(data, status, headers, config){
-	     		alert("saved");
+	     		alert("veri kaydedilmiştir");
 	  		}).
 	   		error(function(err){ //data, status, headers, config
 	     		alert(err);

@@ -1,8 +1,16 @@
 //Modül = Stajbul, Bağımlılıkları ['ngRoute', 'angularFileUpload']);
 var app = angular.module('Stajbul', ['ngRoute', 'angularFileUpload']);
 
+
 app.config(function($routeProvider, $locationProvider){
   $routeProvider
+
+  //templateUrl: '/templates/yonetici_listele.html',
+
+  .when("/",{
+    templateUrl: '/templates/anasayfa.html',
+    controller: 'ProfilesController'
+  })
   .when("/admin/profile",{
     templateUrl: '/templates/yonetici_guncelle.html',
     controller: 'ProfilesController'
@@ -16,8 +24,9 @@ app.config(function($routeProvider, $locationProvider){
     controller: 'ProfilesController'
   }); 
   /*.otherwise({
-      templateUrl: '/'       
-  }); */  
+
+    controller: 'ProfilesController'       
+  });*/  
    $locationProvider.html5Mode(true).hashPrefix('!');   
 });
 

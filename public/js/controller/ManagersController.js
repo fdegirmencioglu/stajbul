@@ -6,6 +6,8 @@ app.controller('ManagersController', function($scope, profilesFactory){
     $scope.email = "";
     $scope.website = "";
     $scope.display_name = "";
+    $scope.password = "";
+    $scope.password_again = "";
 
    //Yeni Yönetici Ekle
    $scope.add_new_manager = function(){
@@ -20,6 +22,17 @@ app.controller('ManagersController', function($scope, profilesFactory){
       options.add_manager = true;
 
       profilesFactory.add(options); 
+
+
+    $scope.first_name = "";
+    $scope.last_name = ""; 
+    $scope.username = ""; 
+    $scope.email = "";
+    $scope.website = "";
+    $scope.display_name = "";
+    $scope.password = "";
+    $scope.password_again = "";
+
    }
  
 });
