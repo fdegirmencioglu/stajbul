@@ -33,8 +33,8 @@ app.factory('profilesFactory', function($http){
 			}
 			return profiles;
 		},
-		add: function(){
-	  	$http.post('http://localhost:8000/users', { email: $scope.username }).
+		add: function(options){
+	  	$http.post('/users', { first_name: options.first_name, last_name: options.last_name, username: options.username, display_name: options.display_name, email: options.email, website: options.website, add_manager: options.add_manager, password: options.password }).
  				success(function(data, status, headers, config){
      		alert("success data");
   		}).

@@ -16,8 +16,8 @@
     <link rel="shortcut icon" href="favicon.ico"/>
     <link rel="stylesheet" href="/css/font-awesome.min.css" />
     <!-- ie7 fix -->
-    <link rel="stylesheet" href="css/font-awesome-ie7.min.css" />
-    <script type="text/javascript" src="/js/vendor/modernizr.js'"></script>
+    <link rel="stylesheet" href="/css/font-awesome-ie7.min.css" />
+    <script type="text/javascript" src="/js/vendor/modernizr.js"></script>
 </head>
 <body>
     <header>
@@ -106,7 +106,7 @@
                         <li><a href="#"><i class="fa fa-book fa-fw"></i>&nbsp;Öğrenci Listele</a></li>
                         <li><a href="#"><i class="fa fa-star fa-fw"></i>&nbsp;Firma Listele</a></li>
                         <li><a href="#"><i class="fa fa-university fa-fw"></i>&nbsp;Akademisyen Listele</a></li>
-                        <li><a href="#"><i class="fa fa-user-secret fa-fw"></i>&nbsp;Yönetici Listele</a></li>
+                        <li><a href="/admin/list"><i class="fa fa-user-secret fa-fw"></i>&nbsp;Yönetici Listele</a></li>
                         <li><a href="#"><i class="fa fa-file-text-o fa-fw"></i>&nbsp;Log Listele</a></li>
                     </ul>
                 </div> 
@@ -195,6 +195,7 @@
  
 <!-- Scripts -->
 <script type="text/javascript" src="/js/vendor/jquery.js"></script>
+
 <script type="text/javascript" src="/js/vendor/angular.min.js"></script> 
 <script type="text/javascript" src="/js/vendor/angular-route.min.js"></script> 
 
@@ -206,6 +207,8 @@
 <script type="text/javascript" src="/js/app.js"></script>
 <script type="text/javascript" src="/js/services/ProfilesFactory.js"></script>
 <script type="text/javascript" src="/js/controller/ProfilesController.js"></script>
+<script type="text/javascript" src="/js/controller/ManagersController.js"></script>
+
 
 <script>
     $(document).foundation();

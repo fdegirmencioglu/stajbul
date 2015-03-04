@@ -9,6 +9,10 @@ app.config(function($routeProvider, $locationProvider){
   })
   .when("/admin/new",{
     templateUrl: '/templates/yonetici_ekle.html',
+    controller: 'ManagersController'
+  })
+  .when("/admin/list",{
+    templateUrl: '/templates/yonetici_listele.html',
     controller: 'ProfilesController'
   }); 
   /*.otherwise({

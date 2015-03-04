@@ -23,6 +23,12 @@ app.controller('ProfilesController', function($scope, $upload, profilesFactory){
         $scope.upload($scope.files);
     });
 
+    $scope.open_model = function(){
+      var passModel = angular.element(document.querySelector('#passModal'));      
+      
+      passModel.foundation('reveal', 'open');
+    }
+
   	//Profil sayfasında, Resim Ekle butonundan resim seçildikten sonra burası çalışıyor
     $scope.upload = function (files) {
         if (files && files.length) {
@@ -32,7 +38,7 @@ app.controller('ProfilesController', function($scope, $upload, profilesFactory){
                     url: 'upload/url',
                     fields: {'username': $scope.username},
                     file: file,
-                    data: {file: file, name : 'bertan'},
+                    data: {file: file, name : 'stajbul'},
                     fileFormDataName: 'name'
                 }).progress(function (evt) {
                     var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
@@ -48,7 +54,7 @@ app.controller('ProfilesController', function($scope, $upload, profilesFactory){
    $scope.submit = function(){
     	var aktif_kullanici_id_ = angular.element(document.querySelector('#current_user_id')).val();
     	
-    	options = {};
+    	var options = {};
     	options.first_name = $scope.first_name;
     	options.last_name = $scope.last_name;
     	options.username = $scope.username;
@@ -59,6 +65,21 @@ app.controller('ProfilesController', function($scope, $upload, profilesFactory){
       options.aktif_kullanici_id = aktif_kullanici_id_;
 
       profilesFactory.save(options);           
+   }
+
+   //Yeni Yönetici Ekle
+   $scope.add_new_manager = function(){
+      var options = {};
+      options.first_name = $scope.first_name;
+      options.last_name = $scope.last_name;
+      options.username = $scope.username;
+      options.display_name = $scope.display_name;
+      options.email = $scope.email;
+      options.website = $scope.website;
+      options.password = $scope.password;
+      options.add_manager = true;
+
+      profilesFactory.add(options); 
    }
  
 });

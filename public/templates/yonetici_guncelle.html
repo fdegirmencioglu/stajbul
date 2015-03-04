@@ -37,7 +37,7 @@
         <div class="large-4 columns">
             <h4>Şifre İşlemleri</h4>
             <hr>
-            <a href="#" data-reveal-id="passModal" class="button alert expand">Şifre Değiştir</a>
+            <a href="#" ng-click="open_model();" data-reveal-id="passModal" class="button alert expand">Şifre Değiştir</a>
         </div>
     </div>
 
@@ -63,15 +63,15 @@
 </div>-->
 
 
-<div id="passModal" class="reveal-modal" data-reveal>
+<div id="passModal" class="reveal-modal medium" data-reveal>
     <h4>Şifre İşlemleri</h4>
     <hr>
-    <div class="large-8 columns">
+    <div class="large-12 columns">
         <label>Yeni Şifre <input type="text" placeholder="Şifre" /> </label> 
         <label>Yeni Şifre Tekrar <input type="text" placeholder="Şifre Tekrar" /> </label>
-        <label>Güç Göstergesi
+        <!--<label>Güç Göstergesi
             <div class="progress large-6 success round"> <span class="meter" style="width: 40%"></span> </div>
-        </label>
+        </label>-->
         <a href="#" class="button success right">Düzenle</a>
     </div>
 </div>

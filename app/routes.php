@@ -25,7 +25,7 @@ Route::get('/', function()
 		// User is logged in
 		return View::make('home');
 	}
-	
+
     
 });
 
