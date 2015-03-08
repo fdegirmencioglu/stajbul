@@ -17,12 +17,14 @@
     <link rel="stylesheet" href="/css/font-awesome.min.css" />
     <!-- ie7 fix -->
     <link rel="stylesheet" href="/css/font-awesome-ie7.min.css" />
-    <script type="text/javascript" src="/js/vendor/modernizr.js"></script>
+    <script type="text/javascript" src="/js/vendor/modernizr.js"></script> 
+    <script src="/ckeditor/ckeditor.js"></script>
+     
 </head>
 <body>
     <header ng-controller="ProfilesController">
-      <base href="/">
- 
+        <base href="/">
+
         <nav class="top-bar foundation-bar docs-bar" data-topbar role="navigation">
             <ul class="title-area">
                 <li class="name">
@@ -46,7 +48,7 @@
                 <ul class="right">
                     <li class="has-dropdown not-click"> 
                         <a href="" >
-                             
+
 
                             <img class="imgprofile" width="50px" ng-src="@{{resim_adi}}"   /></a>
                         <ul class="dropdown">
@@ -54,19 +56,33 @@
 
                         </ul>
                     </li>
+                    <!-- Yönetici-->
                     <li class="not-click"><a><span class="[radius secondary label]">YÖNETİCİ</span></a></li>
+                    <!-- Firma-->
+                    <li class="not-click"><a><span class="[radius secondary label]">FİRMA</span></a></li>
+                    <!-- Akademisyen-->
+                    <li class="not-click"><a><span class="[radius secondary label]">AKADEMİSYEN</span></a></li>
+                    <!-- ÖĞRENCİ-->
+                    <li class="not-click"><a><span class="[radius secondary label]">ÖĞRENCİ</span></a></li>
                     <li class="divider"></li>
+                    <!-- Yönetici-->
                     <li><a href="#"><i class="fa fa-check fa-fw"></i>&nbsp;Onay Bekleyen&nbsp;<span class="badge badge-default">&nbsp;3&nbsp;</span></a></li>
+                    <!-- Firma-->
+                    <li><a href="#"><i class="fa fa-check fa-fw"></i>&nbsp;Onay Bekleyen&nbsp;<span class="badge badge-default">&nbsp;3&nbsp;</span></a></li>
+                    <!-- Akademisyen-->
+                    <li><a href="#"><i class="fa fa-check fa-fw"></i>&nbsp;Onay Bekleyen&nbsp;<span class="badge badge-default">&nbsp;3&nbsp;</span></a></li>
+                    <!-- Öğrenci-->
+                    <li><a href="#"><i class="fa fa-check fa-fw"></i>&nbsp;PUANLA&nbsp;<span class="badge badge-default">&nbsp;3&nbsp;</span></a></li>
                     <li class="divider"></li>
                     <li class="has-dropdown not-click">
                         <a href="#">Çıkış</a> 
                         <ul class="dropdown"> 
-                          <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                              <li><a href="/logout">Oturumu Sonlandır</a></li>
-                            </ul>
-                          </li>  
+                            <li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="/logout">Oturumu Sonlandır</a></li>
+                                </ul>
+                            </li>  
                         </ul>  
                     </li>
                 </ul>       
@@ -119,8 +135,8 @@
                 <a href="#panel5c"><i class="fa fa-lightbulb-o fa-fw"></i>&nbsp;Yönetici İşlemleri</a> 
                 <div id="panel5c" class="content"> 
                     <ul class="side-nav">
-                        <li><a href="/admin/new"><i class="fa fa-play fa-fw"></i>&nbsp;Yönetici Ekleme</a></li>
-                        <li><a href="/admin/profile"><i class="fa fa-play fa-fw"></i>&nbsp;Profilim</a></li>
+                        <li><a href="/admin/new"><i class="fa fa-building fa-fw"></i>&nbsp;Yönetici Ekleme</a></li>
+                        <li><a href="/admin/profile"><i class="fa fa-cogs fa-fw"></i>&nbsp;Profilim</a></li>
                     </ul>
                 </div> 
             </li> 
@@ -144,7 +160,7 @@
                         <li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;İlan Ver</a></li>
                         <li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Seçtiğim CV'lerim</a></li>
                         <li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Başvuranlar</a></li>
-                        <li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Firma Profili</a></li>
+                        <li><a href="/company/profile"><i class="fa fa-diamond fa-fw"></i>&nbsp;Firma Profili</a></li>
                         <li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Mülakatlarım</a></li>
                     </ul>
                 </div> 
@@ -191,30 +207,31 @@
 <div class="page-content"> 
     @yield('content')
 </div>
- 
- <input type="hidden" id="current_user_id" name="user_id" ng-model="current_user_id" ng-value="<?php echo Sentry::getUser()->id; ?>">
+
+<input type="hidden" id="current_user_id" name="user_id" ng-model="current_user_id" ng-value="<?php echo Sentry::getUser()->id; ?>">
 
 
- 
-<!-- Scripts -->
-<script type="text/javascript" src="/js/vendor/jquery.js"></script>
 
-<script type="text/javascript" src="/js/vendor/angular.min.js"></script> 
-<script type="text/javascript" src="/js/vendor/angular-route.min.js"></script> 
+    <!-- Scripts -->
+    <script type="text/javascript" src="/js/vendor/jquery.js"></script>
 
-<!-- shim is needed to support non-HTML5 FormData browsers (IE8-9)-->
-<script src="/js/vendor/angular-file-upload-shim.min.js"></script> 
-<script src="/js/vendor/angular-file-upload.min.js"></script> 
+    <script type="text/javascript" src="/js/vendor/angular.min.js"></script> 
+    <script type="text/javascript" src="/js/vendor/angular-route.min.js"></script> 
 
-<script type="text/javascript" src="/js/foundation.min.js"></script> 
-<script type="text/javascript" src="/js/app.js"></script>
-<script type="text/javascript" src="/js/services/ProfilesFactory.js"></script>
-<script type="text/javascript" src="/js/controller/ProfilesController.js"></script>
-<script type="text/javascript" src="/js/controller/ManagersController.js"></script>
+    <!-- shim is needed to support non-HTML5 FormData browsers (IE8-9)-->
+    <script src="/js/vendor/angular-file-upload-shim.min.js"></script> 
+    <script src="/js/vendor/angular-file-upload.min.js"></script> 
+
+    <script type="text/javascript" src="/js/foundation.min.js"></script> 
+    <script type="text/javascript" src="/js/app.js"></script>
+    <script type="text/javascript" src="/js/services/ProfilesFactory.js"></script>
+    <script type="text/javascript" src="/js/controller/ProfilesController.js"></script>
+    <script type="text/javascript" src="/js/controller/ManagersController.js"></script>
 
 
-<script>
+    <script>
     $(document).foundation();
-</script>
+    </script>
+   
 </body>
 </html>

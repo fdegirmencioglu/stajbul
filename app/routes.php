@@ -47,7 +47,7 @@ Route::get('/login/register', function()
 {
     return View::make('login.register');
 });
-
+//======== YÖNETİCİ YÖNLENDİRMELERİ ======
 //Yönetici Profili
 Route::get('/admin/profile', function()
 {
@@ -71,7 +71,7 @@ Route::get('/admin/new', function()
 });
 
 
-//Yeni Yönetici Ekle
+//Yönetici Listele
 Route::get('/admin/list', function()
 {
 	if ( ! Sentry::check())//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
@@ -99,3 +99,14 @@ Route::get('get_current_user_photo', 'UsersController@get_photo');
 
 
 
+//======== FİRMA YÖNLENDİRMELERİ ======
+//Yönetici Profili
+Route::get('/company/profile', function()
+{
+	if ( ! Sentry::check()) //Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
+ 	{
+		return View::make('login.index');
+	}else{             //Kullanıcı sisteme giriş yaptıysa -> home'a gits
+		return View::make('admin.profile');
+	}  
+});

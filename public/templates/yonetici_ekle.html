@@ -29,7 +29,8 @@
         <hr>
         <div class="large-8 columns">
             <label>E-posta <input type="text" placeholder="E-posta" ng-model="email" /> </label> 
-            <label>İnternet Sitesi <input type="text" placeholder="Web Siteniz" ng-model="website" /> </label>
+            <label>İnternet Sitesi&nbsp;&nbsp;<span class="radius secondary label">Web adresinizin başına <b>http://</b> veya <b>https://</b> yazmayı unutmayınız</span> <input type="text" placeholder="http://www.websiteadresiniz.com" ng-model="website" /> </label>
+
         </div>
     </div>
 
@@ -37,19 +38,19 @@
         <div class="large-8 columns">
             <h4>Şifre İşlemleri</h4>
             <hr>
-		    <div class="large-8 columns">
-		        <label>Yeni Şifre <input type="password"  ng-model="password" placeholder="Şifre" /> </label> 
-		        <label>Yeni Şifre Tekrar <input type="password" ng-model="password_again" placeholder="Şifre Tekrar" /> </label>
-		        <!--<label>Güç Göstergesi
-		            <div class="progress large-6 success round"> <span class="meter" style="width: 40%"></span> </div>
-		        </label>-->
-		    </div>
+            <div class="large-8 columns">
+                <label>Yeni Şifre <input type="password"  ng-model="password" placeholder="Şifre" /> </label> 
+                <label>Yeni Şifre Tekrar <input type="password" ng-model="password_again" placeholder="Şifre Tekrar" /> </label>
+                <!--<label>Güç Göstergesi
+                    <div class="progress large-6 success round"> <span class="meter" style="width: 40%"></span> </div>
+                </label>-->
+            </div>
         </div>
     </div>
 
     <div class="row">
         <div class="large-8 columns">
-        	<input type="submit" id="submit" value="Kaydet" class="button success right" />
+            <input type="submit" id="submit" value="Kaydet" class="button success right" />
 
             <!--<a href="#" class="button success right">Kaydet</a>-->
         </div>

@@ -12,7 +12,7 @@ class CreateUserImagesTable extends Migration {
 	 */
 	public function up()
 	{ 
-		Schema::table('user_images', function(Blueprint $table)
+		Schema::create('user_images', function(Blueprint $table)
 		{
 			$table->increments('id'); 
 			$table->integer('user_id')->references('id')->on('users')->onDelete('cascade'); 

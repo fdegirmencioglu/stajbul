@@ -22,7 +22,11 @@ app.config(function($routeProvider, $locationProvider){
   .when("/admin/list",{
     templateUrl: '/templates/yonetici_listele.html',
     controller: 'ProfilesController'
-  }); 
+  })
+  .when("/company/profile",{
+    templateUrl: '/templates/firma_guncelle.html',
+    controller: 'ProfilesController'
+  });
   /*.otherwise({
 
     controller: 'ProfilesController'       
