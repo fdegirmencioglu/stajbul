@@ -100,7 +100,7 @@ Route::get('get_current_user_photo', 'UsersController@get_photo');
 
 
 //======== FİRMA YÖNLENDİRMELERİ ======
-//Yönetici Profili
+//Firma Profili
 Route::get('/company/profile', function()
 {
 	if ( ! Sentry::check()) //Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
@@ -110,3 +110,5 @@ Route::get('/company/profile', function()
 		return View::make('admin.profile');
 	}  
 });
+
+Route::resource('company', 'CompanyController');

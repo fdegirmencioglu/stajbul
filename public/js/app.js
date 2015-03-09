@@ -25,7 +25,7 @@ app.config(function($routeProvider, $locationProvider){
   })
   .when("/company/profile",{
     templateUrl: '/templates/firma_guncelle.html',
-    controller: 'ProfilesController'
+    controller: 'CompanyProfilesController'
   });
   /*.otherwise({
 
