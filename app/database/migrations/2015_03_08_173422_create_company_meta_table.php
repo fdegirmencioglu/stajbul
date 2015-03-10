@@ -11,7 +11,7 @@ class CreateCompanyMetaTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::table('company_meta', function($table) {
+        Schema::create('company_meta', function($table) {
             $table->increments('id');
             $table->integer('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('yetkili_adi');

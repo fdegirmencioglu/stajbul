@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AddDisplayNameToUsers' => $baseDir . '/app/database/migrations/2015_03_03_160504_add_display_name_to_users.php',
+    'AddManagerConfirmationToUsersTable' => $baseDir . '/app/database/migrations/2015_03_10_070751_add_manager_confirmation_to_users_table.php',
     'AddUsernameToUsers' => $baseDir . '/app/database/migrations/2015_03_03_160104_add_username_to_users.php',
     'AddWebsiteToUsers' => $baseDir . '/app/database/migrations/2015_03_03_162304_add_website_to_users.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
@@ -90,6 +91,8 @@ return array(
     'ClassPreloader\\Parser\\DirVisitor' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Parser/DirVisitor.php',
     'ClassPreloader\\Parser\\FileVisitor' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Parser/FileVisitor.php',
     'ClassPreloader\\Parser\\NodeTraverser' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Parser/NodeTraverser.php',
+    'Company' => $baseDir . '/app/models/Company.php',
+    'CompanyController' => $baseDir . '/app/controllers/CompanyController.php',
     'CreateCityTable' => $baseDir . '/app/database/migrations/2015_03_08_175119_create_city_table.php',
     'CreateCompanyMetaTable' => $baseDir . '/app/database/migrations/2015_03_08_173422_create_company_meta_table.php',
     'CreateKullaniciTable' => $baseDir . '/app/database/migrations/2015_01_30_154157_create_kullanici_table.php',
@@ -1651,6 +1654,7 @@ return array(
     'User' => $baseDir . '/app/models/User.php',
     'UserImage' => $baseDir . '/app/models/UserImage.php',
     'UsersController' => $baseDir . '/app/controllers/UsersController.php',
+    'UsersGroups' => $baseDir . '/app/models/UsersGroups.php',
     'Way\\Generators\\Commands\\ControllerGeneratorCommand' => $vendorDir . '/way/generators/src/Way/Generators/Commands/ControllerGeneratorCommand.php',
     'Way\\Generators\\Commands\\GeneratorCommand' => $vendorDir . '/way/generators/src/Way/Generators/Commands/GeneratorCommand.php',
     'Way\\Generators\\Commands\\MigrationGeneratorCommand' => $vendorDir . '/way/generators/src/Way/Generators/Commands/MigrationGeneratorCommand.php',

@@ -1,4 +1,4 @@
-app.controller('ProfilesController', function ($scope, $upload, profilesFactory) {
+app.controller('ProfilesController', function ($scope, $upload, $location, profilesFactory) {
     $scope.users = profilesFactory.get();
 
     $scope.first_name = "";
@@ -20,19 +20,28 @@ app.controller('ProfilesController', function ($scope, $upload, profilesFactory)
     });
 
     profilesFactory.load_current_user_image().then(function (d) {
-        $scope.image = d.data[0];
-        $scope.resim_yolu = $scope.image.resim_yolu;
+      $scope.image = d.data[0];
+      //$scope.resim_yolu = $scope.image.resim_yolu;
+      //console.log( "scope.image" );
+      //console.log( $scope.image );
 
-        $scope.resim_adi = '/uploads/' + $scope.image.resim_adi;
-        console.log($scope.resim_adi);
+      if( $scope.image != undefined){
+        $scope.resim_adi = '/uploads/' + $scope.image.resim_adi;  
+      }else{
+        $scope.resim_adi = '/images/default_us_photo.jpg';       
+      }
     });
 
-
-    //angular.element(document.querySelector('.yourclass'))
-    /*$scope.$watch('files', function () {
-     $scope.upload($scope.files);
-     });*/
-
+    $scope.logout = function(){
+      profilesFactory.logout().then(function(d) {
+        if( d.statusText =="OK"){
+          $location.path('/');
+          //$location.reload();
+          window.location.reload();
+        }
+      });
+    }
+ 
     $scope.open_model = function () {
         var passModel = angular.element(document.querySelector('#passModal'));
 

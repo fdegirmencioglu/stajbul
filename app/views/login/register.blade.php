@@ -79,7 +79,7 @@
                     <div class="row">
                         <div class="large-12 columns">
                             <label>İstenilen Rol
-                                <select name="tbl_tnm_rol_id">
+                                <select name="group_id">
                                     <option value="1">Yönetici</option>
                                     <option value="2">Akademisyen</option>
                                     <option value="3">Firma</option>

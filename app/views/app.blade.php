@@ -80,7 +80,7 @@
                             <li>
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="/logout">Oturumu Sonlandır</a></li>
+                                   <li><a href="#" ng-click="logout()">Oturumu Sonlandır</a></li>
                                 </ul>
                             </li>  
                         </ul>  
@@ -225,6 +225,7 @@
     <script type="text/javascript" src="/js/foundation.min.js"></script> 
     <script type="text/javascript" src="/js/app.js"></script>
     <script type="text/javascript" src="/js/services/ProfilesFactory.js"></script>
+    <script type="text/javascript" src="/js/services/ManagersFactory.js"></script>
     <script type="text/javascript" src="/js/controller/ProfilesController.js"></script>
     <script type="text/javascript" src="/js/controller/ManagersController.js"></script>
 

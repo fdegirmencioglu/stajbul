@@ -31,13 +31,13 @@ class UsersController extends \BaseController {
 	 */
 	public function store()
 	{
-		 if(Input::get('add_manager') == true){
+		if(Input::get('add_manager') == true){
 				Sentry::register(array(
 					'first_name' => Input::get('first_name'),
 					'last_name'  => Input::get('last_name'),
-					'username'    => Input::get('username'),
-					'display_name'    => Input::get('display_name'),
-					'email'    => Input::get('email'),
+					'username'   => Input::get('username'),
+					'display_name' => Input::get('display_name'),
+					'email' => Input::get('email'),
 				  'password' => Input::get('password'),
 				  'website' => Input::get('website'),
 				  'activated' => true
@@ -52,6 +52,17 @@ class UsersController extends \BaseController {
 			  'password'   => Input::get('password'),
 			  'activated'  => false
 			));
+
+			//En son kayıt yapılan kişi ya da firmanın kayıtını veritabanından getir 
+ 			$last_inserted_record = DB::table('users')->where('email', Input::get('email'))->first();
+ 
+			//Kişi ya da Firma talep edilen rolü de veritabanına ekle 
+			//UsersGroups modelinden yeni bir instance yarat, gerekli alanları
+			//doldur ve veritabanına kayıt et.
+			$user_group = new UsersGroups;
+			$user_group -> group_id = Input::get('group_id');
+			$user_group -> user_id = $last_inserted_record->id; 
+			$user_group->save();
 		 }
 		return Redirect::to('/');
 	}
@@ -96,7 +107,7 @@ class UsersController extends \BaseController {
  			$user->save();
 		}else{
 		 	// store
-		 			$user = User::find($id); 
+		 	$user = User::find($id); 
 	      	$user->first_name = Input::get('first_name');
 	      	$user->last_name  = Input::get('last_name');
 	      	$user->username = Input::get('username');
@@ -120,23 +131,6 @@ class UsersController extends \BaseController {
 		//
 	}
 
-	public function hash($string)
-	{
-	    // Usually caused by an old PHP environment, see
-	    // https://github.com/cartalyst/sentry/issues/98#issuecomment-12974603
-	    // and https://github.com/ircmaxell/password_compat/issues/10
-	    if (!function_exists('password_hash')) {
-	        throw new \RuntimeException('The function password_hash() does not exist, your PHP environment is probably incompatible. Try running [vendor/ircmaxell/password-compat/version-test.php] to check compatibility or use an alternative hashing strategy.');
-	    }
-
-	    if (($hash = password_hash($string, PASSWORD_DEFAULT)) === false) {
-	        throw new \RuntimeException('Error generating hash from string, your PHP environment is probably incompatible. Try running [vendor/ircmaxell/password-compat/version-test.php] to check compatibility or use an alternative hashing strategy.');
-	    }
-
-	    return $hash;
-	}
-
-
 
 	public function photo()
 	{
@@ -144,6 +138,11 @@ class UsersController extends \BaseController {
 		$destinationPath = 'public/uploads/';
 		$filename = $image->getClientOriginalName();
 		Input::file('image')->move($destinationPath, $filename);
+
+		$user = DB::table('user_images')->where('user_id', Sentry::getUser()->id)->first();
+				
+		if($user != null)
+			DB::table('user_images')->where('user_id', $user->user_id)->delete();
 
 		$user_image = new UserImage;
 		$user_image -> resim_adi = $filename;
@@ -160,6 +159,10 @@ class UsersController extends \BaseController {
 		$current_user_id = Sentry::getUser()->id;  
 		//Aktif kullanıcının resim bilgilerini getir
 		return UserImage::where('user_id', '=', $current_user_id)->get();
+	}
+
+	public function get_managers(){
+		return Kullanici::all(); 
 	}
 
 

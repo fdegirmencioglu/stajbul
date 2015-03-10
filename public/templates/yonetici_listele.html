@@ -16,7 +16,7 @@
                                 <label for="right-label" class="right inline">Ara:</label>
                             </div>
                             <div class="small-9 columns">
-                                <input type="text" id="right-label" placeholder="Arama Parametresi" />
+                                <input type="text" ng-model="aramaKutusu" id="right-label" placeholder="Arama Parametresi" />
                             </div>
                         </div>
                     </div>
@@ -35,8 +35,24 @@
                         <th width="300">İşlemler</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
+                <tbody >
+                  <tr ng-repeat="manager in managers | filter:aramaKutusu">
+                    <td>{{ manager.first_name }} {{ manager.last_name }}</td>
+                    <td>{{ manager.username }}</td>
+                    <td>{{ manager.display_name }}</td>
+                    <td>-</td>
+                    <td>{{ manager.last_login }}</td>
+                    <td>{{ manager.email }}</td>
+                    <td>{{ manager.activated }}</td>
+                    
+                    <td>
+                        <ul class="button-group">
+                            <li><a href="#" class="button tiny radius orangeButtonColor">Düzenle</a></li>
+                            <li><a href="#" class="button tiny radius alert">Sil</a></li>
+                        </ul>
+                    </td>
+                  </tr>
+                    <!--<tr> 
                         <td>Adı Soyadi İçerik</td>
                         <td>Kullanıcı Adı İçerik</td>
                         <td>Görünen Ad İçerik</td>
@@ -50,157 +66,7 @@
                                 <li><a href="#" class="button tiny radius alert">Sil</a></li>
                             </ul>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>Adı Soyadi İçerik</td>
-                        <td>Kullanıcı Adı İçerik</td>
-                        <td>Görünen Ad İçerik</td>
-                        <td>Yönetici</td>
-                        <td>Son Giriş Tarihi İçerik</td>
-                        <td>E-Posta İçerik</td>
-                        <td>Aktif</td>
-                        <td>
-                            <ul class="button-group">
-                                <li><a href="#" class="button tiny radius orangeButtonColor">Düzenle</a></li>
-                                <li><a href="#" class="button tiny radius alert">Sil</a></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Adı Soyadi İçerik</td>
-                        <td>Kullanıcı Adı İçerik</td>
-                        <td>Görünen Ad İçerik</td>
-                        <td>Yönetici</td>
-                        <td>Son Giriş Tarihi İçerik</td>
-                        <td>E-Posta İçerik</td>
-                        <td>Aktif</td>
-                        <td>
-                            <ul class="button-group">
-                                <li><a href="#" class="button tiny radius orangeButtonColor">Düzenle</a></li>
-                                <li><a href="#" class="button tiny radius alert">Sil</a></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Adı Soyadi İçerik</td>
-                        <td>Kullanıcı Adı İçerik</td>
-                        <td>Görünen Ad İçerik</td>
-                        <td>Yönetici</td>
-                        <td>Son Giriş Tarihi İçerik</td>
-                        <td>E-Posta İçerik</td>
-                        <td>Aktif</td>
-                        <td>
-                            <ul class="button-group">
-                                <li><a href="#" class="button tiny radius orangeButtonColor">Düzenle</a></li>
-                                <li><a href="#" class="button tiny radius alert">Sil</a></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Adı Soyadi İçerik</td>
-                        <td>Kullanıcı Adı İçerik</td>
-                        <td>Görünen Ad İçerik</td>
-                        <td>Yönetici</td>
-                        <td>Son Giriş Tarihi İçerik</td>
-                        <td>E-Posta İçerik</td>
-                        <td>Aktif</td>
-                        <td>
-                            <ul class="button-group">
-                                <li><a href="#" class="button tiny radius orangeButtonColor">Düzenle</a></li>
-                                <li><a href="#" class="button tiny radius alert">Sil</a></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Adı Soyadi İçerik</td>
-                        <td>Kullanıcı Adı İçerik</td>
-                        <td>Görünen Ad İçerik</td>
-                        <td>Yönetici</td>
-                        <td>Son Giriş Tarihi İçerik</td>
-                        <td>E-Posta İçerik</td>
-                        <td>Aktif</td>
-                        <td>
-                            <ul class="button-group">
-                                <li><a href="#" class="button tiny radius orangeButtonColor">Düzenle</a></li>
-                                <li><a href="#" class="button tiny radius alert">Sil</a></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Adı Soyadi İçerik</td>
-                        <td>Kullanıcı Adı İçerik</td>
-                        <td>Görünen Ad İçerik</td>
-                        <td>Yönetici</td>
-                        <td>Son Giriş Tarihi İçerik</td>
-                        <td>E-Posta İçerik</td>
-                        <td>Aktif</td>
-                        <td>
-                            <ul class="button-group">
-                                <li><a href="#" class="button tiny radius orangeButtonColor">Düzenle</a></li>
-                                <li><a href="#" class="button tiny radius alert">Sil</a></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Adı Soyadi İçerik</td>
-                        <td>Kullanıcı Adı İçerik</td>
-                        <td>Görünen Ad İçerik</td>
-                        <td>Yönetici</td>
-                        <td>Son Giriş Tarihi İçerik</td>
-                        <td>E-Posta İçerik</td>
-                        <td>Aktif</td>
-                        <td>
-                            <ul class="button-group">
-                                <li><a href="#" class="button tiny radius orangeButtonColor">Düzenle</a></li>
-                                <li><a href="#" class="button tiny radius alert">Sil</a></li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Adı Soyadi İçerik</td>
-                        <td>Kullanıcı Adı İçerik</td>
-                        <td>Görünen Ad İçerik</td>
-                        <td>Yönetici</td>
-                        <td>Son Giriş Tarihi İçerik</td>
-                        <td>E-Posta İçerik</td>
-                        <td>Aktif</td>
-                        <td>
-                            <ul class="button-group">
-                                <li><a href="#" class="button tiny radius orangeButtonColor">Düzenle</a></li>
-                                <li><a href="#" class="button tiny radius alert">Sil</a></li>
-                            </ul>
-                        </td>
-                    </tr>   
-                    <tr>
-                        <td>Adı Soyadi İçerik</td>
-                        <td>Kullanıcı Adı İçerik</td>
-                        <td>Görünen Ad İçerik</td>
-                        <td>Yönetici</td>
-                        <td>Son Giriş Tarihi İçerik</td>
-                        <td>E-Posta İçerik</td>
-                        <td>Aktif</td>
-                        <td>
-                            <ul class="button-group">
-                                <li><a href="#" class="button tiny radius orangeButtonColor">Düzenle</a></li>
-                                <li><a href="#" class="button tiny radius alert">Sil</a></li>
-                            </ul>
-                        </td>
-                    </tr> 
-                    <tr>
-                        <td>Adı Soyadi İçerik</td>
-                        <td>Kullanıcı Adı İçerik</td>
-                        <td>Görünen Ad İçerik</td>
-                        <td>Yönetici</td>
-                        <td>Son Giriş Tarihi İçerik</td>
-                        <td>E-Posta İçerik</td>
-                        <td>Aktif</td>
-                        <td>
-                            <ul class="button-group">
-                                <li><a href="#" class="button tiny radius orangeButtonColor">Düzenle</a></li>
-                                <li><a href="#" class="button tiny radius alert">Sil</a></li>
-                            </ul>
-                        </td>
-                    </tr> 
+                    </tr>-->
                 </tbody>
             </table>
 

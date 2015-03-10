@@ -11,7 +11,12 @@
 |
 */
 Route::get('login', 'SessionsController@create');
-Route::get('logout', 'SessionsController@destroy');
+//Route::get('logout', 'SessionsController@destroy');
+
+Route::get('/logout', array(
+    'as' => 'account-signout',
+    'uses' => 'SessionsController@destroy'
+));
 
 Route::get('/', function()
 {
@@ -112,3 +117,5 @@ Route::get('/company/profile', function()
 });
 
 Route::resource('company', 'CompanyController');
+
+Route::get('managers', 'UsersController@get_managers');

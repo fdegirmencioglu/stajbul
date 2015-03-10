@@ -9,6 +9,12 @@ app.controller('ManagersController', function($scope, profilesFactory){
     $scope.password = "";
     $scope.password_again = "";
 
+
+    managersFactory.get().then(function(d) {
+      $scope.managers = d.data;
+    });
+
+
    //Yeni Yönetici Ekle
    $scope.add_new_manager = function(){
       var options = {};
