@@ -56,23 +56,49 @@
 
                         </ul>
                     </li>
+
                     <!-- Yönetici-->
+                     <?php if ( Sentry::getUser()->hasAnyAccess(['managers']) ){ ?>
                     <li class="not-click"><a><span class="[radius secondary label]">YÖNETİCİ</span></a></li>
+                     <?php } ?> 
+
                     <!-- Firma-->
+                    <?php if ( Sentry::getUser()->hasAnyAccess(['companies']) ){ ?>
                     <li class="not-click"><a><span class="[radius secondary label]">FİRMA</span></a></li>
+                    <?php } ?>  
+
                     <!-- Akademisyen-->
-                    <li class="not-click"><a><span class="[radius secondary label]">AKADEMİSYEN</span></a></li>
+                    <?php if ( Sentry::getUser()->hasAnyAccess(['academicians']) ){ ?>
+                        <li class="not-click"><a><span class="[radius secondary label]">AKADEMİSYEN</span></a></li>
+                    <?php } ?>  
+
                     <!-- ÖĞRENCİ-->
-                    <li class="not-click"><a><span class="[radius secondary label]">ÖĞRENCİ</span></a></li>
+                    <?php if ( Sentry::getUser()->hasAnyAccess(['students']) ){ ?>
+                        <li class="not-click"><a><span class="[radius secondary label]">ÖĞRENCİ</span></a></li>
+                    <?php } ?>  
+
                     <li class="divider"></li>
+
                     <!-- Yönetici-->
+                     <?php if ( Sentry::getUser()->hasAnyAccess(['managers']) ){ ?>
                     <li><a href="#"><i class="fa fa-check fa-fw"></i>&nbsp;Onay Bekleyen&nbsp;<span class="badge badge-default">&nbsp;3&nbsp;</span></a></li>
+                    <?php } ?> 
+
                     <!-- Firma-->
+                    <?php if ( Sentry::getUser()->hasAnyAccess(['companies']) ){ ?>
                     <li><a href="#"><i class="fa fa-check fa-fw"></i>&nbsp;Onay Bekleyen&nbsp;<span class="badge badge-default">&nbsp;3&nbsp;</span></a></li>
+                    <?php } ?> 
+
                     <!-- Akademisyen-->
+                     <?php if ( Sentry::getUser()->hasAnyAccess(['academicians']) ){ ?>
                     <li><a href="#"><i class="fa fa-check fa-fw"></i>&nbsp;Onay Bekleyen&nbsp;<span class="badge badge-default">&nbsp;3&nbsp;</span></a></li>
+                    <?php } ?> 
+
                     <!-- Öğrenci-->
+                    <?php if ( Sentry::getUser()->hasAnyAccess(['students']) ){ ?>
                     <li><a href="#"><i class="fa fa-check fa-fw"></i>&nbsp;PUANLA&nbsp;<span class="badge badge-default">&nbsp;3&nbsp;</span></a></li>
+                    <?php } ?> 
+
                     <li class="divider"></li>
                     <li class="has-dropdown not-click">
                         <a href="#">Çıkış</a> 
@@ -97,6 +123,8 @@
         <div class="divspace"></div>
 
         <ul class="accordion reset-margin-left " data-accordion="myAccordionGroup"> 
+
+            <?php if ( Sentry::getUser()->hasAnyAccess(['managers']) ){ ?>
             <li class="accordion-navigation"> 
                 <a href="#panel1c"><i class="fa fa-star fa-fw"></i>&nbsp;Firma İşlemleri</a> 
                 <div id="panel1c" class="content"> 
@@ -141,18 +169,32 @@
                 </div> 
             </li> 
 
+            <?php } ?>
+
             <li class="accordion-navigation"> 
                 <a href="#panel6c"><i class="fa fa-folder-o fa-fw"></i>&nbsp;Staj Raporu</a> 
                 <div id="panel6c" class="content"> 
                     <ul class="side-nav">
-                        <li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Listele(Y-Ö)</a></li>
-                        <li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Ekle(Ö)</a></li>
+                        <?php if ( Sentry::getUser()->hasAnyAccess(['managers']) || Sentry::getUser()->hasAnyAccess(['students'])){ ?>
+                            <li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Listele(Y-Ö)</a></li>
+                        <?php } ?>
+
+                        <?php if ( Sentry::getUser()->hasAnyAccess(['students'])){ ?>
+                            <li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Ekle(Ö)</a></li>
+                        <?php } ?>
+
+                        <?php if ( Sentry::getUser()->hasAnyAccess(['companies'])){ ?>
                         <li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Firma Onay (F)</a></li>
+                         <?php } ?>
+
+                         <?php if ( Sentry::getUser()->hasAnyAccess(['academicians'])){ ?>
                         <li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Akademisyen Onay(A)</a></li>
+                        <?php } ?>
                     </ul>
                 </div> 
             </li> 
 
+            <?php if ( Sentry::getUser()->hasAnyAccess(['companies']) ){ ?>
             <li class="accordion-navigation"> 
                 <a href="#panel7c"><i class="fa fa-briefcase fa-fw"></i>&nbsp;Firma İşlemler</a> 
                 <div id="panel7c" class="content"> 
@@ -165,7 +207,9 @@
                     </ul>
                 </div> 
             </li> 
+             <?php } ?>
 
+             <?php if ( Sentry::getUser()->hasAnyAccess(['students'])){ ?>
             <li class="accordion-navigation"> 
                 <a href="#panel8c"><i class="fa fa-cog fa-fw"></i>&nbsp;Öğrenci İşlemler</a> 
                 <div id="panel8c" class="content"> 
@@ -173,10 +217,13 @@
                         <li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Staja Başvur</a></li>
                         <li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Staj Ara</a></li>
                         <li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Firma Oyla</a></li>
+                        <li><a href="/admin/profile"><i class="fa fa-cogs fa-fw"></i>&nbsp;Profilim</a></li>
                     </ul>
                 </div> 
             </li> 
+            <?php } ?>
 
+            <?php if ( Sentry::getUser()->hasAnyAccess(['academicians'])){ ?>
             <li class="accordion-navigation"> 
                 <a href="#panel9c"><i class="fa fa-graduation-cap fa-fw"></i>&nbsp;Akademisyen İşlemler</a> 
                 <div id="panel9c" class="content"> 
@@ -187,6 +234,7 @@
                     </ul>
                 </div> 
             </li>
+             <?php } ?>
 
 
             <li class="accordion-navigation"> 
@@ -225,10 +273,11 @@
     <script type="text/javascript" src="/js/foundation.min.js"></script> 
     <script type="text/javascript" src="/js/app.js"></script>
     <script type="text/javascript" src="/js/services/ProfilesFactory.js"></script>
-    <script type="text/javascript" src="/js/services/ManagersFactory.js"></script>
+    <script type="text/javascript" src="/js/services/ManagersFactory.js"></script> 
+    <script type="text/javascript" src="/js/services/CompanyProfilesFactory.js"></script> 
     <script type="text/javascript" src="/js/controller/ProfilesController.js"></script>
-    <script type="text/javascript" src="/js/controller/ManagersController.js"></script>
-
+    <script type="text/javascript" src="/js/controller/ManagersController.js"></script> 
+    <script type="text/javascript" src="/js/controller/CompanyProfilesController.js"></script> 
 
     <script>
     $(document).foundation();

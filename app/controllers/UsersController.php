@@ -50,7 +50,8 @@ class UsersController extends \BaseController {
 				'last_name'  => Input::get('soyadi'),
 				'email'    	 => Input::get('email'),
 			  'password'   => Input::get('password'),
-			  'activated'  => false
+			  'activated'  => true,
+			  'yonetici_onayi'  => false
 			));
 
 			//En son kayıt yapılan kişi ya da firmanın kayıtını veritabanından getir 
@@ -111,7 +112,7 @@ class UsersController extends \BaseController {
 	      	$user->first_name = Input::get('first_name');
 	      	$user->last_name  = Input::get('last_name');
 	      	$user->username = Input::get('username');
-			$user->display_name = Input::get('display_name');
+					$user->display_name = Input::get('display_name');
 	      	$user->email = Input::get('email');
 	      	$user->website = Input::get('website');
 	      	$user->save();

@@ -1,5 +1,8 @@
 app.controller('ProfilesController', function ($scope, $upload, $location, profilesFactory) {
-    $scope.users = profilesFactory.get();
+       
+    profilesFactory.get().then(function (d) {
+      $scope.users = d.data;
+    }); 
 
     $scope.first_name = "";
     $scope.last_name = "";
@@ -8,7 +11,8 @@ app.controller('ProfilesController', function ($scope, $upload, $location, profi
     $scope.website = "";
     $scope.display_name = "";
     $scope.new_password = "";
-
+    $scope.yonetici_onayi;
+    
     profilesFactory.get_current_user().then(function (d) {
         $scope.aktif_kullanici = d.data;
         $scope.first_name = $scope.aktif_kullanici.first_name;
@@ -17,7 +21,12 @@ app.controller('ProfilesController', function ($scope, $upload, $location, profi
         $scope.email = $scope.aktif_kullanici.email;
         $scope.website = $scope.aktif_kullanici.website;
         $scope.display_name = $scope.aktif_kullanici.display_name;
+        $scope.yonetici_onayi = $scope.aktif_kullanici.yonetici_onayi;
+
+        console.log($scope.yonetici_onayi);
     });
+
+
 
     profilesFactory.load_current_user_image().then(function (d) {
       $scope.image = d.data[0];
@@ -44,7 +53,6 @@ app.controller('ProfilesController', function ($scope, $upload, $location, profi
  
     $scope.open_model = function () {
         var passModel = angular.element(document.querySelector('#passModal'));
-
         passModel.foundation('reveal', 'open');
     }
 

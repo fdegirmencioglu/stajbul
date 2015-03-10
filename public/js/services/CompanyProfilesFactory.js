@@ -1,4 +1,4 @@
-app.factory('profilesFactory', function ($http) {
+app.factory('companyProfilesFactory', function ($http) {
     var profiles = [];
     var aktif_kullanici = [];
     return{
