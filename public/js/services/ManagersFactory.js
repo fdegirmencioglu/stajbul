@@ -4,6 +4,19 @@ app.factory('managersFactory', function($http){
 	var aktif_kullanici = [];
 
 	return{ 
+		//Kayıtlı kullanıcıyı bulmak için metod
+		get_user: function(id){ 
+		    //$http(ajax gibi çalışır) nesnesi üzerinden get işlemi gerçekleştirir. metod içierisindeki url işleme sokulur ve Laravel'de karşılık bulan metodu çalıştırır. 
+		   return $http.get('/users/'+ id) //localhost:8000/users/1
+				.success(function(response){  
+					//Laravel üzerinden gelen cevabı geriye döndürür.
+					      
+					console.log("response");
+        			console.log(response);
+
+					return response; 
+			}); 
+		},
 		//Aktif kullanıcıyı bulmak için metod
 		get_current_user: function(){ 
 			//id'si current_user_id olan dom elementinin değerini Angular üzerinden çekip aktif_kullanıcı_id'ye atar. 
@@ -23,9 +36,6 @@ app.factory('managersFactory', function($http){
 			if(managers.length == 0){
 				 return $http.get('/managers')
 					.success(function(response){
-
-						//console.log( response );
-
 						return response;
 						/*for (var i=0; ii=response.length, i<ii; i++) {
 							managers.push(response[i]);
@@ -45,8 +55,11 @@ app.factory('managersFactory', function($http){
      		alert(err);
   		});
 		},
-		remove: function(){
-
+		remove: function(id){
+			return $http.delete('/users/' + id)
+				.success(function(response){
+					return response;
+			});
 		},
 		save: function(options){
 			$http.put('/users/' + options.aktif_kullanici_id , { first_name: options.first_name, last_name: options.last_name, username: options.username, display_name: options.display_name, email: options.email, website: options.website }).

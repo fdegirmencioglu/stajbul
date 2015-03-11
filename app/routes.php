@@ -63,6 +63,18 @@ Route::get('/admin/profile', function()
 		return View::make('admin.profile');
 	}  
 });
+//managerId'si belli olan yöneticinin, profil bilgilerinin düzenlenebileceği adres
+Route::get('/manager/profile/{managerId}', function()
+{
+	if ( ! Sentry::check()) //Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
+ 	{
+		return View::make('login.index');
+	}else{             //Kullanıcı sisteme giriş yaptıysa -> home'a gits
+		return View::make('admin.profile');
+	}  
+});
+
+
  
 //Yeni Yönetici Ekle
 Route::get('/admin/new', function()
@@ -116,6 +128,12 @@ Route::get('/company/profile', function()
 	}  
 });
 
+//Bütün yöneticileri getir
+Route::get('managers', 'UsersController@get_managers');
+
 Route::resource('company', 'CompanyController');
 
-Route::get('managers', 'UsersController@get_managers');
+
+
+
+

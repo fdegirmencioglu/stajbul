@@ -129,7 +129,12 @@ class UsersController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		//Kullanıcıyı pasif yap.
+		$user = Sentry::getUserProvider()->findById($id);
+ 		$user->activated = false; 
+ 		$user->save();
+
+    	return Redirect::back();
 	}
 
 
@@ -163,7 +168,17 @@ class UsersController extends \BaseController {
 	}
 
 	public function get_managers(){
-		return Kullanici::all(); 
+		//users tablosuyla users_groups tablosunun birleşiminden, group_id'si 1 olan(yönetici olan)'nın verilerini çek.
+		return DB::table('users')
+        ->join('users_groups', function($join)
+        {
+            $join->on('users.id', '=', 'users_groups.user_id')
+                 ->where('users_groups.group_id', '=', 1);
+        })
+        ->get();
+
+        //Tüm kullanıcıları al
+        //return Kullanici::all();
 	}
 
 

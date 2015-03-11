@@ -254,6 +254,7 @@
 
 <div class="page-content"> 
     @yield('content')
+
 </div>
 
 <input type="hidden" id="current_user_id" name="user_id" ng-model="current_user_id" ng-value="<?php echo Sentry::getUser()->id; ?>">
@@ -269,6 +270,9 @@
     <!-- shim is needed to support non-HTML5 FormData browsers (IE8-9)-->
     <script src="/js/vendor/angular-file-upload-shim.min.js"></script> 
     <script src="/js/vendor/angular-file-upload.min.js"></script> 
+
+
+    <script src="/js/vendor/dirPagination.js"></script> 
 
     <script type="text/javascript" src="/js/foundation.min.js"></script> 
     <script type="text/javascript" src="/js/app.js"></script>

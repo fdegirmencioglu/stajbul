@@ -1,4 +1,4 @@
-app.controller('ProfilesController', function ($scope, $upload, $location, profilesFactory) {
+app.controller('ProfilesController', function ($scope, $upload, $location, $routeParams, profilesFactory) {
        
     profilesFactory.get().then(function (d) {
       $scope.users = d.data;
@@ -23,8 +23,26 @@ app.controller('ProfilesController', function ($scope, $upload, $location, profi
         $scope.display_name = $scope.aktif_kullanici.display_name;
         $scope.yonetici_onayi = $scope.aktif_kullanici.yonetici_onayi;
 
-        console.log($scope.yonetici_onayi);
+        //console.log($scope.yonetici_onayi);
     });
+
+    //Başka bir yöneticinin Id'si 
+    if($routeParams.managerId != undefined){
+
+      profilesFactory.get_user($routeParams.managerId).then(function(d){
+        $scope.yonetici = d.data;
+
+        $scope.first_name = $scope.yonetici.first_name;
+        $scope.last_name = $scope.yonetici.last_name;
+        $scope.username = $scope.yonetici.username;
+        $scope.email = $scope.yonetici.email;
+        $scope.website = $scope.yonetici.website;
+        $scope.display_name = $scope.yonetici.display_name;
+        $scope.yonetici_onayi = $scope.yonetici.yonetici_onayi;
+
+        console.log($scope.display_name);
+      });
+    }
 
 
 
@@ -81,16 +99,24 @@ app.controller('ProfilesController', function ($scope, $upload, $location, profi
 
 
     $scope.submit_me = function () {
-        var aktif_kullanici_id_ = angular.element(document.querySelector('#current_user_id')).val();
-
+        var kullanici_id_ = -1;
         var options = {};
+
+        if($routeParams.managerId != undefined){
+          //Seçili olan kullanıcının kullanici_id'si
+          kullanici_id_ = $routeParams.managerId;
+        }else{
+          //Şu anda aktif olan kullanıcının kullanici_id'si
+          kullanici_id_ = angular.element(document.querySelector('#current_user_id')).val();
+        }
+
         options.first_name = $scope.first_name;
         options.last_name = $scope.last_name;
         options.username = $scope.username;
         options.display_name = $scope.display_name;
         options.email = $scope.email;
         options.website = $scope.website;
-        options.aktif_kullanici_id = aktif_kullanici_id_;
+        options.aktif_kullanici_id = kullanici_id_;
         profilesFactory.save(options);
     }
 

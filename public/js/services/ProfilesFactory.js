@@ -32,6 +32,15 @@ app.factory('profilesFactory', function($http){
 		getHello:function(){
 			return "hello";
 		},
+		//Kayıtlı kullanıcıyı bulmak için metod
+		get_user: function(id){ 
+		    //$http(ajax gibi çalışır) nesnesi üzerinden get işlemi gerçekleştirir. metod içierisindeki url işleme sokulur ve Laravel'de karşılık bulan metodu çalıştırır. 
+		   return $http.get('/users/'+ id) //localhost:8000/users/1
+				.success(function(response){  
+					//Laravel üzerinden gelen cevabı geriye döndürür.   
+					return response; 
+			}); 
+		},
 		//Aktif kullanıcıyı bulmak için metod
 		get_current_user: function(){ 
 			//id'si current_user_id olan dom elementinin değerini Angular üzerinden çekip aktif_kullanıcı_id'ye atar. 

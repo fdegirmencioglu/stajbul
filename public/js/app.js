@@ -1,5 +1,5 @@
 //Modül = Stajbul, Bağımlılıkları ['ngRoute', 'angularFileUpload']);
-var app = angular.module('Stajbul', ['ngRoute', 'angularFileUpload']);
+var app = angular.module('Stajbul', ['ngRoute', 'angularFileUpload', 'angularUtils.directives.dirPagination']);
 
 
 app.config(function($routeProvider, $locationProvider){
@@ -15,13 +15,17 @@ app.config(function($routeProvider, $locationProvider){
     templateUrl: '/templates/yonetici_guncelle.html',
     controller: 'ProfilesController'
   })
+  .when("/manager/profile/:managerId",{
+    templateUrl: '/templates/yonetici_guncelle.html',
+    controller: 'ProfilesController'
+  })
   .when("/admin/new",{
     templateUrl: '/templates/yonetici_ekle.html',
     controller: 'ManagersController'
   })
   .when("/admin/list",{
     templateUrl: '/templates/yonetici_listele.html',
-    controller: 'ProfilesController'
+    controller: 'ManagersController'
   })
   .when("/company/profile",{
     templateUrl: '/templates/firma_guncelle.html',

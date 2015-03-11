@@ -1,4 +1,4 @@
-app.controller('ManagersController', function($scope, profilesFactory){
+app.controller('ManagersController', function($scope, $routeParams, managersFactory){
 	
 	  $scope.first_name = "";
     $scope.last_name = ""; 
@@ -9,10 +9,17 @@ app.controller('ManagersController', function($scope, profilesFactory){
     $scope.password = "";
     $scope.password_again = "";
 
-
     managersFactory.get().then(function(d) {
       $scope.managers = d.data;
     });
+
+    $scope.delete_manager = function(id){
+      managersFactory.remove(id).then(function(d) {
+        var sonuc = d.data;
+      }); 
+      window.location.reload();
+    }
+
 
 
    //Yeni Yönetici Ekle
