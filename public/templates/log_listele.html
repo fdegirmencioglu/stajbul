@@ -28,114 +28,27 @@
                         <th width="150">ID</th>
                         <th width="150">USER ID</th>
                         <th width="200">KULLANICI ADI</th>
-                         <th width="200">ROL</th>
-                        <th width="200">SESSION</th>
+                        <th width="200">ROL</th>
                         <th width="200">IP</th>
                         <th width="200">TARİH SAAT</th>
                         <th width="400">YAPILAN İŞLEM</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>ID İçerik</td>
-                        <td>USER ID İçerik</td>
-                        <td>KULLANICI ADI İçerik</td>
-                        <td>Yönetici</td>
-                        <td>SESSION İçerik</td>
-                        <td>IP İçerik</td>
-                        <td>TARİH SAAT</td>
-                        <td>YAPILAN İŞLEM İçerik</td>
-                    </tr>
-                    <tr>
-                        <td>ID İçerik</td>
-                        <td>USER ID İçerik</td>
-                        <td>KULLANICI ADI İçerik</td>
-                        <td>Yönetici</td>
-                        <td>SESSION İçerik</td>
-                        <td>IP İçerik</td>
-                        <td>TARİH SAAT</td>
-                        <td>YAPILAN İŞLEM İçerik</td>
-                    </tr>
-                    <tr>
-                        <td>ID İçerik</td>
-                        <td>USER ID İçerik</td>
-                        <td>KULLANICI ADI İçerik</td>
-                        <td>Yönetici</td>
-                        <td>SESSION İçerik</td>
-                        <td>IP İçerik</td>
-                        <td>TARİH SAAT</td>
-                        <td>YAPILAN İŞLEM İçerik</td>
-                    </tr>
-                    <tr>
-                        <td>ID İçerik</td>
-                        <td>USER ID İçerik</td>
-                        <td>KULLANICI ADI İçerik</td>
-                        <td>Yönetici</td>
-                        <td>SESSION İçerik</td>
-                        <td>IP İçerik</td>
-                        <td>TARİH SAAT</td>
-                        <td>YAPILAN İŞLEM İçerik</td>
-                    </tr>
-                    <tr>
-                        <td>ID İçerik</td>
-                        <td>USER ID İçerik</td>
-                        <td>KULLANICI ADI İçerik</td>
-                        <td>Yönetici</td>
-                        <td>SESSION İçerik</td>
-                        <td>IP İçerik</td>
-                        <td>TARİH SAAT</td>
-                        <td>YAPILAN İŞLEM İçerik</td>
-                    </tr>
-                    <tr>
-                        <td>ID İçerik</td>
-                        <td>USER ID İçerik</td>
-                        <td>KULLANICI ADI İçerik</td>
-                        <td>Yönetici</td>
-                        <td>SESSION İçerik</td>
-                        <td>IP İçerik</td>
-                        <td>TARİH SAAT</td>
-                        <td>YAPILAN İŞLEM İçerik</td>
-                    </tr>
-                    <tr>
-                        <td>ID İçerik</td>
-                        <td>USER ID İçerik</td>
-                        <td>KULLANICI ADI İçerik</td>
-                        <td>Yönetici</td>
-                        <td>SESSION İçerik</td>
-                        <td>IP İçerik</td>
-                        <td>TARİH SAAT</td>
-                        <td>YAPILAN İŞLEM İçerik</td>
-                    </tr>
-                    <tr>
-                        <td>ID İçerik</td>
-                        <td>USER ID İçerik</td>
-                        <td>KULLANICI ADI İçerik</td>
-                        <td>Yönetici</td>
-                        <td>SESSION İçerik</td>
-                        <td>IP İçerik</td>
-                        <td>TARİH SAAT</td>
-                        <td>YAPILAN İŞLEM İçerik</td>
-                    </tr>
-                    <tr>
-                        <td>ID İçerik</td>
-                        <td>USER ID İçerik</td>
-                        <td>KULLANICI ADI İçerik</td>
-                        <td>Yönetici</td>
-                        <td>SESSION İçerik</td>
-                        <td>IP İçerik</td>
-                        <td>TARİH SAAT</td>
-                        <td>YAPILAN İŞLEM İçerik</td>
-                    </tr>
-                    <tr>
-                        <td>ID İçerik</td>
-                        <td>USER ID İçerik</td>
-                        <td>KULLANICI ADI İçerik</td>
-                        <td>Yönetici</td>
-                        <td>SESSION İçerik</td>
-                        <td>IP İçerik</td>
-                        <td>TARİH SAAT</td>
-                        <td>YAPILAN İŞLEM İçerik</td>
-                    </tr>
+                  <tr dir-paginate="manager in managers | filter:aramaKutusu | itemsPerPage:3">
+                    <td>{{ log.id }}</td>
+                    <td>{{ log.user_id }}</td>
+                    <td>{{ log.username }}</td>
+                    <td>{{ log.role }}</td>
+                    <td>{{ log.ip_address }}</td>
+                    <td>{{ log.dateTime }}</td>
+                    <td>{{ log.process }}</td>
+                    <td>
+                        <ul class="button-group">
+                            <li><a href="/logs/{{log.id}}" class="button tiny radius orangeButtonColor">Düzenle</a></li>
+                        </ul>
+                    </td>
+                  </tr>
                 </tbody>
             </table>
 

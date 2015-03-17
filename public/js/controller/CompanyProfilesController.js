@@ -11,21 +11,24 @@ app.controller('CompanyProfilesController', function ($scope, $upload, companyPr
     });
     
     companyProfilesFactory.get_current_company().then(function (obj) {
-        $scope.aktif_kullanici = obj.data;
+        $scope.aktif_kullanici = obj.data[0];
         $scope.auth_first_name = $scope.aktif_kullanici.yetkili_adi;
-        $scope.uth_position = $scope.aktif_kullanici.yetkili_pozisyonu;
+        $scope.auth_position = $scope.aktif_kullanici.yetkili_pozisyonu;
 
-        console.log('$scope.aktif_kullanici');
+        console.log( "scope.aktif_kullanici" );
+        console.log( $scope.aktif_kullanici );
+
+        /*console.log('$scope.aktif_kullanici');
         console.log($scope.aktif_kullanici);
         
         console.log('$scope.aktif_kullanici.yetkili_adi');
-        console.log($scope.aktif_kullanici.yetkili_adi);
+        console.log($scope.aktif_kullanici.yetkili_adi);*/
         
         console.log('$scope.auth_first_name');
         console.log($scope.auth_first_name);
         
-        console.log('$scope.uth_position');
-        console.log($scope.uth_position);
+        console.log('$scope.auth_position');
+        console.log($scope.auth_position);
         
         
     });
