@@ -12,32 +12,32 @@
     <div class="large-8 columns">
         <div class="row">
             <div class="large-6 columns">
-                <label>Yetkili Adı <input type="text" ng-model="auth_first_name" name="auth_first_name" placeholder="Yetkili Kişi" /> </label> 
+                <label>Yetkili Adı <input type="text" ng-model="auth_person" name="auth_person" placeholder="Yetkili Kişi" /> </label> 
             </div>
             <div class="large-6 columns">
-                <label>Yetkili Pozisyonu  <input type="text" ng-model="auth_position" name="auth_position" placeholder="Yetkisi" /> </label> 
+                <label>Yetkili Pozisyonu  <input type="text" ng-model="the_auth_to" name="the_auth_to" placeholder="Yetkisi" /> </label> 
             </div>
         </div>
         <div class="row">
             <div class="large-4 columns">
-                <label>Kuruluş Yılı <input type="text" name="copmany_year" placeholder="Kuruluş Yılı" /> </label>
+                <label>Kuruluş Yılı <input type="text" ng-model="year_of_establishment" name="year_of_establishment" placeholder="Kuruluş Yılı" /> </label>
             </div>
             <div class="large-4 columns">
-                <label>Çalışan sayısı <input type="text" name="auth_first_name" placeholder="Çalışan Sayısı" /> </label> 
+                <label>Çalışan sayısı <input type="text" ng-model="number_of_employees" name="number_of_employees" placeholder="Çalışan Sayısı" /> </label> 
             </div>
             <div class="large-4 columns">
-                <label>Firma Adı <input type="text" name="display_name" placeholder="Görüntülenecek Adınız"  /> </label>
+                <label>Firma Adı <input type="text" ng-model="display_your_name" name="display_your_name" placeholder="Görüntülenecek Adınız"  /> </label>
 
             </div>
         </div>
 
         <label>Firma Hakkında&nbsp;&nbsp;<span class="radius secondary label">Firmanızda çalışan personel niteliklerini belirtmeyi unutmayınız. <b>Örn: Bilgisayar mühendisi:4</b></span> 
-            <textarea cols="80" rows="10" class="ckeditor"  id="editor1" name="editor1" >
+            <textarea cols="80" rows="10" class="ckeditor"  id="company_about_editor" ng-model="company_about_editor" name="company_about_editor" >
             </textarea>
             <script>
                 // Replace the <textarea id="editor1"> with a CKEditor
                 // instance, using default configuration.
-                CKEDITOR.replace('editor1', {
+                CKEDITOR.replace('company_about_editor', {
                     toolbar: [
                         {name: 'document', items: ['Source', '-', 'NewPage', 'Preview', '-', 'Templates']}, // Defines toolbar group with name (used to create voice label) and items in 3 subgroups.
                         ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'], // Defines toolbar group without name.
@@ -96,23 +96,25 @@
                                         </label> 
                                     </div>
                                     <div class="large-6 columns">
-                                        <label>İlçe  <input type="text" name="" placeholder="İlçe" /> </label> 
+                                        <label>İlçe  <input type="text" ng-model="county" name="county"  placeholder="İlçe" /> </label> 
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="large-6 columns">
-                                        <label>Telefon Numarası  <input type="text" name="" placeholder="312 123 45 67" /> </label> 
+                                        <label>Telefon Numarası  <input type="text" ng-model="phone_number" name="phone_number" placeholder="312 123 45 67" /> </label> 
                                     </div>
                                     <div class="large-6 columns">
-                                        <label>Faks Numarası  <input type="text" name="" placeholder="312 123 45 67" /> </label> 
+                                        <label>Faks Numarası  <input type="text" ng-model="fax_number" name="fax_number" placeholder="312 123 45 67" /> </label> 
                                     </div>
                                 </div>
                                 <label>Adres
-                                    <textarea cols="80" rows="5" ></textarea>
+                                    <textarea cols="80" rows="5" ng-model="address" name="address" ></textarea>
                                 </label>
-                                <label>E-posta <input type="text" placeholder="email" /> </label> 
-                                <label>İnternet Sitesi&nbsp;&nbsp;<span class="radius secondary label">Web adresinizin başına <b>http://</b> veya <b>https://</b> yazmayı unutmayınız</span> <input type="text" placeholder="Web Siteniz" /> </label>
+                                <label>E-posta <input type="text" ng-model="email" name="email" placeholder="email" /> </label> 
+                                <label>İnternet Sitesi&nbsp;&nbsp;<span class="radius secondary label">Web adresinizin başına <b>http://</b> veya <b>https://</b> yazmayı unutmayınız</span> 
+                                    <input type="text" ng-model="web_site" name="web_site" placeholder="Web Siteniz" /> 
+                                </label>
                             </div>
                             <div class="large-4 columns">
                                 <h4>Şifre İşlemleri</h4>
