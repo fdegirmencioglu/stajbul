@@ -1,4 +1,4 @@
-app.controller('ManagersController', function($scope, $routeParams, managersFactory){
+app.controller('ManagersController', function($scope, $routeParams, managersFactory, logsFactory){
 	
 	  $scope.first_name = "";
     $scope.last_name = ""; 
@@ -34,7 +34,9 @@ app.controller('ManagersController', function($scope, $routeParams, managersFact
       options.password = $scope.password;
       options.add_manager = true;
 
-      profilesFactory.add(options); 
+      managersFactory.add(options); 
+
+      add_manager_log();
 
 
     $scope.first_name = "";
@@ -46,6 +48,13 @@ app.controller('ManagersController', function($scope, $routeParams, managersFact
     $scope.password = "";
     $scope.password_again = "";
 
+   }
+ 
+   //Yeni Log Ekle
+   add_manager_log = function(){
+      var options = {}; 
+      options.process = "Yeni Yönetici Ekleme"; 
+      logsFactory.add(options);  
    }
  
 });

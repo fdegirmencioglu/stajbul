@@ -1,4 +1,4 @@
-app.controller('ProfilesController', function ($scope, $upload, $location, $routeParams, profilesFactory) {
+app.controller('ProfilesController', function ($scope, $upload, $location, $routeParams, profilesFactory,logsFactory) {
        
     profilesFactory.get().then(function (d) {
       $scope.users = d.data;
@@ -63,11 +63,20 @@ app.controller('ProfilesController', function ($scope, $upload, $location, $rout
       profilesFactory.logout().then(function(d) {
         if( d.statusText =="OK"){
           $location.path('/');
+
+          add_logout_log();
           //$location.reload();
-          window.location.reload();
+          //window.location.reload();
         }
       });
     }
+
+   //Yeni Log Ekle
+   add_logout_log = function(){
+      var options = {}; 
+      options.process = "Oturumun kapatıldı."; 
+      logsFactory.add(options);  
+   }
  
     $scope.open_model = function () {
         var passModel = angular.element(document.querySelector('#passModal'));

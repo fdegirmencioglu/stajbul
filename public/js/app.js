@@ -30,6 +30,10 @@ app.config(function($routeProvider, $locationProvider){
   .when("/company/profile",{
     templateUrl: '/templates/firma_guncelle.html',
     controller: 'CompanyProfilesController'
+  })
+  .when("/logList",{
+    templateUrl: '/templates/log_listele.html',
+    controller: 'LogsController'
   });
   /*.otherwise({
 

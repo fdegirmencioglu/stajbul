@@ -133,6 +133,11 @@ Route::get('managers', 'UsersController@get_managers');
 
 Route::resource('company', 'CompanyController');
 
+//======== LOGLAR ======
+//Route::resource('logs', 'LogsController');
+Route::post('logs', array('uses' => 'LogsController@store'));
+Route::get('logs', array('uses' => 'LogsController@index'));
+
 
 
 

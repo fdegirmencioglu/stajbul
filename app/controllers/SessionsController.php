@@ -2,6 +2,31 @@
 
 class SessionsController extends \BaseController {
 
+
+	public function log_ekle(){
+		//aktif kullanıcıyı al
+		$user = DB::table('users')
+        ->join('users_groups', function($join)
+        {
+			$current_user_id = Sentry::getUser()->id;
+
+            $join->on('users.id', '=', 'users_groups.user_id')
+                 ->where('users_groups.user_id', '=', $current_user_id );
+        })
+        ->get();
+
+    
+		$log = new Logs;
+		$log->group_id = $user[0]->group_id;
+		$log->user_id = $user[0]->user_id;
+		$log->kullanici_adi = $user[0]->username;
+		$log->ip_address = $_SERVER['REMOTE_ADDR'];
+		$log->tarih_saat = date("Y-m-d H:i:s");
+		$log->yapilan_islem = "Sisteme giriş yapıldı."; 
+		$log->save();
+	}
+
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -49,6 +74,7 @@ class SessionsController extends \BaseController {
 		    // Authenticate the user
 		    $user = Sentry::authenticate($credentials, $hatirla);
 
+		    self::log_ekle();
 
 		    return Redirect::to('/home');
 		    //Sentry::authenticateAndRemember($credentials);
@@ -168,6 +194,8 @@ class SessionsController extends \BaseController {
 		//return Redirect::home();
 		return Redirect::to('/');
 	}
+
+
 
 
 }

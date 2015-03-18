@@ -35,24 +35,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                  <tr dir-paginate="manager in managers | filter:aramaKutusu | itemsPerPage:3">
+                  <tr dir-paginate="log in logs | filter:aramaKutusu | itemsPerPage:1">
                     <td>{{ log.id }}</td>
                     <td>{{ log.user_id }}</td>
-                    <td>{{ log.username }}</td>
-                    <td>{{ log.role }}</td>
+                    <td>{{ log.kullanici_adi }}</td>
+                    <td>{{ log.group_id }}</td>
                     <td>{{ log.ip_address }}</td>
-                    <td>{{ log.dateTime }}</td>
-                    <td>{{ log.process }}</td>
-                    <td>
-                        <ul class="button-group">
-                            <li><a href="/logs/{{log.id}}" class="button tiny radius orangeButtonColor">Düzenle</a></li>
-                        </ul>
-                    </td>
+                    <td>{{ log.tarih_saat }}</td>
+                    <td>{{ log.yapilan_islem }}</td>
                   </tr>
                 </tbody>
             </table>
+ 
+                 <dir-pagination-controls
+                        [max-size=""]
+                        [direction-links=""]
+                        [boundary-links=""]
+                        [on-page-change=""]
+                        [pagination-id=""]
+                        [template-url="/js/directives/angular-utils-pagination/dirPagination.tpl.html"]>
+           </dir-pagination-controls>
 
-            <div class="row">
+            <!--<div class="row">
                 <div class="small-6 columns right">
                     <ul class="pagination" role="menubar" aria-label="Pagination">
                         <li class="arrow unavailable" aria-disabled="true"><a href="">&laquo; Önceki</a></li>
@@ -66,7 +70,7 @@
                         <li class="arrow"><a href="">Sonraki &raquo;</a></li>
                     </ul>
                 </div>
-            </div>
+            </div>-->
         </fieldset>
     </div>
 </div>

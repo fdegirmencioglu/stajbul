@@ -154,7 +154,7 @@
                             <li><a href="#"><i class="fa fa-star fa-fw"></i>&nbsp;Firma Listele</a></li>
                             <li><a href="#"><i class="fa fa-university fa-fw"></i>&nbsp;Akademisyen Listele</a></li>
                             <li><a href="/admin/list"><i class="fa fa-user-secret fa-fw"></i>&nbsp;Yönetici Listele</a></li>
-                            <li><a href="#"><i class="fa fa-file-text-o fa-fw"></i>&nbsp;Log Listele</a></li>
+                            <li><a href="/logList"><i class="fa fa-file-text-o fa-fw"></i>&nbsp;Log Listele</a></li>
                         </ul>
                     </div> 
                 </li> 
@@ -297,13 +297,15 @@ if (Sentry::getUser()->hasAnyAccess(['companies'])) {
 <script src="/js/vendor/dirPagination.js"></script> 
 
 <script type="text/javascript" src="/js/foundation.min.js"></script> 
-<script type="text/javascript" src="/js/app.js"></script>
+<script type="text/javascript" src="/js/app.js"></script> 
+<script type="text/javascript" src="/js/services/LogsFactory.js"></script>  
 <script type="text/javascript" src="/js/services/ProfilesFactory.js"></script>
 <script type="text/javascript" src="/js/services/ManagersFactory.js"></script> 
 <script type="text/javascript" src="/js/services/CompanyProfilesFactory.js"></script> 
 <script type="text/javascript" src="/js/controller/ProfilesController.js"></script>
 <script type="text/javascript" src="/js/controller/ManagersController.js"></script> 
-<script type="text/javascript" src="/js/controller/CompanyProfilesController.js"></script> 
+<script type="text/javascript" src="/js/controller/CompanyProfilesController.js"></script>  
+<script type="text/javascript" src="/js/controller/LogsController.js"></script> 
 
 <script>
     $(document).foundation();
