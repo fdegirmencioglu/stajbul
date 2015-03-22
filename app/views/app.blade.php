@@ -261,23 +261,29 @@
 $getCurrentUserID = Sentry::getUser()->id;
 if (Sentry::getUser()->hasAnyAccess(['companies'])) {
     $getCurrentCompanyID = DB::SELECT('SELECT id FROM company_meta WHERE user_id = ?', [$getCurrentUserID]);
+    $getCurrentCompanyCityID = DB::SELECT('SELECT sehir FROM company_meta WHERE id = ?', [$getCurrentCompanyID[0]->id]);
 }
-/* echo '<pre>';
-  var_dump($resultsss);
+/*
+  echo '<pre>';
+  var_dump($getCurrentCompanyCityID);
   echo '</pre>';
 
-  echo '<br/> SONUC='. $resultsss[0]->id;
-  echo '<br/> getUserID='. $getUserID; */
+  echo '<br/> SONUC=' . $getCurrentCompanyCityID[0]->sehir;
+  //echo '<br/> getUserID='. $getUserID;
 
-//echo '<input type="text" name="fname" value="' . $getCurrentCompanyID[0]->id . '" />';
+  echo '<br/>Veri1= ' . '<input type="text" name="fname" value="' . $getCurrentCompanyID[0]->id . '" />';
+  echo 'Veri2= ' . '<input type="text" name="fname" value="' . $getCurrentCompanyCityID[0]->sehir . '" />'; */
 ?>
 
 
-<input type="hidden" id="current_user_id" name="user_id" ng-model="current_user_id" ng-value="<?php echo Sentry::getUser()->id; ?>" />
+<input type="hidden" id="current_user_id" name="user_id" ng-model="current_user_id" value="<?php echo Sentry::getUser()->id; ?>" />
 
 
 <?php if (Sentry::getUser()->hasAnyAccess(['companies'])) { ?>
-    <input type="hidden" id="current_company_id" name="company_id" ng-model="current_company_id" ng-value="<?php echo $getCurrentCompanyID[0]->id; ?>" />
+    <input type="hidden" id="current_company_id" name="current_company_id" ng-model="current_company_id" value="<?php echo $getCurrentCompanyID[0]->id; ?>" />
+
+    <input type="hidden" id="current_company_city_id" name="current_company_city_id" ng-model="current_company_city_id" value="<?php echo $getCurrentCompanyCityID[0]->sehir; ?>" />
+
 <?php } ?>
 
 
@@ -308,7 +314,7 @@ if (Sentry::getUser()->hasAnyAccess(['companies'])) {
 <script type="text/javascript" src="/js/controller/LogsController.js"></script> 
 
 <script>
-    $(document).foundation();
+        $(document).foundation();
 </script>
 
 </body>

@@ -66,7 +66,7 @@ app.controller('ProfilesController', function ($scope, $upload, $location, $rout
 
           add_logout_log();
           //$location.reload();
-          //window.location.reload();
+          window.location.reload();
         }
       });
     }

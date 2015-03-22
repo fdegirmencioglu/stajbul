@@ -1,5 +1,3 @@
-<!-- <form ng-submit="submit_me()">-->
-
 <div class="row">
     <div class="large-12 columns">
         <h4 class="subheader"><i class="fa fa-copyright fa-2x"></i>&nbsp;Firma Profili</h4>
@@ -27,7 +25,6 @@
             </div>
             <div class="large-4 columns">
                 <label>Firma Adı <input type="text" ng-model="display_your_name" name="display_your_name" placeholder="Görüntülenecek Adınız"  /> </label>
-
             </div>
         </div>
 
@@ -35,22 +32,20 @@
             <textarea cols="80" rows="10" class="ckeditor"  id="company_about_editor" ng-model="company_about_editor" name="company_about_editor" >
             </textarea>
             <script>
-                // Replace the <textarea id="editor1"> with a CKEditor
-                // instance, using default configuration.
-                CKEDITOR.replace('company_about_editor', {
-                    toolbar: [
-                        {name: 'document', items: ['Source', '-', 'NewPage', 'Preview', '-', 'Templates']}, // Defines toolbar group with name (used to create voice label) and items in 3 subgroups.
-                        ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'], // Defines toolbar group without name.
-                        //'/', // Line break - next group will be placed in new line.
-                        {name: 'basicstyles', groups: ['basicstyles', 'cleanup'], items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
-                        {name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi'], items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language']},
-                        {name: 'links', items: ['Link', 'Unlink', 'Anchor']},
-                        {name: 'styles', items: ['Styles', 'Format', 'Font', 'FontSize']},
-                        {name: 'colors', items: ['TextColor', 'BGColor']},
-                        {name: 'tools', items: ['Maximize', 'ShowBlocks']},
-                        {name: 'others', items: ['-']}
-                    ]
-                });
+                        CKEDITOR.replace('company_about_editor', {
+                            toolbar: [
+                                {name: 'document', items: ['Source', '-', 'NewPage', 'Preview', '-', 'Templates']}, // Defines toolbar group with name (used to create voice label) and items in 3 subgroups.
+                                ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'], // Defines toolbar group without name.
+                                //'/', // Line break - next group will be placed in new line.
+                                {name: 'basicstyles', groups: ['basicstyles', 'cleanup'], items: ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
+                                {name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi'], items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language']},
+                                {name: 'links', items: ['Link', 'Unlink', 'Anchor']},
+                                {name: 'styles', items: ['Styles', 'Format', 'Font', 'FontSize']},
+                                {name: 'colors', items: ['TextColor', 'BGColor']},
+                                {name: 'tools', items: ['Maximize', 'ShowBlocks']},
+                                {name: 'others', items: ['-']}
+                            ]
+                        });
             </script>
         </label>
     </div>
@@ -60,105 +55,81 @@
             <div class="panel callout radius">
                 <img class="center-image" width="180px" ng-src="{{ resim_adi}}" alt=""/>
                 <input type="file" name="image" accept="image/*">
-                    <input type="submit" id="upload_image" class="button expand">Resim Ekle
-                        </div>
-                        </form>
-                        </div>
-                        <!--<div class="large-4 columns">
-                            <div ng-app="fileUpload">
-                                <div class="panel callout radius">
-                                    <img class="center-image" src="/images/default_us_photo.jpg" alt=""/>
-                                    <div class="button expand" ng-file-select ng-file-change="upload($files)">Resim Ekle</div>
-                                    <a href="#" class="button expand">Resim Ekle</a>--
-                                </div>   
-                            </div>
-                        </div>-->
+                    <input type="submit" id="upload_image" class="button expand" />Resim Ekle
+            </div>
+        </form>
+    </div>
+</div>
 
 
+<div class="row">
+    <div class="divspace"></div>
+    <h4>İletişim Bilgileri</h4>
+    <hr>
+    <div class="large-8 columns">
+        <div class="row">
+            <div class="large-6 columns" ng-controller="CompanyProfilesController">
+                <label>Şehir 
+                    <select ng-model="correctlySelected"
+                        ng-options="opt as opt.label for opt in options">
+                        <option value="">-- Seçiniz --</option>
+                </select>
 
-                        </div>
+                
 
+            </div>
+            <div class="large-6 columns">
+                <label>İlçe  <input type="text" ng-model="county" name="county"  placeholder="İlçe" /> </label> 
+            </div>
+        </div>
 
-                        <div class="row">
-                            <div class="divspace"></div>
-                            <h4>İletişim Bilgileri</h4>
-                            <hr>
-                            <div class="large-8 columns">
-                                <div class="row">
-                                    <div class="large-6 columns">
-                                        <label>Şehir 
-                                            <select>
-                                                <option value="seciniz">Seçiniz</option>
-                                                <option value="ankara">Ankara</option>
-                                                <option value="istanbul">İstanbul</option>
-                                                <option value="izmir">İzmir</option>
-                                            </select>
-                                        </label> 
-                                    </div>
-                                    <div class="large-6 columns">
-                                        <label>İlçe  <input type="text" ng-model="county" name="county"  placeholder="İlçe" /> </label> 
-                                    </div>
-                                </div>
+        <div class="row">
+            <div class="large-6 columns">
+                <label>Telefon Numarası  <input type="text" ng-model="phone_number" name="phone_number" placeholder="312 123 45 67" /> </label> 
+            </div>
+            <div class="large-6 columns">
+                <label>Faks Numarası  <input type="text" ng-model="fax_number" name="fax_number" placeholder="312 123 45 67" /> </label> 
+            </div>
+        </div>
+        <label>Adres
+            <textarea cols="80" rows="5" ng-model="address" name="address" ></textarea>
+        </label>
+        <label>E-posta <input type="text" ng-model="email" name="email" placeholder="email" /> </label> 
+        <label>İnternet Sitesi&nbsp;&nbsp;<span class="radius secondary label">Web adresinizin başına <b>http://</b> veya <b>https://</b> yazmayı unutmayınız</span> 
+            <input type="text" ng-model="web_site" name="web_site" placeholder="Web Siteniz" /> 
+        </label>
+    </div>
+    <div class="large-4 columns">
+        <h4>Şifre İşlemleri</h4>
+        <hr>
+        <a href="#" ng-click="open_model();" data-reveal-id="passModal" class="button alert expand">Şifre Değiştir</a>
+    </div>
+</div>
 
-                                <div class="row">
-                                    <div class="large-6 columns">
-                                        <label>Telefon Numarası  <input type="text" ng-model="phone_number" name="phone_number" placeholder="312 123 45 67" /> </label> 
-                                    </div>
-                                    <div class="large-6 columns">
-                                        <label>Faks Numarası  <input type="text" ng-model="fax_number" name="fax_number" placeholder="312 123 45 67" /> </label> 
-                                    </div>
-                                </div>
-                                <label>Adres
-                                    <textarea cols="80" rows="5" ng-model="address" name="address" ></textarea>
-                                </label>
-                                <label>E-posta <input type="text" ng-model="email" name="email" placeholder="email" /> </label> 
-                                <label>İnternet Sitesi&nbsp;&nbsp;<span class="radius secondary label">Web adresinizin başına <b>http://</b> veya <b>https://</b> yazmayı unutmayınız</span> 
-                                    <input type="text" ng-model="web_site" name="web_site" placeholder="Web Siteniz" /> 
-                                </label>
-                            </div>
-                            <div class="large-4 columns">
-                                <h4>Şifre İşlemleri</h4>
-                                <hr>
-                                <a href="#"  data-reveal-id="passModal" class="button alert expand">Şifre Değiştir</a>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="large-8 columns">
-                                <input type="button"  value="Düzenle" class="button success right" />
-
-                                <!--<a href="#" class="button success right">Düzenle</a>-->
-                            </div>
-                        </div>
+<div class="row">
+    <div class="large-8 columns">
+        <input type="button" ng-click="submit_me()" value="Düzenle" class="button success right" />
+    </div>
+</div>
 
 
+<!-- ###### Modal Oluştur ###### -->
+<div id="passModal" class="reveal-modal medium" data-reveal>
+    <h4>Şifre İşlemleri</h4>
+    <hr>
+    <div class="large-12 columns">
 
-                        <div id="passModal" class="reveal-modal medium" data-reveal>
-                            <h4>Şifre İşlemleri</h4>
-                            <hr>
-                            <div class="large-12 columns">
+        <div class="password-field">
+            <label>Şifre <small>*</small>
+                <input type="password" ng-model="new_password" id="password" class="form-control" name="password">
+            </label>
+        </div>
 
-                                <div class="password-field">
-                                    <label>Şifre <small>*</small>
-                                        <input type="password"  id="password" class="form-control" name="password" />
-                                    </label>
-                                    <!--<small class="error">Doldurulması zorunlu alan.</small>-->
-                                </div>
-
-                                <div class="password-confirmation-field">
-                                    <label>Şifre (tekrar)<small>*</small>
-                                        <input type="password" class="form-control" name="password_confirmation" data-equalto="password" />
-                                    </label>
-                                    <!--<small class="error">Doldurulması zorunlu alan. Uyumsuz şifre.</small>-->
-                                </div>
-
-                                <!--<label>Yeni Şifre <input type="text" placeholder="Şifre" /> </label> 
-                                <label>Yeni Şifre Tekrar <input type="text" placeholder="Şifre Tekrar" /> </label>
-                                <label>Güç Göstergesi
-                                    <div class="progress large-6 success round"> <span class="meter" style="width: 40%"></span> </div>
-                                </label>-->
-                                <button type="submit" class="radius button right">Düzenle</button>
-
-                                <!--<a href="#" class="button success right">Düzenle</a>-->
-                            </div>
-                        </div>
+        <div class="password-confirmation-field">
+            <label>Şifre (tekrar)<small>*</small>
+                <input type="password" class="form-control" name="password_confirmation" data-equalto="password">
+            </label>
+        </div>
+        <button type="submit" ng-click="change_password();" class="radius button right">Düzenle</button>
+    </div>
+</div>
