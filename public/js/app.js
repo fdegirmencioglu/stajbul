@@ -27,11 +27,15 @@ app.config(function($routeProvider, $locationProvider){
     templateUrl: '/templates/yonetici_listele.html',
     controller: 'ManagersController'
   })
+  .when("/admin/confirmation",{
+    templateUrl: '/templates/yonetici_onay.html',
+    controller: 'ManagersController'
+  })
   .when("/company/profile",{
     templateUrl: '/templates/firma_guncelle.html',
     controller: 'CompanyProfilesController'
   })
-  .when("/logList",{
+  .when("/admin/log_list",{
     templateUrl: '/templates/log_listele.html',
     controller: 'LogsController'
   });

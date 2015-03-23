@@ -214,7 +214,7 @@ app.controller('CompanyProfilesController', function ($scope, $upload, companyPr
         options.calisan_sayisi = $scope.number_of_employees;
         options.display_name = $scope.display_your_name;
         options.firma_bilgileri = $scope.company_about_editor;
-        options.sehir = $scope.correctlySelected.value;
+        options.sehir = 76;//$scope.correctlySelected.value;
         options.ilce = $scope.county;
         options.telefon = $scope.phone_number;
         options.fax = $scope.fax_number;

@@ -17,6 +17,19 @@ app.factory('managersFactory', function($http){
 					return response; 
 			}); 
 		},
+		onaylanmamis_kullanici_listesi: function(){ 
+		   return $http.get('/admin/unapproved_user_list') //localhost:8000/users/1
+				.success(function(response){  
+
+					console.log("response");
+					console.log(response);					      
+					
+					return response; 
+			});
+		},
+		kullaniciya_onay_ver: function(){
+
+		},
 		//Aktif kullanıcıyı bulmak için metod
 		get_current_user: function(){ 
 			//id'si current_user_id olan dom elementinin değerini Angular üzerinden çekip aktif_kullanıcı_id'ye atar. 

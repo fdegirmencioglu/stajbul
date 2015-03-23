@@ -72,14 +72,35 @@ Route::get('/admin/new', function() {
 
 
 //Yönetici Listele
-Route::get('/admin/list', function() {
+Route::get('/admin/log_list', function() {
+    if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
+        return View::make('login.index');
+    } else {              //Kullanıcı sisteme giriş yaptıysa -> home'a git
+        return View::make('admin.log_list');
+    }
+});
+
+//Yönetici Listele
+/*Route::get('/admin/log/list', function() {
     if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
         return View::make('login.index');
     } else {              //Kullanıcı sisteme giriş yaptıysa -> home'a git
         return View::make('admin.list');
     }
+});*/
+
+
+
+//Yönetici Listele
+Route::get('/admin/confirmation/', function() {
+    if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
+        return View::make('login.index');
+    } else {              //Kullanıcı sisteme giriş yaptıysa -> home'a git
+        return View::make('admin.confirmation');
+    }
 });
 
+Route::get('/admin/unapproved_user_list', 'UsersController@get_unapproved_user_list');
 
 //Route::resource('testtablosu', 'TestDenemelikController');
 //Route::get('Captcha.captcha', ['uses'=>'CaptchaController@captcha']);
@@ -122,10 +143,10 @@ Route::get('city/{city}', 'CityController@showCompanyCity');
 Route::resource('company', 'CompanyController');
 
 //======== LOGLAR ======
-//Route::resource('logs', 'LogsController');
-Route::post('logs', array('uses' => 'LogsController@store'));
+Route::resource('logs', 'LogsController');
+/*Route::post('logs', array('uses' => 'LogsController@store'));
 Route::get('logs', array('uses' => 'LogsController@index'));
-
+*/
 
 
 

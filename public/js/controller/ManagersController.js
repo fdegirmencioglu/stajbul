@@ -9,9 +9,19 @@ app.controller('ManagersController', function ($scope, $routeParams, managersFac
     $scope.password = "";
     $scope.password_again = "";
 
+    //$scope.onaylanmamis_kullanici_listesi = [];
+
     managersFactory.get().then(function (d) {
         $scope.managers = d.data;
     });
+
+
+    managersFactory.onaylanmamis_kullanici_listesi().then(function (d) {
+      $scope.onaylanmamislar = d.data;
+      console.log( "d.data" );
+      console.log( d.data );
+    });
+
 
     $scope.delete_manager = function (id) {
         managersFactory.remove(id).then(function (d) {
@@ -19,7 +29,11 @@ app.controller('ManagersController', function ($scope, $routeParams, managersFac
         });
         window.location.reload();
     }
+    
 
+    $scope.kullaniciya_onay_ver = function(){
+
+    }
 
 
     //Yeni Yönetici Ekle

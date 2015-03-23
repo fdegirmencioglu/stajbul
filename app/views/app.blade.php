@@ -154,7 +154,7 @@
                             <li><a href="#"><i class="fa fa-star fa-fw"></i>&nbsp;Firma Listele</a></li>
                             <li><a href="#"><i class="fa fa-university fa-fw"></i>&nbsp;Akademisyen Listele</a></li>
                             <li><a href="/admin/list"><i class="fa fa-user-secret fa-fw"></i>&nbsp;Yönetici Listele</a></li>
-                            <li><a href="/logList"><i class="fa fa-file-text-o fa-fw"></i>&nbsp;Log Listele</a></li>
+                            <li><a href="/admin/log_list"><i class="fa fa-file-text-o fa-fw"></i>&nbsp;Log Listele</a></li>
                         </ul>
                     </div> 
                 </li> 
@@ -165,6 +165,7 @@
                         <ul class="side-nav">
                             <li><a href="/admin/new"><i class="fa fa-building fa-fw"></i>&nbsp;Yönetici Ekleme</a></li>
                             <li><a href="/admin/profile"><i class="fa fa-cogs fa-fw"></i>&nbsp;Profilim</a></li>
+                            <li><a href="/admin/confirmation"><i class="fa fa-cogs fa-fw"></i>&nbsp;Yeni Üye Onay</a></li>
                         </ul>
                     </div> 
                 </li> 

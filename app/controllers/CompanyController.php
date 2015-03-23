@@ -27,6 +27,8 @@ class CompanyController extends \BaseController {
      */
     public function store() {
 
+        dd(Input::get('user_id'));
+
         $data = file_get_contents("php://input");
 
         $objData = json_decode($data);

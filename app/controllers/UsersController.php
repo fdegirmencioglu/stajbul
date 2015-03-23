@@ -164,4 +164,19 @@ class UsersController extends \BaseController {
         //return Kullanici::all();
     }
 
+    public function get_unapproved_user_list(){
+      //Yönetici onayı olmayanları getir.
+      return DB::table('users')
+              ->where('yonetici_onayi', '=', 0)
+              ->get();
+
+
+              /*$users = DB::table('users')
+                    ->orderBy('name', 'desc')
+                    ->groupBy('count')
+                    ->having('count', '>', 100)
+                    ->get();*/
+
+    }
+
 }
