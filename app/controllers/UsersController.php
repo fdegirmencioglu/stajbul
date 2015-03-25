@@ -164,6 +164,7 @@ class UsersController extends \BaseController {
         //return Kullanici::all();
     }
 
+    //Onaylanmamış Kullanıcı Listesi
     public function get_unapproved_user_list(){
       //Yönetici onayı olmayanları getir.
       return DB::table('users')
@@ -178,5 +179,50 @@ class UsersController extends \BaseController {
                     ->get();*/
 
     }
+
+    //Onaylanmış Kullanıcı Listesi
+    public function get_approved_user_list(){
+      //Yönetici onayı olmayanları getir.
+      return DB::table('users')
+              ->where('yonetici_onayi', '=', 1)
+              ->get();
+    }
+
+
+    //Yeni Kullanıcıyı onayla
+    public function yeni_kullanici_onayla(){
+        /*$user_id = Input::get('user_id');
+        //$user = Sentry::getUserProvider()->findById($user_id);
+        $user = DB::table('users')
+              ->where('id', '=', $user_id)
+              ->get();
+        $user->yonetici_onayi = true;
+        $user->save();*/
+        $user = Sentry::getUserProvider()->findById( Input::get('user_id') );
+        $user->yonetici_onayi = true;
+        $user->save();
+
+
+        return Redirect::back();
+    }
+
+    //Kullanıcıdan Onayı Geri Çek
+    public function onayi_geri_cek(){
+        /*$user_id = Input::get('user_id');
+        //$user = Sentry::getUserProvider()->findById($user_id);
+        $user = DB::table('users')
+              ->where('id', '=', $user_id)
+              ->get();
+
+              dd($user);
+        $user->yonetici_onayi = false;
+        $user->save();*/
+        $user = Sentry::getUserProvider()->findById( Input::get('user_id') );
+        $user->yonetici_onayi = true;
+        $user->save();
+        return Redirect::back();
+    }
+
+    
 
 }

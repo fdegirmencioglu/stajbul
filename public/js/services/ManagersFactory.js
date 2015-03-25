@@ -27,7 +27,34 @@ app.factory('managersFactory', function($http){
 					return response; 
 			});
 		},
-		kullaniciya_onay_ver: function(){
+
+		onaylanmis_kullanici_listesi: function(){ 
+		   return $http.get('/admin/approved_user_list') //localhost:8000/users/1
+				.success(function(response){  
+
+					console.log("response");
+					console.log(response);					      
+					
+					return response; 
+			});
+		},
+		kullaniciya_onay_ver: function(id){ //Kullanıcıya onay verir
+		  	$http.post('admin/approve_user', { user_id: id }).
+	 				success(function(data, status, headers, config){
+	     		alert("Onay verilmiştir.");
+	  		}).
+	   		error(function(err){
+	     		alert(err);
+	  		});
+		},
+		onayi_geri_cek: function(id){ //Onayı geri çeker
+		  	$http.post('/admin/unapprove_user', { user_id: id }).
+	 				success(function(data, status, headers, config){
+	     		alert("Onay Geri Çekilmiştir.");
+	  		}).
+	   		error(function(err){
+	     		alert(err);
+	  		});
 
 		},
 		//Aktif kullanıcıyı bulmak için metod

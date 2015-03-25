@@ -27,8 +27,12 @@ app.config(function($routeProvider, $locationProvider){
     templateUrl: '/templates/yonetici_listele.html',
     controller: 'ManagersController'
   })
-  .when("/admin/confirmation",{
-    templateUrl: '/templates/yonetici_onay.html',
+  .when("/admin/waiting_confirmation",{
+    templateUrl: '/templates/yonetici_onay_bekleyenler.html',
+    controller: 'ManagersController'
+  })
+  .when("/admin/confirmed",{
+    templateUrl: '/templates/yonetici_onaylananlar.html',
     controller: 'ManagersController'
   })
   .when("/company/profile",{

@@ -16,12 +16,28 @@ app.controller('ManagersController', function ($scope, $routeParams, managersFac
     });
 
 
+    $scope.onay_ver = function(element){
+        managersFactory.kullaniciya_onay_ver(element.id);
+        /*managersFactory.kullaniciya_onay_ver(element.id).then(function (d) {
+            var sonuc = d.data;
+        });*/
+    }
+
+    $scope.onayi_kaldir = function(element){  
+        managersFactory.onayi_geri_cek(element.id);
+        /*managersFactory.onayi_geri_cek(element.id).then(function (d) {
+            var sonuc = d.data;
+        });*/
+    }
+
+    //Onaylanmamış Üyeler
     managersFactory.onaylanmamis_kullanici_listesi().then(function (d) {
       $scope.onaylanmamislar = d.data;
-      console.log( "d.data" );
-      console.log( d.data );
     });
-
+    //Onaylanmış Üyeler
+    managersFactory.onaylanmis_kullanici_listesi().then(function (d) {
+      $scope.onaylanmislar = d.data;
+    });
 
     $scope.delete_manager = function (id) {
         managersFactory.remove(id).then(function (d) {
@@ -29,12 +45,6 @@ app.controller('ManagersController', function ($scope, $routeParams, managersFac
         });
         window.location.reload();
     }
-    
-
-    $scope.kullaniciya_onay_ver = function(){
-
-    }
-
 
     //Yeni Yönetici Ekle
     $scope.add_new_manager = function () {

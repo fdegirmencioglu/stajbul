@@ -91,16 +91,32 @@ Route::get('/admin/log_list', function() {
 
 
 
-//Yönetici Listele
-Route::get('/admin/confirmation/', function() {
+//Onay Bekleyen Kullanıcı Listesi 
+Route::get('/admin/waiting_confirmation/', function() {
     if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
         return View::make('login.index');
     } else {              //Kullanıcı sisteme giriş yaptıysa -> home'a git
-        return View::make('admin.confirmation');
+        return View::make('admin.waiting_confirmation');
     }
 });
 
+//Onaylanmış Kullanıcı Listesi 
+Route::get('/admin/confirmed/', function() {
+    if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
+        return View::make('login.index');
+    } else {              //Kullanıcı sisteme giriş yaptıysa -> home'a git
+        return View::make('admin.confirmed');
+    }
+});
+
+//Onay Bekleyen Kullanıcı Listesini getir
 Route::get('/admin/unapproved_user_list', 'UsersController@get_unapproved_user_list');
+//Onaylanmış Kullanıcı Listesini getir
+Route::get('/admin/approved_user_list', 'UsersController@get_approved_user_list');
+
+
+Route::post('/admin/unapprove_user', 'UsersController@yeni_kullanici_onayla');
+Route::post('/admin/approve_user', 'UsersController@onayi_geri_cek');
 
 //Route::resource('testtablosu', 'TestDenemelikController');
 //Route::get('Captcha.captcha', ['uses'=>'CaptchaController@captcha']);
