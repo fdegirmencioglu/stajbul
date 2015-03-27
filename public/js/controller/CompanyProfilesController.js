@@ -13,6 +13,7 @@ app.controller('CompanyProfilesController', function ($scope, $upload, companyPr
     $scope.address = "";
     $scope.email = "";
     $scope.web_site = "";
+    $scope.cities = [];
 
 
     companyProfilesFactory.get().then(function (obj) {

@@ -115,8 +115,8 @@ Route::get('/admin/unapproved_user_list', 'UsersController@get_unapproved_user_l
 Route::get('/admin/approved_user_list', 'UsersController@get_approved_user_list');
 
 
-Route::post('/admin/unapprove_user', 'UsersController@yeni_kullanici_onayla');
-Route::post('/admin/approve_user', 'UsersController@onayi_geri_cek');
+Route::post('/admin/unapprove_user', 'UsersController@onayi_geri_cek');
+Route::post('/admin/approve_user', 'UsersController@yeni_kullanici_onayla');
 
 //Route::resource('testtablosu', 'TestDenemelikController');
 //Route::get('Captcha.captcha', ['uses'=>'CaptchaController@captcha']);

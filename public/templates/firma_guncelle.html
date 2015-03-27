@@ -69,7 +69,17 @@
     <div class="large-8 columns">
         <div class="row">
             <div class="large-6 columns" ng-controller="CompanyProfilesController">
-                <label>Şehir 
+                <label>Şehir
+
+
+                  <!--<select ng-model="correctlySelected">
+                    <option value="-1">-- Seçiniz --</option>
+                    <option ng-repeat="city in cities track by city.id"
+                            value="{{city.id}}">
+                      {{city.sehir_adi}}
+                    </option> 
+                  </select> -->
+
                     <select ng-model="correctlySelected"
                         ng-options="opt as opt.label for opt in options">
                         <option value="">-- Seçiniz --</option>

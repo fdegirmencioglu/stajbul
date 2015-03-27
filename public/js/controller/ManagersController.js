@@ -21,6 +21,8 @@ app.controller('ManagersController', function ($scope, $routeParams, managersFac
         /*managersFactory.kullaniciya_onay_ver(element.id).then(function (d) {
             var sonuc = d.data;
         });*/
+
+        window.location.reload();
     }
 
     $scope.onayi_kaldir = function(element){  
@@ -28,15 +30,29 @@ app.controller('ManagersController', function ($scope, $routeParams, managersFac
         /*managersFactory.onayi_geri_cek(element.id).then(function (d) {
             var sonuc = d.data;
         });*/
+        window.location.reload();
     }
 
     //Onaylanmamış Üyeler
     managersFactory.onaylanmamis_kullanici_listesi().then(function (d) {
-      $scope.onaylanmamislar = d.data;
+      //$scope.onaylanmamislar = d.data;
+
+      $scope.onaylanmamislar = function() {
+        $scope.onaylanmamislar = d.data;
+      };
+
+      console.log("$scope.onaylanmamislar");
+      console.log($scope.onaylanmamislar);
     });
+
+
+
+
     //Onaylanmış Üyeler
     managersFactory.onaylanmis_kullanici_listesi().then(function (d) {
       $scope.onaylanmislar = d.data;
+            console.log("$scope.onaylanmislar");
+      console.log($scope.onaylanmislar);
     });
 
     $scope.delete_manager = function (id) {

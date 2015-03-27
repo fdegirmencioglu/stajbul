@@ -167,10 +167,16 @@ class UsersController extends \BaseController {
     //Onaylanmamış Kullanıcı Listesi
     public function get_unapproved_user_list(){
       //Yönetici onayı olmayanları getir.
-      return DB::table('users')
+      /*return DB::table('users')
               ->where('yonetici_onayi', '=', 0)
-              ->get();
+              ->get();*/
 
+      return DB::table('users')
+        ->join('users_groups', function($join) {
+            $join->on('users.id', '=', 'users_groups.user_id')
+            ->where('yonetici_onayi', '=', 0);
+        })
+        ->get();
 
               /*$users = DB::table('users')
                     ->orderBy('name', 'desc')
@@ -183,9 +189,16 @@ class UsersController extends \BaseController {
     //Onaylanmış Kullanıcı Listesi
     public function get_approved_user_list(){
       //Yönetici onayı olmayanları getir.
-      return DB::table('users')
+      /*return DB::table('users')
               ->where('yonetici_onayi', '=', 1)
-              ->get();
+              ->get();*/
+
+      return DB::table('users')
+        ->join('users_groups', function($join) {
+            $join->on('users.id', '=', 'users_groups.user_id')
+            ->where('yonetici_onayi', '=', 1);
+        })
+        ->get();
     }
 
 
@@ -218,7 +231,7 @@ class UsersController extends \BaseController {
         $user->yonetici_onayi = false;
         $user->save();*/
         $user = Sentry::getUserProvider()->findById( Input::get('user_id') );
-        $user->yonetici_onayi = true;
+        $user->yonetici_onayi = false;
         $user->save();
         return Redirect::back();
     }
