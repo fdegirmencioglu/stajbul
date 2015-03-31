@@ -72,20 +72,20 @@
                 <label>Şehir
 
 
-                  <!--<select ng-model="correctlySelected">
-                    <option value="-1">-- Seçiniz --</option>
-                    <option ng-repeat="city in cities track by city.id"
-                            value="{{city.id}}">
-                      {{city.sehir_adi}}
-                    </option> 
-                  </select> -->
+                    <!--<select ng-model="correctlySelected">
+                      <option value="-1">-- Seçiniz --</option>
+                      <option ng-repeat="city in cities track by city.id"
+                              value="{{city.id}}">
+                        {{city.sehir_adi}}
+                      </option> 
+                    </select> -->
 
                     <select ng-model="correctlySelected"
-                        ng-options="opt as opt.label for opt in options">
+                            ng-options="opt as opt.label for opt in options">
                         <option value="">-- Seçiniz --</option>
-                </select>
+                    </select>
 
-                
+
 
             </div>
             <div class="large-6 columns">
@@ -104,10 +104,10 @@
         <label>Adres
             <textarea cols="80" rows="5" ng-model="address" name="address" ></textarea>
         </label>
-        <label>E-posta <input type="text" ng-model="email" name="email" placeholder="email" /> </label> 
-        <label>İnternet Sitesi&nbsp;&nbsp;<span class="radius secondary label">Web adresinizin başına <b>http://</b> veya <b>https://</b> yazmayı unutmayınız</span> 
-            <input type="text" ng-model="web_site" name="web_site" placeholder="Web Siteniz" /> 
-        </label>
+        <label>E-posta <input type="text" ng-model="email" name="email" placeholder="email" readonly /> </label> 
+
+        <label>Web Sitesi <input type="text" ng-model="web_site" name="web_site" placeholder="Web Siteniz" readonly /> </label> 
+
     </div>
     <div class="large-4 columns">
         <h4>Şifre İşlemleri</h4>

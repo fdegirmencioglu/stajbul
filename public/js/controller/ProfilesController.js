@@ -143,6 +143,7 @@ app.controller('ProfilesController', function ($scope, $upload, $location, $rout
 
         profilesFactory.add(options);
     }
+    
 
     $scope.change_password = function () {
         var aktif_kullanici_id_ = angular.element(document.querySelector('#current_user_id')).val();

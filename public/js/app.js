@@ -39,6 +39,11 @@ app.config(function($routeProvider, $locationProvider){
     templateUrl: '/templates/firma_guncelle.html',
     controller: 'CompanyProfilesController'
   })
+  
+  .when("/company/new",{
+    templateUrl: '/templates/firma_ekle.html',
+    controller: 'CompanyProfilesController'
+  })
   .when("/admin/log_list",{
     templateUrl: '/templates/log_listele.html',
     controller: 'LogsController'

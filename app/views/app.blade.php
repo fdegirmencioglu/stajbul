@@ -128,7 +128,7 @@
                 <li class="accordion-navigation"> 
                     <a href="#panel1c"><i class="fa fa-star fa-fw"></i>&nbsp;Firma İşlemleri</a> 
                     <div id="panel1c" class="content"> 
-                        <ul class="side-nav"><li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Firma Ana Sayfa</a></li></ul>
+                        <ul class="side-nav"><li><a href="/company/new"><i class="fa fa-copyright fa-fw"></i>&nbsp;Yeni Firma Ekle</a></li></ul>
                     </div> 
                 </li> 
 

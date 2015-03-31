@@ -81,13 +81,13 @@ Route::get('/admin/log_list', function() {
 });
 
 //Yönetici Listele
-/*Route::get('/admin/log/list', function() {
-    if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
-        return View::make('login.index');
-    } else {              //Kullanıcı sisteme giriş yaptıysa -> home'a git
-        return View::make('admin.list');
-    }
-});*/
+/* Route::get('/admin/log/list', function() {
+  if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git
+  return View::make('login.index');
+  } else {              //Kullanıcı sisteme giriş yaptıysa -> home'a git
+  return View::make('admin.list');
+  }
+  }); */
 
 
 
@@ -143,6 +143,15 @@ Route::get('/company/profile', function() {
         return View::make('login.index');
     } else {             //Kullanıcı sisteme giriş yaptıysa -> home'a gits
         return View::make('admin.profile');
+    }
+});
+
+//Yeni Yönetici Ekle
+Route::get('/company/new', function() {
+    if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
+        return View::make('login.index');
+    } else {              //Kullanıcı sisteme giriş yaptıysa -> home'a git
+        return View::make('company.new');
     }
 });
 

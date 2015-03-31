@@ -38,6 +38,18 @@ class UsersController extends \BaseController {
                 'activated' => true
             ));
             return Redirect::back();
+        } elseif (Input::get('add_company') == true) {
+            Sentry::register(array(
+                'first_name' => Input::get('first_name'),
+                'last_name' => Input::get('last_name'),
+                'username' => Input::get('username'),
+                'display_name' => Input::get('display_name'),
+                'email' => Input::get('email'),
+                'password' => Input::get('password'),
+                'website' => Input::get('website'),
+                'activated' => true
+            ));
+            return Redirect::back();
         } else {
             Sentry::register(array(
                 'first_name' => Input::get('adi'),
@@ -165,53 +177,51 @@ class UsersController extends \BaseController {
     }
 
     //Onaylanmamış Kullanıcı Listesi
-    public function get_unapproved_user_list(){
-      //Yönetici onayı olmayanları getir.
-      /*return DB::table('users')
-              ->where('yonetici_onayi', '=', 0)
-              ->get();*/
+    public function get_unapproved_user_list() {
+        //Yönetici onayı olmayanları getir.
+        /* return DB::table('users')
+          ->where('yonetici_onayi', '=', 0)
+          ->get(); */
 
-      return DB::table('users')
-        ->join('users_groups', function($join) {
-            $join->on('users.id', '=', 'users_groups.user_id')
-            ->where('yonetici_onayi', '=', 0);
-        })
-        ->get();
+        return DB::table('users')
+                        ->join('users_groups', function($join) {
+                            $join->on('users.id', '=', 'users_groups.user_id')
+                            ->where('yonetici_onayi', '=', 0);
+                        })
+                        ->get();
 
-              /*$users = DB::table('users')
-                    ->orderBy('name', 'desc')
-                    ->groupBy('count')
-                    ->having('count', '>', 100)
-                    ->get();*/
-
+        /* $users = DB::table('users')
+          ->orderBy('name', 'desc')
+          ->groupBy('count')
+          ->having('count', '>', 100)
+          ->get(); */
     }
 
     //Onaylanmış Kullanıcı Listesi
-    public function get_approved_user_list(){
-      //Yönetici onayı olmayanları getir.
-      /*return DB::table('users')
-              ->where('yonetici_onayi', '=', 1)
-              ->get();*/
+    public function get_approved_user_list() {
+        //Yönetici onayı olmayanları getir.
+        /* return DB::table('users')
+          ->where('yonetici_onayi', '=', 1)
+          ->get(); */
 
-      return DB::table('users')
-        ->join('users_groups', function($join) {
-            $join->on('users.id', '=', 'users_groups.user_id')
-            ->where('yonetici_onayi', '=', 1);
-        })
-        ->get();
+        return DB::table('users')
+                        ->join('users_groups', function($join) {
+                            $join->on('users.id', '=', 'users_groups.user_id')
+                            ->where('yonetici_onayi', '=', 1);
+                        })
+                        ->get();
     }
 
-
     //Yeni Kullanıcıyı onayla
-    public function yeni_kullanici_onayla(){
-        /*$user_id = Input::get('user_id');
-        //$user = Sentry::getUserProvider()->findById($user_id);
-        $user = DB::table('users')
-              ->where('id', '=', $user_id)
-              ->get();
-        $user->yonetici_onayi = true;
-        $user->save();*/
-        $user = Sentry::getUserProvider()->findById( Input::get('user_id') );
+    public function yeni_kullanici_onayla() {
+        /* $user_id = Input::get('user_id');
+          //$user = Sentry::getUserProvider()->findById($user_id);
+          $user = DB::table('users')
+          ->where('id', '=', $user_id)
+          ->get();
+          $user->yonetici_onayi = true;
+          $user->save(); */
+        $user = Sentry::getUserProvider()->findById(Input::get('user_id'));
         $user->yonetici_onayi = true;
         $user->save();
 
@@ -220,22 +230,20 @@ class UsersController extends \BaseController {
     }
 
     //Kullanıcıdan Onayı Geri Çek
-    public function onayi_geri_cek(){
-        /*$user_id = Input::get('user_id');
-        //$user = Sentry::getUserProvider()->findById($user_id);
-        $user = DB::table('users')
-              ->where('id', '=', $user_id)
-              ->get();
+    public function onayi_geri_cek() {
+        /* $user_id = Input::get('user_id');
+          //$user = Sentry::getUserProvider()->findById($user_id);
+          $user = DB::table('users')
+          ->where('id', '=', $user_id)
+          ->get();
 
-              dd($user);
-        $user->yonetici_onayi = false;
-        $user->save();*/
-        $user = Sentry::getUserProvider()->findById( Input::get('user_id') );
+          dd($user);
+          $user->yonetici_onayi = false;
+          $user->save(); */
+        $user = Sentry::getUserProvider()->findById(Input::get('user_id'));
         $user->yonetici_onayi = false;
         $user->save();
         return Redirect::back();
     }
-
-    
 
 }
