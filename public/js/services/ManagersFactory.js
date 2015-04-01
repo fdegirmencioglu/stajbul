@@ -10,24 +10,34 @@ app.factory('managersFactory', function($http){
 		   return $http.get('/users/'+ id) //localhost:8000/users/1
 				.success(function(response){  
 					//Laravel üzerinden gelen cevabı geriye döndürür.
-					      
 					console.log("response");
         			console.log(response);
 
 					return response; 
 			}); 
 		},
+
+		getGroups: function(){ 
+		   return $http.get('/groups') //localhost:8000/users/1
+				.success(function(response){  
+					//Laravel üzerinden gelen cevabı geriye döndürür.     
+					console.log("response");
+        			console.log(response);
+
+					return response; 
+			}); 
+
+		},
 		onaylanmamis_kullanici_listesi: function(){ 
 		   return $http.get('/admin/unapproved_user_list') //localhost:8000/users/1
 				.success(function(response){  
 
-					console.log("response");
+					console.log("response heyyyy");
 					console.log(response);					      
 					
 					return response; 
 			});
 		},
-
 		onaylanmis_kullanici_listesi: function(){ 
 		   return $http.get('/admin/approved_user_list') //localhost:8000/users/1
 				.success(function(response){  

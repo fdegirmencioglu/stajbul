@@ -1,6 +1,6 @@
 <div class="row">
     <div class="large-12 columns">
-        <h4 class="subheader"><i class="fa fa-bars fa-2x"></i>&nbsp;Onay Bekleyen Kullanıcı Listesi</h4>
+        <h4 class="subheader"><i class="fa fa-bars fa-2x"></i>&nbsp;Yönetici Rol Atama Listesi</h4>
     </div>
 </div>
 
@@ -28,47 +28,39 @@
                         <th width="10%">Adı Soyadı</th>
                         <th width="10%">Kullanıcı Adı</th>
                         <th width="15%">Görünen Ad</th>
-                        <th width="10%">Rol</th>
                         <th width="10%">Son Giriş Tarihi</th>
                         <th width="10%">E-Posta</th>
-                        <th width="10%">Aktif / Pasif</th>
-                        <th width="10%">Yönetici Onayı</th>
+                        <th width="10%">Rol</th>
                         <th width="25%">İşlemler</th>
                     </tr>
                 </thead>
                 <tbody>
+                  <tr dir-paginate="onayli in onaylanmislar | filter:aramaKutusu | itemsPerPage:3">
+                    <td>{{ onayli.first_name }} {{ onayli.last_name }}</td>
+                    <td>{{ onayli.username }}</td>
+                    <td>{{ onayli.display_name }}</td>
+                    <td>{{ onayli.last_login }}</td>
+                    <td>{{ onayli.email }}</td>
+                    <td>
+                        <!--<select ng-model="selectedGroup"
+                                ng-options="group.id as group.name for group in groups" >
+                            <option style="display:none" value="">-- Seçiniz --</option>
+                        </select>-->
 
-                    <tr ng-repeat="onaysiz in onaylanmamislar | filter:aramaKutusu">
-                    <td>{{ onaysiz.first_name }} {{ onaysiz.last_name }}</td>
-                    <td>{{ onaysiz.username }}</td>
-                    <td>{{ onaysiz.display_name }}</td>
-                    <td>Yönetici</td>
-                    <td>{{ onaysiz.last_login }}</td>
-                    <td>{{ onaysiz.email }}</td>
-                    <td>{{ onaysiz.activated }}</td>
-                    <td>{{ onaysiz.yonetici_onayi }}</td>
+                      <select ng-model="selectedGroup"> 
+                        <option style="display:none" value="">-- Seçiniz --</option>
+                        <option ng-repeat="group in groups track by group.id"
+                                value="{{group.id}}">
+                          {{group.name}}
+                        </option> 
+                      </select> 
+                      {{ selectedGroup }}
 
-
-                  <!--<tr dir-paginate="onaysiz in onaylanmamislar | filter:aramaKutusu | itemsPerPage:3">
-                    <td>{{ onaysiz.first_name }} {{ onaysiz.last_name }}</td>
-                    <td>{{ onaysiz.username }}</td>
-                    <td>{{ onaysiz.display_name }}</td>
-                    <td>Yönetici</td>
-                    <td>{{ onaysiz.last_login }}</td>
-                    <td>{{ onaysiz.email }}</td>
-                    <td>{{ onaysiz.activated }}</td>
-                    <td>{{ onaysiz.yonetici_onayi }}</td>-->
-                    
-
+                    </td>
                     <td>
                         <ul class="button-group">
                             <li>
-                                <button id="btn_{{ onaysiz.id }}" ng-click="onay_ver(onaysiz)">Onay Ver</button>
-
-                              <!--<div class="switch">
-                                <input type="checkbox" id="exampleCheckboxSwitch_{{ onaysiz.id }}" ng-click="kontrol_et(onaysiz)" ng-init="onaysiz.yonetici_onayi">
-                                <label for="exampleCheckboxSwitch_{{ onaysiz.id }}"></label>
-                              </div>--> 
+                                <button class="button" id="exampleCheckboxSwitch_{{ onayli.id }}" ng-click="kullanici_rol_degistir(onayli)">Rol Güncelle</button>
                             </li>
                         </ul>
                     </td>
@@ -93,14 +85,14 @@
 
             <!--<dir-pagination-controls></dir-pagination-controls>-->
 
-                 <!--<dir-pagination-controls
+                 <dir-pagination-controls
                         [max-size=""]
                         [direction-links=""]
                         [boundary-links=""]
                         [on-page-change=""]
                         [pagination-id=""]
                         [template-url="/js/directives/angular-utils-pagination/dirPagination.tpl.html"]>
-           </dir-pagination-controls>-->
+           </dir-pagination-controls>
 
             <!--<div class="row">
                 <div class="small-6 columns right">

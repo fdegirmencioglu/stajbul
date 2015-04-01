@@ -35,6 +35,10 @@ app.config(function($routeProvider, $locationProvider){
     templateUrl: '/templates/yonetici_onaylananlar.html',
     controller: 'ManagersController'
   })
+  .when("/admin/assign_role",{
+    templateUrl: '/templates/yonetici_rol_ata.html',
+    controller: 'ManagersController'
+  })
   .when("/company/profile",{
     templateUrl: '/templates/firma_guncelle.html',
     controller: 'CompanyProfilesController'
@@ -47,7 +51,8 @@ app.config(function($routeProvider, $locationProvider){
   .when("/admin/log_list",{
     templateUrl: '/templates/log_listele.html',
     controller: 'LogsController'
-  });
+  })
+  ;
   /*.otherwise({
 
     controller: 'ProfilesController'       

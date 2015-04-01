@@ -167,6 +167,7 @@
                             <li><a href="/admin/profile"><i class="fa fa-cogs fa-fw"></i>&nbsp;Profilim</a></li>
                             <li><a href="/admin/waiting_confirmation"><i class="fa fa-cogs fa-fw"></i>&nbsp;Yeni Üye Onay</a></li>
                             <li><a href="/admin/confirmed"><i class="fa fa-cogs fa-fw"></i>&nbsp;Onaylanmış Üyeler</a></li>
+                            <li><a href="/admin/assign_role"><i class="fa fa-user-secret fa-fw"></i>&nbsp;Yönetici Rol Atama</a></li>
                         </ul>
                     </div> 
                 </li> 

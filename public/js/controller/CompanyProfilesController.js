@@ -27,7 +27,8 @@ app.controller('CompanyProfilesController', function ($scope, $upload, companyPr
          console.log($scope.cities);*/
     });
 
-    companyProfilesFactory.get_current_company().then(function (obj) {
+if( angular.element(document.querySelector('#current_company_id')).val() != null ){
+        companyProfilesFactory.get_current_company().then(function (obj) {
         $scope.aktif_kullanici = obj.data[0];
         $scope.auth_person = $scope.aktif_kullanici.yetkili_adi;
         $scope.the_auth_to = $scope.aktif_kullanici.yetkili_pozisyonu;
@@ -41,10 +42,9 @@ app.controller('CompanyProfilesController', function ($scope, $upload, companyPr
         $scope.address = $scope.aktif_kullanici.adress;
         $scope.email = $scope.aktif_kullanici.email;
         $scope.web_site = $scope.aktif_kullanici.website;
-
-
     });
 
+        
     companyProfilesFactory.current_company_city_id().then(function (obj) {
 
         $scope.aktif_kullanici = obj.data[0];
@@ -161,12 +161,13 @@ app.controller('CompanyProfilesController', function ($scope, $upload, companyPr
 
 
         // Varsayılan Seçili Olarak Gözükecek Olan :)
-        $scope.correctlySelected = $scope.options[$scope.city_id - 1];
+        $scope.correctlySelected = "10";//$scope.options[$scope.city_id - 1];
 
     });
 
 
-
+}
+   
 
     $scope.logout = function () {
         profilesFactory.logout().then(function (d) {

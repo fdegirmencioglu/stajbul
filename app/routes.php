@@ -80,6 +80,27 @@ Route::get('/admin/log_list', function() {
     }
 });
 
+
+Route::get('/admin/list', function() {
+    if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
+        return View::make('login.index');
+    } else {              //Kullanıcı sisteme giriş yaptıysa -> home'a git
+        return View::make('admin.list');
+    }
+});
+
+
+
+
+//Yönetici Rol Atama
+Route::get('/admin/assign_role', function() {
+    if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
+        return View::make('login.index');
+    } else {              //Kullanıcı sisteme giriş yaptıysa -> home'a git
+        return View::make('admin.assign_role');
+    }
+});
+
 //Yönetici Listele
 /* Route::get('/admin/log/list', function() {
   if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git
@@ -129,6 +150,9 @@ Route::post('/admin/profile', 'UsersController@photo');
 Route::get('get_current_user_photo', 'UsersController@get_photo');
 //Bütün yöneticileri getir
 Route::get('managers', 'UsersController@get_managers');
+
+
+Route::get('groups', 'UsersController@get_groups');
 
 /* Route::post('upload/url/{id}', [
   'as' => 'photo', 'uses' => 'UsersController@photo'

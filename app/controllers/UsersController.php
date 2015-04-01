@@ -39,6 +39,7 @@ class UsersController extends \BaseController {
             ));
             return Redirect::back();
         } elseif (Input::get('add_company') == true) {
+
             Sentry::register(array(
                 'first_name' => Input::get('first_name'),
                 'last_name' => Input::get('last_name'),
@@ -173,6 +174,15 @@ class UsersController extends \BaseController {
                         ->get();
 
         //Tüm kullanıcıları al
+        //return Kullanici::all();
+    }
+
+
+    public function get_groups() {
+        //users_groups tablosunun tüm verilerini çek.
+        return DB::table('groups')
+                        ->get();
+
         //return Kullanici::all();
     }
 
