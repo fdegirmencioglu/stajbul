@@ -16,7 +16,6 @@ app.factory('managersFactory', function($http){
 					return response; 
 			}); 
 		},
-
 		getGroups: function(){ 
 		   return $http.get('/groups') //localhost:8000/users/1
 				.success(function(response){  
@@ -27,6 +26,14 @@ app.factory('managersFactory', function($http){
 					return response; 
 			}); 
 
+		},
+		kullanici_rol_degistir: function(options){
+		  	$http.post('admin/change_role', { user_id: options.id, group_id: options.grup_id, rol_degistir: options.rol_degistir }).
+	 				success(function(data, status, headers, config){
+	  		}).
+	   		error(function(err){
+	     		alert(err);
+	  		});
 		},
 		onaylanmamis_kullanici_listesi: function(){ 
 		   return $http.get('/admin/unapproved_user_list') //localhost:8000/users/1
@@ -54,7 +61,7 @@ app.factory('managersFactory', function($http){
 	     		//alert("Onay verilmiştir.");
 	  		}).
 	   		error(function(err){
-	     		alert(err);
+	     		//alert(err);
 	  		});
 		},
 		onayi_geri_cek: function(id){ //Onayı geri çeker
@@ -63,7 +70,7 @@ app.factory('managersFactory', function($http){
 	     		//alert("Onay Geri Çekilmiştir.");
 	  		}).
 	   		error(function(err){
-	     		alert(err);
+	     		//alert(err);
 	  		});
 
 		},
@@ -84,7 +91,7 @@ app.factory('managersFactory', function($http){
 		},
 		get: function(){
 			if(managers.length == 0){
-				 return $http.get('/managers')
+				 return $http.get('/userswithroles')
 					.success(function(response){
 						return response;
 						/*for (var i=0; ii=response.length, i<ii; i++) {

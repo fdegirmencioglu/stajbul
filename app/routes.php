@@ -149,15 +149,39 @@ Route::resource('users', 'UsersController');
 Route::post('/admin/profile', 'UsersController@photo');
 Route::get('get_current_user_photo', 'UsersController@get_photo');
 //Bütün yöneticileri getir
-Route::get('managers', 'UsersController@get_managers');
+Route::get('userswithroles', 'UsersController@get_userswithroles');
 
 
 Route::get('groups', 'UsersController@get_groups');
+
+Route::post('/admin/change_role', 'UsersController@change_role');
+
 
 /* Route::post('upload/url/{id}', [
   'as' => 'photo', 'uses' => 'UsersController@photo'
   ]); */
 
+
+//======== AKADEMİSYEN YÖNLENDİRMELERİ ======
+//Yeni Akademisyen Profili Ekle
+Route::get('/academician/new', function() {
+    if (!Sentry::check()) { //Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
+        return View::make('login.index');
+    } else {             //Kullanıcı sisteme giriş yaptıysa -> home'a gits
+        return View::make('academician.new');
+    }
+});
+
+
+//======== ÖĞRENCİ YÖNLENDİRMELERİ ======
+//Yeni Öğrenci Profili Ekle 
+Route::get('/student/new', function() {
+    if (!Sentry::check()) { //Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
+        return View::make('login.index');
+    } else {             //Kullanıcı sisteme giriş yaptıysa -> home'a gits
+        return View::make('student.new');
+    }
+});
 
 
 //======== FİRMA YÖNLENDİRMELERİ ======

@@ -26,6 +26,7 @@ class UsersController extends \BaseController {
      * @return Response
      */
     public function store() {
+        
         if (Input::get('add_manager') == true) {
             Sentry::register(array(
                 'first_name' => Input::get('first_name'),
@@ -37,7 +38,7 @@ class UsersController extends \BaseController {
                 'website' => Input::get('website'),
                 'activated' => true
             ));
-            return Redirect::back();
+            //return Redirect::back();
         } elseif (Input::get('add_company') == true) {
 
             Sentry::register(array(
@@ -50,8 +51,57 @@ class UsersController extends \BaseController {
                 'website' => Input::get('website'),
                 'activated' => true
             ));
-            return Redirect::back();
-        } else {
+            //return Redirect::back();
+        } elseif (Input::get('add_student') == true) {
+
+            Sentry::register(array(
+                'first_name' => Input::get('first_name'),
+                'last_name' => Input::get('last_name'),
+                'username' => Input::get('username'),
+                'display_name' => Input::get('display_name'),
+                'email' => Input::get('email'),
+                'password' => Input::get('password'),
+                'website' => Input::get('website'),
+                'activated' => true
+            ));
+
+
+            //En son kayıt yapılan kişi ya da firmanın kayıtını veritabanından getir 
+            $last_inserted_record = DB::table('users')->where('email', Input::get('email'))->first();
+
+            //Kişi ya da Firma talep edilen rolü de veritabanına ekle 
+            //UsersGroups modelinden yeni bir instance yarat, gerekli alanları
+            //doldur ve veritabanına kayıt et.
+            $user_group = new UsersGroups;
+            $user_group->group_id = Input::get('group_id');
+            $user_group->user_id = $last_inserted_record->id;
+            $user_group->save();
+        
+        } elseif (Input::get('add_academician') == true) {
+
+            Sentry::register(array(
+                'first_name' => Input::get('first_name'),
+                'last_name' => Input::get('last_name'),
+                'username' => Input::get('username'),
+                'display_name' => Input::get('display_name'),
+                'email' => Input::get('email'),
+                'password' => Input::get('password'),
+                'website' => Input::get('website'),
+                'activated' => true
+            ));
+ 
+            //En son kayıt yapılan kişi ya da firmanın kayıtını veritabanından getir 
+            $last_inserted_record = DB::table('users')->where('email', Input::get('email'))->first();
+
+            //Kişi ya da Firma talep edilen rolü de veritabanına ekle 
+            //UsersGroups modelinden yeni bir instance yarat, gerekli alanları
+            //doldur ve veritabanına kayıt et.
+            $user_group = new UsersGroups;
+            $user_group->group_id = Input::get('group_id');
+            $user_group->user_id = $last_inserted_record->id;
+            $user_group->save();
+
+        }else {
             Sentry::register(array(
                 'first_name' => Input::get('adi'),
                 'last_name' => Input::get('soyadi'),
@@ -164,14 +214,20 @@ class UsersController extends \BaseController {
         return UserImage::where('user_id', '=', $current_user_id)->get();
     }
 
-    public function get_managers() {
+    public function get_userswithroles() {
         //users tablosuyla users_groups tablosunun birleşiminden, group_id'si 1 olan(yönetici olan)'nın verilerini çek.
         return DB::table('users')
+                        ->join('users_groups', function($join) {
+                            $join->on('users.id', '=', 'users_groups.user_id');
+                        })
+                        ->get();
+
+                        /*       return DB::table('users')
                         ->join('users_groups', function($join) {
                             $join->on('users.id', '=', 'users_groups.user_id')
                             ->where('users_groups.group_id', '=', 1);
                         })
-                        ->get();
+                        ->get();*/
 
         //Tüm kullanıcıları al
         //return Kullanici::all();
@@ -254,6 +310,25 @@ class UsersController extends \BaseController {
         $user->yonetici_onayi = false;
         $user->save();
         return Redirect::back();
+    }
+
+    //Kullanıcı Rol Değiştir
+    public function change_role(){
+      //id, group_id users_groups 
+
+      //$currentOrders = UsersGroups::getForCopy($orderId);
+      //$user_group = UsersGroups::find( Input::get('user_id') );
+
+      $user_group = UsersGroups::where('user_id', '=', Input::get('user_id'))->first();
+      $user_group->group_id = Input::get('group_id');
+
+
+      
+        $save_flag = $user_group->save();
+        if ($save_flag) {
+            return Redirect::back();
+        }
+      
     }
 
 }

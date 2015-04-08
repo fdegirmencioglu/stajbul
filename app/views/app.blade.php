@@ -135,14 +135,20 @@
                 <li class="accordion-navigation"> 
                     <a href="#panel2c"><i class="fa fa-book fa-fw"></i>&nbsp;Öğrenci İşlemleri</a> 
                     <div id="panel2c" class="content"> 
-                        <ul class="side-nav"><li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Öğrenci Ana Sayfa</a></li></ul>
+                        <ul class="side-nav">
+                            <li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Öğrenci Ana Sayfa</a></li>
+                            <li><a href="/student/new"><i class="fa fa-copyright fa-fw"></i>&nbsp;Öğrenci Ekle</a></li>
+                        </ul>
                     </div> 
                 </li> 
 
                 <li class="accordion-navigation"> 
                     <a href="#panel3c"><i class="fa fa-university fa-fw"></i>&nbsp;Akademisyen İşlemleri</a> 
                     <div id="panel3c" class="content"> 
-                        <ul class="side-nav"><li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Akademisyen Ana Sayfa</a></li></ul>
+                        <ul class="side-nav">
+                            <li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Akademisyen Ana Sayfa</a></li>
+                            <li><a href="/academician/new"><i class="fa fa-copyright fa-fw"></i>&nbsp;Akademisyen Ekle</a></li>
+                        </ul>
                     </div> 
                 </li> 
 
@@ -311,10 +317,18 @@ if (Sentry::getUser()->hasAnyAccess(['companies'])) {
 <script type="text/javascript" src="/js/services/ProfilesFactory.js"></script>
 <script type="text/javascript" src="/js/services/ManagersFactory.js"></script> 
 <script type="text/javascript" src="/js/services/CompanyProfilesFactory.js"></script> 
+<script type="text/javascript" src="/js/services/StudentFactory.js"></script>   
+<script type="text/javascript" src="/js/services/AcademicianFactory.js"></script>  
+
 <script type="text/javascript" src="/js/controller/ProfilesController.js"></script>
 <script type="text/javascript" src="/js/controller/ManagersController.js"></script> 
 <script type="text/javascript" src="/js/controller/CompanyProfilesController.js"></script>  
-<script type="text/javascript" src="/js/controller/LogsController.js"></script> 
+<script type="text/javascript" src="/js/controller/LogsController.js"></script>  
+<script type="text/javascript" src="/js/controller/StudentsController.js"></script>  
+<script type="text/javascript" src="/js/controller/AcademicianController.js"></script> 
+
+
+
 
 <script>
         $(document).foundation();

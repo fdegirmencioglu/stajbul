@@ -42,16 +42,22 @@ app.config(function($routeProvider, $locationProvider){
   .when("/company/profile",{
     templateUrl: '/templates/firma_guncelle.html',
     controller: 'CompanyProfilesController'
-  })
-  
-  .when("/company/new",{
+  })   .when("/company/new",{
     templateUrl: '/templates/firma_ekle.html',
     controller: 'CompanyProfilesController'
   })
   .when("/admin/log_list",{
     templateUrl: '/templates/log_listele.html',
     controller: 'LogsController'
-  })
+  }) 
+  .when("/student/new",{
+    templateUrl: '/templates/ogrenci_ekle.html',
+    controller: 'StudentsController'
+  }) 
+  .when("/academician/new",{
+    templateUrl: '/templates/akademisyen_ekle.html',
+    controller: 'AcademiciansController'
+  }) 
   ;
   /*.otherwise({
 

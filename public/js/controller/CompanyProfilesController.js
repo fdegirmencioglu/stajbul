@@ -21,6 +21,7 @@ app.controller('CompanyProfilesController', function ($scope, $upload, companyPr
         /*console.log('$scope.company3dmaster');
          console.log(obj.data);*/
     });
+    
     companyProfilesFactory.getCities().then(function (d) {
         $scope.cities = d.data;
         /*console.log('$scope.cities');

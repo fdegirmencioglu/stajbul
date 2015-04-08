@@ -42,25 +42,25 @@
                     <td>{{ onayli.last_login }}</td>
                     <td>{{ onayli.email }}</td>
                     <td>
-                        <!--<select ng-model="selectedGroup"
-                                ng-options="group.id as group.name for group in groups" >
-                            <option style="display:none" value="">-- Seçiniz --</option>
-                        </select>-->
+                        <!--<select ng-model="selectedGroup" 
+                                ng-init="selectedGroup='{{onayli.group_id}}'"
+                                ng-options="group.id as group.name for group in groups">
+                                <!--
+                                ng-init='selectedGroup ="'{{ onayli.group_id }}'"'
+                                <option style="display:none" value="">-- Seçiniz --</option>--
+                        </select> -->
 
-                      <select ng-model="selectedGroup"> 
-                        <option style="display:none" value="">-- Seçiniz --</option>
-                        <option ng-repeat="group in groups track by group.id"
-                                value="{{group.id}}">
-                          {{group.name}}
-                        </option> 
-                      </select> 
-                      {{ selectedGroup }}
-
+                        <select
+                            ng-init="selectedGroup = {id: onayli.group_id}"
+                            ng-model="selectedGroup" 
+                            ng-options="group.name 
+                                for group in groups track by group.id"> 
+                        </select>
                     </td>
                     <td>
                         <ul class="button-group">
                             <li>
-                                <button class="button" id="exampleCheckboxSwitch_{{ onayli.id }}" ng-click="kullanici_rol_degistir(onayli)">Rol Güncelle</button>
+                                <button class="button" ng-click="kullanici_rol_degistir(onayli, selectedGroup)">Rol Güncelle</button>
                             </li>
                         </ul>
                     </td>
