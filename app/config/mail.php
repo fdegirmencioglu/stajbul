@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => "bertan.ulusoy@gmail.com", 'name' => "Bertan"),
+	'from' => array('address' => "fdegirmencioglu@gmail.com", 'name' => "Ferhat"),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'bertan.ulusoy@gmail.com',
+	'username' => 'bfdegirmencioglu@gmail.com@gmail.com',
 
 	/*
 	|--------------------------------------------------------------------------

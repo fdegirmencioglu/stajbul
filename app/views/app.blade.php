@@ -38,11 +38,16 @@
 
                 <!-- Left Nav Section -->
                 <ul class="left">
-                    <li class="divider"></li>
-                    <li><a href="#"><i class="fa fa-exclamation fa-fw"></i>&nbsp;Bildirimler&nbsp;<span class="badge badge-default">&nbsp;7&nbsp;</span></a></li>
-                    <li class="divider"></li>
-                    <li><a href="#"><i class="fa fa-envelope-o fa-fw"></i>&nbsp;Mesajlar&nbsp;<span class="badge badge-default">&nbsp;1&nbsp;</span></a></li>
-                    <li class="divider"></li>
+
+                    <?php if (Sentry::getUser()->yonetici_onayi) { ?>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="fa fa-exclamation fa-fw"></i>&nbsp;Bildirimler&nbsp;<span class="badge badge-default">&nbsp;7&nbsp;</span></a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="fa fa-envelope-o fa-fw"></i>&nbsp;Mesajlar&nbsp;<span class="badge badge-default">&nbsp;1&nbsp;</span></a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="fa fa-envelope-o fa-fw"></i>&nbsp;Mesajlar&nbsp;<span class="badge badge-default">&nbsp;1&nbsp;</span></a></li>
+                        <li class="divider"></li>
+                    <?php } ?>
                 </ul>  
                 <!-- Right Nav Section -->
                 <ul class="right">
@@ -58,46 +63,54 @@
                     </li>
 
                     <!-- Yönetici-->
-                    <?php if (Sentry::getUser()->hasAnyAccess(['managers'])) { ?>
+                    <?php if (Sentry::getUser()->hasAnyAccess(['managers']) && Sentry::getUser()->yonetici_onayi) { ?>
                         <li class="not-click"><a><span class="[radius secondary label]">YÖNETİCİ</span></a></li>
                     <?php } ?> 
 
                     <!-- Firma-->
-                    <?php if (Sentry::getUser()->hasAnyAccess(['companies'])) { ?>
+                    <?php if (Sentry::getUser()->hasAnyAccess(['companies']) && Sentry::getUser()->yonetici_onayi) { ?>
                         <li class="not-click"><a><span class="[radius secondary label]">FİRMA</span></a></li>
                     <?php } ?>  
 
                     <!-- Akademisyen-->
-                    <?php if (Sentry::getUser()->hasAnyAccess(['academicians'])) { ?>
+                    <?php if (Sentry::getUser()->hasAnyAccess(['academicians']) && Sentry::getUser()->yonetici_onayi) { ?>
                         <li class="not-click"><a><span class="[radius secondary label]">AKADEMİSYEN</span></a></li>
                     <?php } ?>  
 
                     <!-- ÖĞRENCİ-->
-                    <?php if (Sentry::getUser()->hasAnyAccess(['students'])) { ?>
+                    <?php if (Sentry::getUser()->hasAnyAccess(['students']) && Sentry::getUser()->yonetici_onayi) { ?>
                         <li class="not-click"><a><span class="[radius secondary label]">ÖĞRENCİ</span></a></li>
                     <?php } ?>  
 
                     <li class="divider"></li>
 
                     <!-- Yönetici-->
-                    <?php if (Sentry::getUser()->hasAnyAccess(['managers'])) { ?>
-                        <li><a href="#"><i class="fa fa-check fa-fw"></i>&nbsp;Onay Bekleyen&nbsp;<span class="badge badge-default">&nbsp;3&nbsp;</span></a></li>
-                    <?php } ?> 
+                    <?php
+                    $onayBekleyen = DB::table('users')
+                            ->join('users_groups', function($join) {
+                                $join->on('users.id', '=', 'users_groups.user_id')
+                                ->where('yonetici_onayi', '=', 0);
+                            })
+                            ->count();
+                    if (Sentry::getUser()->hasAnyAccess(['managers']) && Sentry::getUser()->yonetici_onayi) {
+                        ?>
+                    <li><a href="admin/waiting_confirmation"><i class="fa fa-check fa-fw"></i>&nbsp;Onay Bekleyen&nbsp;<span class="badge badge-default">&nbsp;<?php echo $onayBekleyen?>&nbsp;</span></a></li>
+<?php } ?> 
 
                     <!-- Firma-->
-                    <?php if (Sentry::getUser()->hasAnyAccess(['companies'])) { ?>
+                    <?php if (Sentry::getUser()->hasAnyAccess(['companies']) && Sentry::getUser()->yonetici_onayi) { ?>
                         <li><a href="#"><i class="fa fa-check fa-fw"></i>&nbsp;Onay Bekleyen&nbsp;<span class="badge badge-default">&nbsp;3&nbsp;</span></a></li>
-                    <?php } ?> 
+<?php } ?> 
 
                     <!-- Akademisyen-->
-                    <?php if (Sentry::getUser()->hasAnyAccess(['academicians'])) { ?>
+                    <?php if (Sentry::getUser()->hasAnyAccess(['academicians']) && Sentry::getUser()->yonetici_onayi) { ?>
                         <li><a href="#"><i class="fa fa-check fa-fw"></i>&nbsp;Onay Bekleyen&nbsp;<span class="badge badge-default">&nbsp;3&nbsp;</span></a></li>
-                    <?php } ?> 
+<?php } ?> 
 
                     <!-- Öğrenci-->
-                    <?php if (Sentry::getUser()->hasAnyAccess(['students'])) { ?>
+                    <?php if (Sentry::getUser()->hasAnyAccess(['students']) && Sentry::getUser()->yonetici_onayi) { ?>
                         <li><a href="#"><i class="fa fa-check fa-fw"></i>&nbsp;PUANLA&nbsp;<span class="badge badge-default">&nbsp;3&nbsp;</span></a></li>
-                    <?php } ?> 
+<?php } ?> 
 
                     <li class="divider"></li>
                     <li class="has-dropdown not-click">
@@ -124,7 +137,7 @@
 
         <ul class="accordion reset-margin-left " data-accordion="myAccordionGroup"> 
 
-            <?php if (Sentry::getUser()->hasAnyAccess(['managers'])) { ?>
+<?php if (Sentry::getUser()->hasAnyAccess(['managers']) && Sentry::getUser()->yonetici_onayi) { ?>
                 <li class="accordion-navigation"> 
                     <a href="#panel1c"><i class="fa fa-star fa-fw"></i>&nbsp;Firma İşlemleri</a> 
                     <div id="panel1c" class="content"> 
@@ -171,17 +184,21 @@
                         <ul class="side-nav">
                             <li><a href="/admin/new"><i class="fa fa-building fa-fw"></i>&nbsp;Yönetici Ekleme</a></li>
                             <li><a href="/admin/profile"><i class="fa fa-cogs fa-fw"></i>&nbsp;Profilim</a></li>
-                            <li><a href="/admin/waiting_confirmation"><i class="fa fa-cogs fa-fw"></i>&nbsp;Yeni Üye Onay</a></li>
-                            <li><a href="/admin/confirmed"><i class="fa fa-cogs fa-fw"></i>&nbsp;Onaylanmış Üyeler</a></li>
+                            <li><a href="/admin/waiting_confirmation"><i class="fa fa-question fa-fw"></i>&nbsp;Yeni Üye Onay</a></li>
+                            <li><a href="/admin/confirmed"><i class="fa fa-check fa-fw"></i>&nbsp;Onaylanmış Üyeler</a></li>
                             <li><a href="/admin/assign_role"><i class="fa fa-user-secret fa-fw"></i>&nbsp;Yönetici Rol Atama</a></li>
                         </ul>
                     </div> 
                 </li> 
 
-            <?php } ?>
+<?php } ?>
 
             <li class="accordion-navigation"> 
-                <a href="#panel6c"><i class="fa fa-folder-o fa-fw"></i>&nbsp;Staj Raporu</a> 
+
+                <?php if (Sentry::getUser()->yonetici_onayi) { ?>
+                    <a href="#panel6c"><i class="fa fa-folder-o fa-fw"></i>&nbsp;Staj Raporu</a> 
+<?php } ?> 
+
                 <div id="panel6c" class="content"> 
                     <ul class="side-nav">
                         <?php if (Sentry::getUser()->hasAnyAccess(['managers']) || Sentry::getUser()->hasAnyAccess(['students'])) { ?>
@@ -198,12 +215,12 @@
 
                         <?php if (Sentry::getUser()->hasAnyAccess(['academicians'])) { ?>
                             <li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Akademisyen Onay(A)</a></li>
-                        <?php } ?>
+<?php } ?>
                     </ul>
                 </div> 
             </li> 
 
-            <?php if (Sentry::getUser()->hasAnyAccess(['companies'])) { ?>
+<?php if (Sentry::getUser()->hasAnyAccess(['companies'])) { ?>
                 <li class="accordion-navigation"> 
                     <a href="#panel7c"><i class="fa fa-briefcase fa-fw"></i>&nbsp;Firma İşlemler</a> 
                     <div id="panel7c" class="content"> 
@@ -218,7 +235,7 @@
                 </li> 
             <?php } ?>
 
-            <?php if (Sentry::getUser()->hasAnyAccess(['students'])) { ?>
+<?php if (Sentry::getUser()->hasAnyAccess(['students'])) { ?>
                 <li class="accordion-navigation"> 
                     <a href="#panel8c"><i class="fa fa-cog fa-fw"></i>&nbsp;Öğrenci İşlemler</a> 
                     <div id="panel8c" class="content"> 
@@ -232,7 +249,7 @@
                 </li> 
             <?php } ?>
 
-            <?php if (Sentry::getUser()->hasAnyAccess(['academicians'])) { ?>
+<?php if (Sentry::getUser()->hasAnyAccess(['academicians'])) { ?>
                 <li class="accordion-navigation"> 
                     <a href="#panel9c"><i class="fa fa-graduation-cap fa-fw"></i>&nbsp;Akademisyen İşlemler</a> 
                     <div id="panel9c" class="content"> 
@@ -243,11 +260,13 @@
                         </ul>
                     </div> 
                 </li>
-            <?php } ?>
+<?php } ?>
 
 
             <li class="accordion-navigation"> 
-                <a href="#panel11c"><i class="fa fa-paper-plane fa-fw"></i>&nbsp;İletişim</a> 
+                <?php if (Sentry::getUser()->yonetici_onayi) { ?>
+                    <a href="#panel11c"><i class="fa fa-paper-plane fa-fw"></i>&nbsp;İletişim</a> 
+<?php } ?>                 
                 <div id="panel11c" class="content"> 
                     <ul class="side-nav">
                         <li><a href="#"><i class="fa fa-envelope-o fa-fw"></i>&nbsp;Mesaj Gönder</a></li>
@@ -331,7 +350,7 @@ if (Sentry::getUser()->hasAnyAccess(['companies'])) {
 
 
 <script>
-        $(document).foundation();
+    $(document).foundation();
 </script>
 
 </body>

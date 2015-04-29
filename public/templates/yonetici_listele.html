@@ -36,86 +36,54 @@
                     </tr>
                 </thead>
                 <tbody>
-                  <tr dir-paginate="manager in managers | filter:aramaKutusu | itemsPerPage:3">
-                    <td>{{ manager.first_name }} {{ manager.last_name }}</td>
-                    <td>{{ manager.username }}</td>
-                    <td>{{ manager.display_name }}</td>
-                    <td>Yönetici</td>
-                    <td>{{ manager.last_login }}</td>
-                    <td>{{ manager.email }}</td>
-                    <td>{{ manager.activated }}</td>
-                    
-                    <td>
-                        <ul class="button-group">
-                            <li><a href="/manager/profile/{{manager.id}}" class="button tiny radius orangeButtonColor">Düzenle</a></li>
-                            <li>
-
-<!--<a href="#" data-reveal-id="deleteUserModal">Click Me For A Modal</a>-->
-                              <a href="#" ng-click="delete_manager( manager.id )" class="button tiny radius alert">Sil</a></li>
-                        </ul>
-                    </td>
-                  </tr>
-                    <!--<tr> 
-                        <td>Adı Soyadi İçerik</td>
-                        <td>Kullanıcı Adı İçerik</td>
-                        <td>Görünen Ad İçerik</td>
+                    <tr dir-paginate="manager in managers | filter:aramaKutusu | itemsPerPage:3">
+                        <td>{{ manager.first_name}} {{ manager.last_name}}</td>
+                        <td>{{ manager.username}}</td>
+                        <td>{{ manager.display_name}}</td>
                         <td>Yönetici</td>
-                        <td>Son Giriş Tarihi İçerik</td>
-                        <td>E-Posta İçerik</td>
-                        <td>Aktif</td>
+                        <td>{{ manager.last_login}}</td>
+                        <td>{{ manager.email}}</td>
+                        <td>{{ manager.activated}}</td>
+
                         <td>
                             <ul class="button-group">
-                                <li><a href="#" class="button tiny radius orangeButtonColor">Düzenle</a></li>
-                                <li><a href="#" class="button tiny radius alert">Sil</a></li>
+                                <!--<li><a href="/manager/profile/{{manager.id}}" class="button tiny radius orangeButtonColor">Düzenle</a></li>-->
+                                <li><a href="/manager/profile/{{manager.id}}" ng-click="edit_manager(manager.id)" class="button tiny radius orangeButtonColor">Düzenle</a></li>
+                                <li>
+
+                                    <!--<a href="#" data-reveal-id="deleteUserModal">Click Me For A Modal</a>-->
+                                    <a href="#" ng-click="delete_manager(manager.id)" class="button tiny radius alert">Sil</a></li>
                             </ul>
                         </td>
-                    </tr>-->
+                    </tr>
                 </tbody>
             </table>
 
-            <!--<dir-pagination-controls></dir-pagination-controls>-->
 
-                 <dir-pagination-controls
-                        [max-size=""]
-                        [direction-links=""]
-                        [boundary-links=""]
-                        [on-page-change=""]
-                        [pagination-id=""]
-                        [template-url="/js/directives/angular-utils-pagination/dirPagination.tpl.html"]>
-           </dir-pagination-controls>
 
-            <!--<div class="row">
-                <div class="small-6 columns right">
-                    <ul class="pagination" role="menubar" aria-label="Pagination">
-                        <li class="arrow unavailable" aria-disabled="true"><a href="">&laquo; Önceki</a></li>
-                        <li class="current"><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">4</a></li>
-                        <li class="unavailable" aria-disabled="true"><a href="">&hellip;</a></li>
-                        <li><a href="">12</a></li>
-                        <li><a href="">13</a></li>
-                        <li class="arrow"><a href="">Sonraki &raquo;</a></li>
-                    </ul>
-                </div>
-            </div>-->
-        </fieldset>
-    </div>
+            <dir-pagination-controls
+                [max-size=""]
+                [direction-links=""]
+                [boundary-links=""]
+                [on-page-change=""]
+                [pagination-id=""]
+                [template-url="/js/directives/angular-utils-pagination/dirPagination.tpl.html"]>
+        </dir-pagination-controls>
+
+    </fieldset>
 </div>
-
-
-
+</div>
 
 <div id="deleteUserModal" class="reveal-modal medium" data-reveal>
     <h4>Silme İşlemi</h4>
     <hr>
     <div class="large-12 columns">
-            <label>Kullanıcıyı silmek istediğinizden emin misiniz?<small>*</small>
-            </label>
+        <label>Kullanıcıyı silmek istediğinizden emin misiniz?<small>*</small>
+        </label>
     </div>
 
     <div class="large-12 columns">
-      <button class="radius button right">Sil</button>
-       <a class='close'>Close modal</a>
+        <button class="radius button right">Sil</button>
+        <a class='close'>Close modal</a>
     </div>
 </div>

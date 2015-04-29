@@ -25,115 +25,41 @@
             <table>
                 <thead>
                     <tr>
+                        <!--<th width="5%">Sıra</th>-->
                         <th width="10%">Adı Soyadı</th>
                         <th width="10%">Kullanıcı Adı</th>
                         <th width="15%">Görünen Ad</th>
                         <th width="10%">Rol</th>
-                        <th width="10%">Son Giriş Tarihi</th>
+                        <th width="20%">Son Giriş Tarihi</th>
                         <th width="10%">E-Posta</th>
                         <th width="10%">Aktif / Pasif</th>
                         <th width="10%">Yönetici Onayı</th>
-                        <th width="25%">İşlemler</th>
+                        <th width="5%">İşlemler</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    <tr ng-repeat="onaysiz in onaylanmamislar | filter:aramaKutusu">
-                    <td>{{ onaysiz.first_name }} {{ onaysiz.last_name }}</td>
-                    <td>{{ onaysiz.username }}</td>
-                    <td>{{ onaysiz.display_name }}</td>
-                    <td>Yönetici</td>
-                    <td>{{ onaysiz.last_login }}</td>
-                    <td>{{ onaysiz.email }}</td>
-                    <td>{{ onaysiz.activated }}</td>
-                    <td>{{ onaysiz.yonetici_onayi }}</td>
-
-
-                  <!--<tr dir-paginate="onaysiz in onaylanmamislar | filter:aramaKutusu | itemsPerPage:3">
-                    <td>{{ onaysiz.first_name }} {{ onaysiz.last_name }}</td>
-                    <td>{{ onaysiz.username }}</td>
-                    <td>{{ onaysiz.display_name }}</td>
-                    <td>Yönetici</td>
-                    <td>{{ onaysiz.last_login }}</td>
-                    <td>{{ onaysiz.email }}</td>
-                    <td>{{ onaysiz.activated }}</td>
-                    <td>{{ onaysiz.yonetici_onayi }}</td>-->
-                    
-
-                    <td>
-                        <ul class="button-group">
-                            <li>
-                                <button id="btn_{{ onaysiz.id }}" ng-click="onay_ver(onaysiz)">Onay Ver</button>
-
-                              <!--<div class="switch">
-                                <input type="checkbox" id="exampleCheckboxSwitch_{{ onaysiz.id }}" ng-click="kontrol_et(onaysiz)" ng-init="onaysiz.yonetici_onayi">
-                                <label for="exampleCheckboxSwitch_{{ onaysiz.id }}"></label>
-                              </div>--> 
-                            </li>
-                        </ul>
-                    </td>
-                  </tr>
-                    <!--<tr> 
-                        <td>Adı Soyadi İçerik</td>
-                        <td>Kullanıcı Adı İçerik</td>
-                        <td>Görünen Ad İçerik</td>
+                    <tr ng-repeat="onaysiz in onaylanmamislar| filter:aramaKutusu">
+                        <!--<td>{{ $index + 1}}</td>-->
+                        <td>{{ onaysiz.first_name}} {{ onaysiz.last_name}}</td>
+                        <td>{{ onaysiz.username}}</td>
+                        <td>{{ onaysiz.display_name}}</td>
                         <td>Yönetici</td>
-                        <td>Son Giriş Tarihi İçerik</td>
-                        <td>E-Posta İçerik</td>
-                        <td>Aktif</td>
+                        <td>{{ onaysiz.last_login}}</td>
+                        <td>{{ onaysiz.email}}</td>
+                        <td>{{ onaysiz.activated}}</td>
+                        <td>{{ onaysiz.yonetici_onayi}}</td> 
                         <td>
                             <ul class="button-group">
-                                <li><a href="#" class="button tiny radius orangeButtonColor">Düzenle</a></li>
-                                <li><a href="#" class="button tiny radius alert">Sil</a></li>
+                                <li>
+                                    <button id="btn_{{ onaysiz.id}}" ng-click="onay_ver(onaysiz)">Onay Ver</button>
+
+                                </li>
                             </ul>
                         </td>
-                    </tr>-->
+                    </tr>
                 </tbody>
             </table>
-
-            <!--<dir-pagination-controls></dir-pagination-controls>-->
-
-                 <!--<dir-pagination-controls
-                        [max-size=""]
-                        [direction-links=""]
-                        [boundary-links=""]
-                        [on-page-change=""]
-                        [pagination-id=""]
-                        [template-url="/js/directives/angular-utils-pagination/dirPagination.tpl.html"]>
-           </dir-pagination-controls>-->
-
-            <!--<div class="row">
-                <div class="small-6 columns right">
-                    <ul class="pagination" role="menubar" aria-label="Pagination">
-                        <li class="arrow unavailable" aria-disabled="true"><a href="">&laquo; Önceki</a></li>
-                        <li class="current"><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">4</a></li>
-                        <li class="unavailable" aria-disabled="true"><a href="">&hellip;</a></li>
-                        <li><a href="">12</a></li>
-                        <li><a href="">13</a></li>
-                        <li class="arrow"><a href="">Sonraki &raquo;</a></li>
-                    </ul>
-                </div>
-            </div>-->
         </fieldset>
-    </div>
-</div>
-
-
-
-
-<div id="deleteUserModal" class="reveal-modal medium" data-reveal>
-    <h4>Silme İşlemi</h4>
-    <hr>
-    <div class="large-12 columns">
-            <label>Kullanıcıyı silmek istediğinizden emin misiniz?<small>*</small>
-            </label>
-    </div>
-
-    <div class="large-12 columns">
-      <button class="radius button right">Sil</button>
-       <a class='close'>Close modal</a>
     </div>
 </div>

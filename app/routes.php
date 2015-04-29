@@ -71,7 +71,7 @@ Route::get('/admin/new', function() {
 });
 
 
-//Yönetici Listele
+//Yönetici Log Listele
 Route::get('/admin/log_list', function() {
     if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
         return View::make('login.index');
@@ -80,7 +80,7 @@ Route::get('/admin/log_list', function() {
     }
 });
 
-
+//Yönetici Listele
 Route::get('/admin/list', function() {
     if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
         return View::make('login.index');

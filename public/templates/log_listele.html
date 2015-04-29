@@ -35,42 +35,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                  <tr dir-paginate="log in logs | filter:aramaKutusu | itemsPerPage:15">
-                    <td>{{ log.id }}</td>
-                    <td>{{ log.user_id }}</td>
-                    <td>{{ log.kullanici_adi }}</td>
-                    <td>{{ log.group_id }}</td>
-                    <td>{{ log.ip_address }}</td>
-                    <td>{{ log.tarih_saat }}</td>
-                    <td>{{ log.yapilan_islem }}</td>
-                  </tr>
+                    <tr dir-paginate="log in logs | filter:aramaKutusu | itemsPerPage:15">
+                        <td>{{ log.id}}</td>
+                        <td>{{ log.user_id}}</td>
+                        <td>{{ log.kullanici_adi}}</td>
+                        <td>{{ log.group_id}}</td>
+                        <td>{{ log.ip_address}}</td>
+                        <td>{{ log.tarih_saat}}</td>
+                        <td>{{ log.yapilan_islem}}</td>
+                    </tr>
                 </tbody>
             </table>
- 
-                 <dir-pagination-controls
-                        [max-size=""]
-                        [direction-links=""]
-                        [boundary-links=""]
-                        [on-page-change=""]
-                        [pagination-id=""]
-                        [template-url="/js/directives/angular-utils-pagination/dirPagination.tpl.html"]>
-           </dir-pagination-controls>
+            
+            <dir-pagination-controls
+                [max-size=""]
+                [direction-links=""]
+                [boundary-links=""]
+                [on-page-change=""]
+                [pagination-id=""]
+                [template-url="/js/directives/angular-utils-pagination/dirPagination.tpl.html"]>
+            </dir-pagination-controls>
 
-            <!--<div class="row">
-                <div class="small-6 columns right">
-                    <ul class="pagination" role="menubar" aria-label="Pagination">
-                        <li class="arrow unavailable" aria-disabled="true"><a href="">&laquo; Önceki</a></li>
-                        <li class="current"><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">4</a></li>
-                        <li class="unavailable" aria-disabled="true"><a href="">&hellip;</a></li>
-                        <li><a href="">12</a></li>
-                        <li><a href="">13</a></li>
-                        <li class="arrow"><a href="">Sonraki &raquo;</a></li>
-                    </ul>
-                </div>
-            </div>-->
         </fieldset>
     </div>
 </div>

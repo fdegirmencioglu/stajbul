@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 22 Mar 2015, 17:33:02
+-- Üretim Zamanı: 28 Nis 2015, 16:35:55
 -- Sunucu sürümü: 5.6.21
 -- PHP Sürümü: 5.6.3
 
@@ -152,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `company_meta` (
 --
 
 INSERT INTO `company_meta` (`id`, `user_id`, `yetkili_adi`, `yetkili_pozisyonu`, `kurulus_yili`, `calisan_sayisi`, `firma_adi`, `firma_bilgileri`, `sehir`, `ilce`, `telefon`, `fax`, `adress`, `sil`, `created_at`, `updated_at`) VALUES
-(1, 4, 'Ferhat Firma', 'Yönetici', '2010', 3, 'Teknolojim', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vehicula varius nunc a fringilla. Nunc bibendum molestie congue. Duis molestie sit amet magna eget egestas. Duis id finibus diam. Donec odio felis, rhoncus non tempor eu, sodales ac libero.', '76', 'Çankaya', '123 456 78 90', '123 456 78 90', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(1, 4, 'Ferhat Firmam', 'Yöneticim', '2015', 5, 'Firma A.Ş.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vehicula varius nunc a fringilla. Nunc bibendum molestie congue. Duis molestie sit amet magna eget egestas. Duis id finibus diam. Donec odio felis, rhoncus non tempor eu, sodales ac libero.', '76', 'Çankaya', '123 456 78 90', '123 456 78 90', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.blablabla..Test', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -194,7 +194,7 @@ CREATE TABLE IF NOT EXISTS `logs` (
   `yapilan_islem` varchar(255) COLLATE utf8_turkish_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=142 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 --
 -- Tablo döküm verisi `logs`
@@ -263,7 +263,85 @@ INSERT INTO `logs` (`id`, `user_id`, `kullanici_adi`, `group_id`, `ip_address`, 
 (60, 4, 'Firma Test', 3, '::1', '2015-03-22 16:23:50', 'Oturumun kapatıldı.', '2015-03-22 14:23:50', '2015-03-22 14:23:50'),
 (61, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-03-22 16:23:57', 'Sisteme giriş yapıldı.', '2015-03-22 14:23:57', '2015-03-22 14:23:57'),
 (62, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-03-22 16:31:34', 'Oturumun kapatıldı.', '2015-03-22 14:31:34', '2015-03-22 14:31:34'),
-(63, 4, 'Firma Test', 3, '::1', '2015-03-22 16:31:40', 'Sisteme giriş yapıldı.', '2015-03-22 14:31:40', '2015-03-22 14:31:40');
+(63, 4, 'Firma Test', 3, '::1', '2015-03-22 16:31:40', 'Sisteme giriş yapıldı.', '2015-03-22 14:31:40', '2015-03-22 14:31:40'),
+(64, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-03-30 17:25:39', 'Sisteme giriş yapıldı.', '2015-03-30 14:25:39', '2015-03-30 14:25:39'),
+(65, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-03-30 17:30:35', 'Oturumun kapatıldı.', '2015-03-30 14:30:35', '2015-03-30 14:30:35'),
+(66, 4, 'Firma Test', 3, '::1', '2015-03-30 17:30:42', 'Sisteme giriş yapıldı.', '2015-03-30 14:30:42', '2015-03-30 14:30:42'),
+(67, 4, 'Firma Test', 3, '::1', '2015-03-30 17:38:35', 'Oturumun kapatıldı.', '2015-03-30 14:38:35', '2015-03-30 14:38:35'),
+(68, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-03-30 17:38:42', 'Sisteme giriş yapıldı.', '2015-03-30 14:38:42', '2015-03-30 14:38:42'),
+(69, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-03-30 17:40:48', 'Oturumun kapatıldı.', '2015-03-30 14:40:48', '2015-03-30 14:40:48'),
+(70, 4, 'Firma Test', 3, '::1', '2015-03-30 17:40:54', 'Sisteme giriş yapıldı.', '2015-03-30 14:40:54', '2015-03-30 14:40:54'),
+(71, 4, 'Firma Test', 3, '::1', '2015-03-30 17:47:04', 'Oturumun kapatıldı.', '2015-03-30 14:47:04', '2015-03-30 14:47:04'),
+(72, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-03-30 17:47:11', 'Sisteme giriş yapıldı.', '2015-03-30 14:47:11', '2015-03-30 14:47:11'),
+(73, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-03-30 17:48:24', 'Sisteme giriş yapıldı.', '2015-03-30 14:48:24', '2015-03-30 14:48:24'),
+(74, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-03-30 18:23:22', 'Yeni Yönetici Ekleme', '2015-03-30 15:23:22', '2015-03-30 15:23:22'),
+(75, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-03-30 18:36:47', 'Yeni Firma Ekleme', '2015-03-30 15:36:47', '2015-03-30 15:36:47'),
+(76, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-03-30 18:40:52', 'Oturumun kapatıldı.', '2015-03-30 15:40:52', '2015-03-30 15:40:52'),
+(77, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-03-30 18:41:00', 'Sisteme giriş yapıldı.', '2015-03-30 15:41:00', '2015-03-30 15:41:00'),
+(78, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-03-30 18:41:22', 'Yeni Firma Ekleme', '2015-03-30 15:41:22', '2015-03-30 15:41:22'),
+(79, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-03-31 01:48:27', 'Sisteme giriş yapıldı.', '2015-03-30 22:48:27', '2015-03-30 22:48:27'),
+(80, 4, 'Firma Test', 3, '::1', '2015-04-01 10:41:28', 'Sisteme giriş yapıldı.', '2015-04-01 07:41:28', '2015-04-01 07:41:28'),
+(81, 4, 'Firma Test', 3, '::1', '2015-04-01 11:50:49', 'Oturumun kapatıldı.', '2015-04-01 08:50:49', '2015-04-01 08:50:49'),
+(82, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-01 11:50:55', 'Sisteme giriş yapıldı.', '2015-04-01 08:50:55', '2015-04-01 08:50:55'),
+(83, 4, 'Firma Test', 3, '::1', '2015-04-01 12:00:09', 'Sisteme giriş yapıldı.', '2015-04-01 09:00:09', '2015-04-01 09:00:09'),
+(84, 4, 'Firma Test', 3, '::1', '2015-04-01 13:28:11', 'Sisteme giriş yapıldı.', '2015-04-01 10:28:11', '2015-04-01 10:28:11'),
+(85, 4, 'Firma Test', 3, '::1', '2015-04-01 13:38:21', 'Oturumun kapatıldı.', '2015-04-01 10:38:21', '2015-04-01 10:38:21'),
+(86, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-01 13:39:45', 'Sisteme giriş yapıldı.', '2015-04-01 10:39:45', '2015-04-01 10:39:45'),
+(87, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-01 13:40:34', 'Yeni Firma Ekleme', '2015-04-01 10:40:34', '2015-04-01 10:40:34'),
+(88, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-01 13:42:01', 'Oturumun kapatıldı.', '2015-04-01 10:42:01', '2015-04-01 10:42:01'),
+(89, 7, 'dd', 1, '::1', '2015-04-01 13:42:11', 'Sisteme giriş yapıldı.', '2015-04-01 10:42:11', '2015-04-01 10:42:11'),
+(90, 7, 'dd', 1, '::1', '2015-04-01 13:42:25', 'Oturumun kapatıldı.', '2015-04-01 10:42:25', '2015-04-01 10:42:25'),
+(91, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-01 13:44:13', 'Sisteme giriş yapıldı.', '2015-04-01 10:44:13', '2015-04-01 10:44:13'),
+(92, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-01 13:46:35', 'Oturumun kapatıldı.', '2015-04-01 10:46:35', '2015-04-01 10:46:35'),
+(93, 4, 'Firma Test', 3, '::1', '2015-04-01 13:46:42', 'Sisteme giriş yapıldı.', '2015-04-01 10:46:42', '2015-04-01 10:46:42'),
+(94, 4, 'Firma Test', 3, '::1', '2015-04-01 15:12:44', 'Oturumun kapatıldı.', '2015-04-01 12:12:44', '2015-04-01 12:12:44'),
+(95, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-01 15:12:51', 'Sisteme giriş yapıldı.', '2015-04-01 12:12:51', '2015-04-01 12:12:51'),
+(96, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-01 15:13:57', 'Yeni Firma Ekleme', '2015-04-01 12:13:57', '2015-04-01 12:13:57'),
+(97, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-01 15:28:07', 'Oturumun kapatıldı.', '2015-04-01 12:28:07', '2015-04-01 12:28:07'),
+(98, 4, 'Firma Test', 3, '::1', '2015-04-01 15:28:13', 'Sisteme giriş yapıldı.', '2015-04-01 12:28:13', '2015-04-01 12:28:13'),
+(99, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-14 23:18:25', 'Sisteme giriş yapıldı.', '2015-04-14 20:18:25', '2015-04-14 20:18:25'),
+(100, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-15 00:00:17', 'Oturumun kapatıldı.', '2015-04-14 21:00:17', '2015-04-14 21:00:17'),
+(101, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-15 00:01:32', 'Sisteme giriş yapıldı.', '2015-04-14 21:01:32', '2015-04-14 21:01:32'),
+(102, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-15 00:05:43', 'Yeni Yönetici Ekleme', '2015-04-14 21:05:43', '2015-04-14 21:05:43'),
+(103, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-15 00:28:02', 'Oturumun kapatıldı.', '2015-04-14 21:28:02', '2015-04-14 21:28:02'),
+(104, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-15 00:28:08', 'Sisteme giriş yapıldı.', '2015-04-14 21:28:08', '2015-04-14 21:28:08'),
+(105, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-15 00:29:58', 'Yeni Yönetici Ekleme', '2015-04-14 21:29:58', '2015-04-14 21:29:58'),
+(106, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-15 00:39:13', 'Sisteme giriş yapıldı.', '2015-04-14 21:39:13', '2015-04-14 21:39:13'),
+(107, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-15 12:44:17', 'Sisteme giriş yapıldı.', '2015-04-15 09:44:17', '2015-04-15 09:44:17'),
+(108, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-15 12:48:31', 'Oturumun kapatıldı.', '2015-04-15 09:48:31', '2015-04-15 09:48:31'),
+(109, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-15 12:48:53', 'Sisteme giriş yapıldı.', '2015-04-15 09:48:53', '2015-04-15 09:48:53'),
+(110, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-15 12:49:12', 'Oturumun kapatıldı.', '2015-04-15 09:49:12', '2015-04-15 09:49:12'),
+(111, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-15 12:49:23', 'Sisteme giriş yapıldı.', '2015-04-15 09:49:23', '2015-04-15 09:49:23'),
+(112, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-15 12:55:07', 'Oturumun kapatıldı.', '2015-04-15 09:55:07', '2015-04-15 09:55:07'),
+(113, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-15 12:55:19', 'Sisteme giriş yapıldı.', '2015-04-15 09:55:19', '2015-04-15 09:55:19'),
+(114, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-15 13:00:37', 'Oturumun kapatıldı.', '2015-04-15 10:00:37', '2015-04-15 10:00:37'),
+(115, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-15 13:00:46', 'Sisteme giriş yapıldı.', '2015-04-15 10:00:46', '2015-04-15 10:00:46'),
+(116, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-18 08:36:06', 'Sisteme giriş yapıldı.', '2015-04-18 05:36:06', '2015-04-18 05:36:06'),
+(117, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-23 09:47:34', 'Sisteme giriş yapıldı.', '2015-04-23 06:47:34', '2015-04-23 06:47:34'),
+(118, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-23 09:49:38', 'Oturumun kapatıldı.', '2015-04-23 06:49:38', '2015-04-23 06:49:38'),
+(119, 5, 'Yönetici', 1, '::1', '2015-04-23 09:49:43', 'Sisteme giriş yapıldı.', '2015-04-23 06:49:43', '2015-04-23 06:49:43'),
+(120, 5, 'Yönetici', 1, '::1', '2015-04-23 09:49:48', 'Oturumun kapatıldı.', '2015-04-23 06:49:48', '2015-04-23 06:49:48'),
+(121, 5, 'Yönetici', 1, '::1', '2015-04-23 09:50:10', 'Sisteme giriş yapıldı.', '2015-04-23 06:50:10', '2015-04-23 06:50:10'),
+(122, 5, 'Yönetici', 1, '::1', '2015-04-23 09:50:14', 'Oturumun kapatıldı.', '2015-04-23 06:50:14', '2015-04-23 06:50:14'),
+(123, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-23 09:50:48', 'Sisteme giriş yapıldı.', '2015-04-23 06:50:48', '2015-04-23 06:50:48'),
+(124, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-28 06:39:51', 'Sisteme giriş yapıldı.', '2015-04-28 03:39:51', '2015-04-28 03:39:51'),
+(125, 3, 'Ferhat Değirmencioğlu', 3, '::1', '2015-04-28 06:52:55', 'Sisteme giriş yapıldı.', '2015-04-28 03:52:55', '2015-04-28 03:52:55'),
+(126, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-28 06:54:24', 'Sisteme giriş yapıldı.', '2015-04-28 03:54:24', '2015-04-28 03:54:24'),
+(127, 9, '', 1, '::1', '2015-04-28 09:01:12', 'Sisteme giriş yapıldı.', '2015-04-28 06:01:12', '2015-04-28 06:01:12'),
+(128, 9, '', 1, '::1', '2015-04-28 09:02:18', 'Oturumun kapatıldı.', '2015-04-28 06:02:18', '2015-04-28 06:02:18'),
+(129, 9, '', 1, '::1', '2015-04-28 09:02:39', 'Sisteme giriş yapıldı.', '2015-04-28 06:02:39', '2015-04-28 06:02:39'),
+(130, 9, '', 1, '::1', '2015-04-28 09:05:30', 'Oturumun kapatıldı.', '2015-04-28 06:05:30', '2015-04-28 06:05:30'),
+(131, 9, '', 1, '::1', '2015-04-28 09:05:37', 'Sisteme giriş yapıldı.', '2015-04-28 06:05:37', '2015-04-28 06:05:37'),
+(132, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-28 09:38:58', 'Oturumun kapatıldı.', '2015-04-28 06:38:58', '2015-04-28 06:38:58'),
+(133, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-28 09:39:06', 'Sisteme giriş yapıldı.', '2015-04-28 06:39:06', '2015-04-28 06:39:06'),
+(134, 9, '', 1, '::1', '2015-04-28 09:57:51', 'Oturumun kapatıldı.', '2015-04-28 06:57:51', '2015-04-28 06:57:51'),
+(135, 9, '', 1, '::1', '2015-04-28 09:57:57', 'Sisteme giriş yapıldı.', '2015-04-28 06:57:57', '2015-04-28 06:57:57'),
+(136, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-28 10:00:52', 'Oturumun kapatıldı.', '2015-04-28 07:00:52', '2015-04-28 07:00:52'),
+(137, 9, '', 1, '::1', '2015-04-28 10:01:16', 'Sisteme giriş yapıldı.', '2015-04-28 07:01:16', '2015-04-28 07:01:16'),
+(138, 9, '', 1, '::1', '2015-04-28 10:26:05', 'Oturumun kapatıldı.', '2015-04-28 07:26:05', '2015-04-28 07:26:05'),
+(139, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-28 10:26:12', 'Sisteme giriş yapıldı.', '2015-04-28 07:26:12', '2015-04-28 07:26:12'),
+(140, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-28 13:16:17', 'Oturumun kapatıldı.', '2015-04-28 10:16:17', '2015-04-28 10:16:17'),
+(141, 3, 'Ferhat Değirmencioğlu', 1, '::1', '2015-04-28 13:16:22', 'Sisteme giriş yapıldı.', '2015-04-28 10:16:22', '2015-04-28 10:16:22');
 
 -- --------------------------------------------------------
 
@@ -296,7 +374,8 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 ('2015_03_08_173422_create_company_meta_table', 5),
 ('2015_03_08_175119_create_city_table', 6),
 ('2015_03_10_070751_add_manager_confirmation_to_users_table', 7),
-('2015_03_17_070554_create_logs_table', 8);
+('2015_03_17_070554_create_logs_table', 8),
+('2015_04_06_010600_UpdateUserIdAsForeignKey', 9);
 
 -- --------------------------------------------------------
 
@@ -326,7 +405,7 @@ CREATE TABLE IF NOT EXISTS `throttle` (
   `last_attempt_at` timestamp NULL DEFAULT NULL,
   `suspended_at` timestamp NULL DEFAULT NULL,
   `banned_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 --
 -- Tablo döküm verisi `throttle`
@@ -335,7 +414,10 @@ CREATE TABLE IF NOT EXISTS `throttle` (
 INSERT INTO `throttle` (`id`, `user_id`, `ip_address`, `attempts`, `suspended`, `banned`, `last_attempt_at`, `suspended_at`, `banned_at`) VALUES
 (1, 1, '::1', 0, 0, 0, NULL, NULL, NULL),
 (2, 3, '::1', 0, 0, 0, NULL, NULL, NULL),
-(3, 4, '::1', 0, 0, 0, NULL, NULL, NULL);
+(3, 4, '::1', 0, 0, 0, NULL, NULL, NULL),
+(4, 7, '::1', 0, 0, 0, NULL, NULL, NULL),
+(5, 5, '::1', 0, 0, 0, NULL, NULL, NULL),
+(6, 9, '::1', 0, 0, 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -362,17 +444,22 @@ CREATE TABLE IF NOT EXISTS `users` (
   `display_name` varchar(255) COLLATE utf8_turkish_ci NOT NULL,
   `website` varchar(255) COLLATE utf8_turkish_ci NOT NULL,
   `yonetici_onayi` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 --
 -- Tablo döküm verisi `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `permissions`, `activated`, `activation_code`, `activated_at`, `last_login`, `persist_code`, `reset_password_code`, `first_name`, `last_name`, `created_at`, `updated_at`, `username`, `display_name`, `website`, `yonetici_onayi`) VALUES
-(3, 'fdegirmencioglu@gmail.com', '$2y$10$j18wodA6RaDPJB1SyZdfYuWvWc1dTibw6OyeamDcNHGDnY/vyjG5W', NULL, 1, NULL, NULL, '2015-03-22 14:23:57', '$2y$10$dwJ3kBaRRvrELxZTLhxgbOgy/NsmRJCfNJbMuDYjcBFmopNWA2tZu', NULL, 'Ferhat', 'DEĞİRMENCİOĞLU', '2015-03-11 01:16:06', '2015-03-22 14:23:57', 'Ferhat Değirmencioğlu', '3dmaster', '', 1),
-(4, 'firma@mail.com', '$2y$10$lji6Bef01VNP1bc/vb290.kLQPpVpakP9nT8ws8.xmzHzTGC5Wqgu', NULL, 1, NULL, NULL, '2015-03-22 14:31:40', '$2y$10$WB3BF0O9tTlpZlkOgA4lS.4Wqep2/oemZn5mZseMy9/93AObxIETC', NULL, 'firma', 'Firmam', '2015-03-11 01:28:34', '2015-03-22 14:31:40', 'Firma Test', 'Firma A.Ş.', '', 1),
-(5, 'yonetici01@mail.com', '$2y$10$rrMz4K0XCTvmGh3f6kd7fOUXgGg6E90WOoaURf6tSF.LzHNP4sTW6', NULL, 1, NULL, NULL, NULL, NULL, NULL, 'Yönetici 01', 'Test 01', '2015-03-18 00:41:38', '2015-03-18 00:41:38', 'Yönetici 01', 'Yntc 1', '', 1),
-(6, 'abcd@yandex.com', '$2y$10$PAspEfxydiwWtvVxTYr3MOkmPHa8HkMaqUsM/yhgaR0rTe4hyVTqG', NULL, 1, NULL, NULL, NULL, NULL, NULL, 'Yönetici 02', 'Test Soyadı', '2015-03-18 00:42:54', '2015-03-18 13:38:15', 'ABCD Test', '123 ABC', '', 1);
+(3, 'fdegirmencioglu@gmail.com', '$2y$10$ohSaMoAujtrmaWfKUXfHyewyJ4qSsYLNMIcRbXTURDHZq3to2sMFS', NULL, 1, NULL, NULL, '2015-04-28 10:16:22', '$2y$10$sq2/5ojX1clkkkhuzE91JuUksTdaVDRGKvA3R48oTlqvtrjvDnR/m', NULL, 'Ferhat', 'DEĞİRMENCİOĞLU', '2015-03-11 01:16:06', '2015-04-28 10:16:22', 'Ferhat Değirmencioğlu', '3dmaster', 'http://www.fdegirmencioglu.com', 1),
+(4, 'firma@mail.com', '$2y$10$lji6Bef01VNP1bc/vb290.kLQPpVpakP9nT8ws8.xmzHzTGC5Wqgu', NULL, 1, NULL, NULL, '2015-04-01 12:28:13', '$2y$10$WMHULIyTcfHsFfO6OvuXnu10GYST.mrsExtRy6/mTLZXfB9hY3Ogy', NULL, 'firma', 'Firmam', '2015-03-11 01:28:34', '2015-04-01 12:28:13', 'Firma Test', 'Firma A.Ş.', '', 1),
+(5, 'yonetici01@mail.com', '$2y$10$rrMz4K0XCTvmGh3f6kd7fOUXgGg6E90WOoaURf6tSF.LzHNP4sTW6', NULL, 1, NULL, NULL, '2015-04-23 06:50:10', '$2y$10$qP9Y..qIqPlkm3FaWB2Sv.HH2kNuFICVpcir6MZG29i7b8iB8Ntqu', NULL, 'Yönetici', 'Test', '2015-03-18 00:41:38', '2015-04-23 06:50:10', 'Yönetici', 'Yntc 1', '', 1),
+(6, 'abcd@yandex.com', '$2y$10$PAspEfxydiwWtvVxTYr3MOkmPHa8HkMaqUsM/yhgaR0rTe4hyVTqG', NULL, 1, NULL, NULL, NULL, NULL, NULL, 'Yönetici 02', 'Test Soyadı', '2015-03-18 00:42:54', '2015-03-18 13:38:15', 'ABCD Test', '123 ABC', '', 1),
+(7, 'aaa@mail.com', '$2y$10$Ke2jEze.fViEDqn.3i47iO2pAcobGQYv4.f4HhlVs6R2zIR0FSFCS', NULL, 1, NULL, NULL, '2015-04-01 10:42:11', '$2y$10$w5wd7NHB7ITgYv9gxzEfm.wvtG1lhGAMUcnfyNRuJrpErZJQ3IK/.', NULL, 'deneme 123', 'demn', '2015-04-01 10:40:34', '2015-04-01 10:42:11', 'dd', 'asasd', 'http://www.deneme.com', 0),
+(8, 'mailm@mail.com', '$2y$10$3yUwt5xolshqmDN7OAZV2.hNkm97FUoMARFu4Vi/Dv1gJVdo3HWeS', NULL, 1, NULL, NULL, NULL, NULL, NULL, 'jhksdfaj', 'safa', '2015-04-01 12:13:58', '2015-04-01 12:13:58', 'sadf', 'asdf', 'http://www.dd.com', 0),
+(9, 'ali@mail.com', '$2y$10$MFDkqiuKE/P6fQdgyK7Uz.X6iZhOPyljoppgnWcCLmWTKJRVgjAKS', NULL, 1, NULL, NULL, '2015-04-28 07:01:16', '$2y$10$WwLA5P7Ly4dC0FkM6XmXa.MxoYF89ytzmRmRqchRzdWez.P.h2Sya', NULL, 'Ali', 'Bal', '2015-04-14 21:00:56', '2015-04-28 07:01:16', '', '', '', 0),
+(10, 'mehmet@mail.com', '$2y$10$Npid4yOuf8gqnTR6/I8A0OIeLIhjSE5djLHG./P9G8peO02gwQz.i', NULL, 1, NULL, NULL, NULL, NULL, NULL, 'Mehmet', 'Göral', '2015-04-14 21:05:42', '2015-04-28 10:08:57', 'Mehmet', 'Mehmet Göral', 'http://www.mehmetweb.com', 0),
+(11, 'msönmez@mail.com', '$2y$10$IwmafqAFhG/Qw6WlPUZHw.DIQDPaHmGEHqVYzEApchEWOyMGgZ2Km', NULL, 1, NULL, NULL, NULL, NULL, NULL, 'Murat', 'Sönmez', '2015-04-14 21:29:57', '2015-04-28 10:08:52', 'Murat', 'Murat Sönmez', 'http://www.msonmez.com', 0);
 
 -- --------------------------------------------------------
 
@@ -393,7 +480,11 @@ INSERT INTO `users_groups` (`user_id`, `group_id`) VALUES
 (3, 1),
 (4, 3),
 (5, 1),
-(6, 1);
+(6, 3),
+(7, 3),
+(9, 1),
+(10, 1),
+(11, 1);
 
 -- --------------------------------------------------------
 
@@ -408,15 +499,16 @@ CREATE TABLE IF NOT EXISTS `user_images` (
   `resim_yolu` varchar(255) COLLATE utf8_turkish_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 --
 -- Tablo döküm verisi `user_images`
 --
 
 INSERT INTO `user_images` (`id`, `user_id`, `resim_adi`, `resim_yolu`, `created_at`, `updated_at`) VALUES
-(8, 3, '1.png', 'public/uploads/', '2015-03-21 10:05:18', '2015-03-21 10:05:18'),
-(9, 4, '3.png', 'public/uploads/', '2015-03-22 13:44:41', '2015-03-22 13:44:41');
+(14, 4, '3.png', 'public/uploads/', '2015-04-01 12:12:07', '2015-04-01 12:12:07'),
+(16, 3, '1.png', 'public/uploads/', '2015-04-23 06:57:38', '2015-04-23 06:57:38'),
+(17, 9, '2.png', 'public/uploads/', '2015-04-28 07:00:21', '2015-04-28 07:00:21');
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -499,22 +591,32 @@ MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- Tablo için AUTO_INCREMENT değeri `logs`
 --
 ALTER TABLE `logs`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=64;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=142;
 --
 -- Tablo için AUTO_INCREMENT değeri `throttle`
 --
 ALTER TABLE `throttle`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- Tablo için AUTO_INCREMENT değeri `users`
 --
 ALTER TABLE `users`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- Tablo için AUTO_INCREMENT değeri `user_images`
 --
 ALTER TABLE `user_images`
-MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+--
+-- Dökümü yapılmış tablolar için kısıtlamalar
+--
+
+--
+-- Tablo kısıtlamaları `users_groups`
+--
+ALTER TABLE `users_groups`
+ADD CONSTRAINT `users_groups_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

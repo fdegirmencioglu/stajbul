@@ -57,7 +57,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'stajbul',
 			'username'  => 'root',
-			'password'  => '1234',
+			'password'  => '',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_turkish_ci',
 			'prefix'    => '',

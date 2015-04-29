@@ -35,97 +35,41 @@
                     </tr>
                 </thead>
                 <tbody>
-                  <tr dir-paginate="onayli in onaylanmislar | filter:aramaKutusu | itemsPerPage:3">
-                    <td>{{ onayli.first_name }} {{ onayli.last_name }}</td>
-                    <td>{{ onayli.username }}</td>
-                    <td>{{ onayli.display_name }}</td>
-                    <td>{{ onayli.last_login }}</td>
-                    <td>{{ onayli.email }}</td>
-                    <td>
-                        <!--<select ng-model="selectedGroup" 
-                                ng-init="selectedGroup='{{onayli.group_id}}'"
-                                ng-options="group.id as group.name for group in groups">
-                                <!--
-                                ng-init='selectedGroup ="'{{ onayli.group_id }}'"'
-                                <option style="display:none" value="">-- Seçiniz --</option>--
-                        </select> -->
-
-                        <select
-                            ng-init="selectedGroup = {id: onayli.group_id}"
-                            ng-model="selectedGroup" 
-                            ng-options="group.name 
+                    <tr dir-paginate="onayli in onaylanmislar | filter:aramaKutusu | itemsPerPage:3">
+                        <td>{{ onayli.first_name}} {{ onayli.last_name}}</td>
+                        <td>{{ onayli.username}}</td>
+                        <td>{{ onayli.display_name}}</td>
+                        <td>{{ onayli.last_login}}</td>
+                        <td>{{ onayli.email}}</td>
+                        <td>
+                            <select
+                                ng-init="selectedGroup = {id: onayli.group_id}"
+                                ng-model="selectedGroup" 
+                                ng-options="group.name 
                                 for group in groups track by group.id"> 
-                        </select>
-                    </td>
-                    <td>
-                        <ul class="button-group">
-                            <li>
-                                <button class="button" ng-click="kullanici_rol_degistir(onayli, selectedGroup)">Rol Güncelle</button>
-                            </li>
-                        </ul>
-                    </td>
-                  </tr>
-                    <!--<tr> 
-                        <td>Adı Soyadi İçerik</td>
-                        <td>Kullanıcı Adı İçerik</td>
-                        <td>Görünen Ad İçerik</td>
-                        <td>Yönetici</td>
-                        <td>Son Giriş Tarihi İçerik</td>
-                        <td>E-Posta İçerik</td>
-                        <td>Aktif</td>
+                            </select>
+                        </td>
                         <td>
                             <ul class="button-group">
-                                <li><a href="#" class="button tiny radius orangeButtonColor">Düzenle</a></li>
-                                <li><a href="#" class="button tiny radius alert">Sil</a></li>
+                                <li>
+                                    <button class="button" ng-click="kullanici_rol_degistir(onayli, selectedGroup)">Rol Güncelle</button>
+                                </li>
                             </ul>
                         </td>
-                    </tr>-->
+                    </tr>
                 </tbody>
             </table>
 
-            <!--<dir-pagination-controls></dir-pagination-controls>-->
 
-                 <dir-pagination-controls
-                        [max-size=""]
-                        [direction-links=""]
-                        [boundary-links=""]
-                        [on-page-change=""]
-                        [pagination-id=""]
-                        [template-url="/js/directives/angular-utils-pagination/dirPagination.tpl.html"]>
-           </dir-pagination-controls>
+            <dir-pagination-controls
+                [max-size=""]
+                [direction-links=""]
+                [boundary-links=""]
+                [on-page-change=""]
+                [pagination-id=""]
+                [template-url="/js/directives/angular-utils-pagination/dirPagination.tpl.html"]>
+        </dir-pagination-controls>
 
-            <!--<div class="row">
-                <div class="small-6 columns right">
-                    <ul class="pagination" role="menubar" aria-label="Pagination">
-                        <li class="arrow unavailable" aria-disabled="true"><a href="">&laquo; Önceki</a></li>
-                        <li class="current"><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">4</a></li>
-                        <li class="unavailable" aria-disabled="true"><a href="">&hellip;</a></li>
-                        <li><a href="">12</a></li>
-                        <li><a href="">13</a></li>
-                        <li class="arrow"><a href="">Sonraki &raquo;</a></li>
-                    </ul>
-                </div>
-            </div>-->
-        </fieldset>
-    </div>
+    </fieldset>
 </div>
-
-
-
-
-<div id="deleteUserModal" class="reveal-modal medium" data-reveal>
-    <h4>Silme İşlemi</h4>
-    <hr>
-    <div class="large-12 columns">
-            <label>Kullanıcıyı silmek istediğinizden emin misiniz?<small>*</small>
-            </label>
-    </div>
-
-    <div class="large-12 columns">
-      <button class="radius button right">Sil</button>
-       <a class='close'>Close modal</a>
-    </div>
 </div>

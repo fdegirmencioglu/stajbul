@@ -1,8 +1,8 @@
-app.controller('ProfilesController', function ($scope, $upload, $location, $routeParams, profilesFactory,logsFactory) {
-       
+app.controller('ProfilesController', function ($scope, $upload, $location, $routeParams, profilesFactory, logsFactory) {
+
     profilesFactory.get().then(function (d) {
-      $scope.users = d.data;
-    }); 
+        $scope.users = d.data;
+    });
 
     $scope.first_name = "";
     $scope.last_name = "";
@@ -12,7 +12,7 @@ app.controller('ProfilesController', function ($scope, $upload, $location, $rout
     $scope.display_name = "";
     $scope.new_password = "";
     $scope.yonetici_onayi;
-    
+
     profilesFactory.get_current_user().then(function (d) {
         $scope.aktif_kullanici = d.data;
         $scope.first_name = $scope.aktif_kullanici.first_name;
@@ -27,57 +27,57 @@ app.controller('ProfilesController', function ($scope, $upload, $location, $rout
     });
 
     //Başka bir yöneticinin Id'si 
-    if($routeParams.managerId != undefined){
+    if ($routeParams.managerId != undefined) {
 
-      profilesFactory.get_user($routeParams.managerId).then(function(d){
-        $scope.yonetici = d.data;
+        profilesFactory.get_user($routeParams.managerId).then(function (d) {
+            $scope.yonetici = d.data;
 
-        $scope.first_name = $scope.yonetici.first_name;
-        $scope.last_name = $scope.yonetici.last_name;
-        $scope.username = $scope.yonetici.username;
-        $scope.email = $scope.yonetici.email;
-        $scope.website = $scope.yonetici.website;
-        $scope.display_name = $scope.yonetici.display_name;
-        $scope.yonetici_onayi = $scope.yonetici.yonetici_onayi;
+            $scope.first_name = $scope.yonetici.first_name;
+            $scope.last_name = $scope.yonetici.last_name;
+            $scope.username = $scope.yonetici.username;
+            $scope.email = $scope.yonetici.email;
+            $scope.website = $scope.yonetici.website;
+            $scope.display_name = $scope.yonetici.display_name;
+            $scope.yonetici_onayi = $scope.yonetici.yonetici_onayi;
 
-        console.log($scope.display_name);
-      });
+           // console.log($scope.display_name);
+        });
     }
 
 
 
     profilesFactory.load_current_user_image().then(function (d) {
-      $scope.image = d.data[0];
-      //$scope.resim_yolu = $scope.image.resim_yolu;
-      //console.log( "scope.image" );
-      //console.log( $scope.image );
+        $scope.image = d.data[0];
+        //$scope.resim_yolu = $scope.image.resim_yolu;
+        //console.log( "scope.image" );
+        //console.log( $scope.image );
 
-      if( $scope.image != undefined){
-        $scope.resim_adi = '/uploads/' + $scope.image.resim_adi;  
-      }else{
-        $scope.resim_adi = '/images/default_us_photo.jpg';       
-      }
+        if ($scope.image != undefined) {
+            $scope.resim_adi = '/uploads/' + $scope.image.resim_adi;
+        } else {
+            $scope.resim_adi = '/images/default_us_photo.jpg';
+        }
     });
 
-    $scope.logout = function(){
-      profilesFactory.logout().then(function(d) {
-        if( d.statusText =="OK"){
-          $location.path('/');
+    $scope.logout = function () {
+        profilesFactory.logout().then(function (d) {
+            if (d.statusText == "OK") {
+                $location.path('/');
 
-          add_logout_log();
-          //$location.reload();
-          window.location.reload();
-        }
-      });
+                add_logout_log();
+                //$location.reload();
+                window.location.reload();
+            }
+        });
     }
 
-   //Yeni Log Ekle
-   add_logout_log = function(){
-      var options = {}; 
-      options.process = "Oturumun kapatıldı."; 
-      logsFactory.add(options);  
-   }
- 
+    //Yeni Log Ekle
+    add_logout_log = function () {
+        var options = {};
+        options.process = "Oturumun kapatıldı.";
+        logsFactory.add(options);
+    }
+
     $scope.open_model = function () {
         var passModel = angular.element(document.querySelector('#passModal'));
         passModel.foundation('reveal', 'open');
@@ -111,12 +111,12 @@ app.controller('ProfilesController', function ($scope, $upload, $location, $rout
         var kullanici_id_ = -1;
         var options = {};
 
-        if($routeParams.managerId != undefined){
-          //Seçili olan kullanıcının kullanici_id'si
-          kullanici_id_ = $routeParams.managerId;
-        }else{
-          //Şu anda aktif olan kullanıcının kullanici_id'si
-          kullanici_id_ = angular.element(document.querySelector('#current_user_id')).val();
+        if ($routeParams.managerId != undefined) {
+            //Seçili olan kullanıcının kullanici_id'si
+            kullanici_id_ = $routeParams.managerId;
+        } else {
+            //Şu anda aktif olan kullanıcının kullanici_id'si
+            kullanici_id_ = angular.element(document.querySelector('#current_user_id')).val();
         }
 
         options.first_name = $scope.first_name;
@@ -128,6 +128,7 @@ app.controller('ProfilesController', function ($scope, $upload, $location, $rout
         options.aktif_kullanici_id = kullanici_id_;
         profilesFactory.save(options);
     }
+    
 
     //Yeni Yönetici Ekle
     $scope.add_new_manager = function () {
@@ -140,18 +141,29 @@ app.controller('ProfilesController', function ($scope, $upload, $location, $rout
         options.website = $scope.website;
         options.password = $scope.password;
         options.add_manager = true;
-
+        
         profilesFactory.add(options);
     }
-    
+
 
     $scope.change_password = function () {
-        var aktif_kullanici_id_ = angular.element(document.querySelector('#current_user_id')).val();
+        var kullanici_id_ = -1;      
         var options = {};
+        if ($routeParams.managerId != undefined) {
+            //Seçili olan kullanıcının kullanici_id'si
+            kullanici_id_ = $routeParams.managerId;
+        } else {
+            //Şu anda aktif olan kullanıcının kullanici_id'si
+            kullanici_id_ = angular.element(document.querySelector('#current_user_id')).val();
+        }
+        
+        //var aktif_kullanici_id_ = angular.element(document.querySelector('#current_user_id')).val();
+        
         options.password = $scope.new_password;
-        options.aktif_kullanici_id = aktif_kullanici_id_;
+        options.aktif_kullanici_id = kullanici_id_;
         options.change_password = true;
-
+        console.log("1- kullanici_id_= "+ kullanici_id_ );
+        console.log("2- options.aktif_kullanici_id= "+ options.aktif_kullanici_id );
         profilesFactory.change_password(options);
     }
 

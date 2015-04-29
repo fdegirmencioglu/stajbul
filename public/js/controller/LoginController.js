@@ -1,6 +1,6 @@
 app.controller("LoginController", function($scope, $http){
 
-this.adi = "bertan";
+this.adi = "ferhat";
 this.modal_type = ""; 
 $scope.username = '';
  

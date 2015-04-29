@@ -1,4 +1,4 @@
-app.controller('ManagersController', function ($scope, $routeParams, managersFactory, logsFactory) {
+app.controller('ManagersController', function ($scope, $routeParams, managersFactory, profilesFactory, logsFactory) {
 
     $scope.first_name = "";
     $scope.last_name = "";
@@ -9,33 +9,35 @@ app.controller('ManagersController', function ($scope, $routeParams, managersFac
     $scope.password = "";
     $scope.password_again = "";
 
+
     //Bütün grupları getir. Gruplar aynı zamanda rolleri işaret etmektedir.
     managersFactory.getGroups().then(function (d) {
         var groups = [];
         for (var i = 0; i < d.data.length; i++) {
             var identity = d.data[i].id;
             var name = d.data[i].name;
-            if(name == "Managers"){
-                groups.push({ id: identity, name: "Yönetici"});    
-            }else if(name == "Academicians"){
-                groups.push({ id: identity, name: "Akademisyen"});
-            }else if(name == "Companies"){
-                groups.push({ id: identity, name: "Firma"});
-            }else if(name == "Students"){
-                groups.push({ id: identity, name: "Öğrenci"});
-            } 
-        };
-         $scope.groups = groups; 
+            if (name == "Managers") {
+                groups.push({id: identity, name: "Yönetici"});
+            } else if (name == "Academicians") {
+                groups.push({id: identity, name: "Akademisyen"});
+            } else if (name == "Companies") {
+                groups.push({id: identity, name: "Firma"});
+            } else if (name == "Students") {
+                groups.push({id: identity, name: "Öğrenci"});
+            }
+        }
+        ;
+        $scope.groups = groups;
     });
 
     //Kişiler hangi gruptansa(rolde ise), sayfada, tablonun rol alanında göster 
     managersFactory.get().then(function (d) {
-        $scope.managers = d.data; 
+        $scope.managers = d.data;
 
     });
 
-    $scope.kullanici_rol_degistir = function(kullanici, secilen_grup){
-        
+    $scope.kullanici_rol_degistir = function (kullanici, secilen_grup) {
+
         var options = {};
         options.id = kullanici.id;
         options.grup_id = secilen_grup.id;
@@ -45,20 +47,13 @@ app.controller('ManagersController', function ($scope, $routeParams, managersFac
         //window.location.reload();
     }
 
-    $scope.onay_ver = function(element){
+    $scope.onay_ver = function (element) {
         managersFactory.kullaniciya_onay_ver(element.id);
-        /*managersFactory.kullaniciya_onay_ver(element.id).then(function (d) {
-            var sonuc = d.data;
-        });*/
-
         window.location.reload();
     }
 
-    $scope.onayi_kaldir = function(element){  
+    $scope.onayi_kaldir = function (element) {
         managersFactory.onayi_geri_cek(element.id);
-        /*managersFactory.onayi_geri_cek(element.id).then(function (d) {
-            var sonuc = d.data;
-        });*/
         window.location.reload();
     }
 
@@ -66,17 +61,11 @@ app.controller('ManagersController', function ($scope, $routeParams, managersFac
     managersFactory.onaylanmamis_kullanici_listesi().then(function (d) {
         $scope.onaylanmamislar = d.data;
     });
- 
+
     //Onaylanmış Üyeler
     managersFactory.onaylanmis_kullanici_listesi().then(function (d) {
-      $scope.onaylanmislar = d.data;
+        $scope.onaylanmislar = d.data;
 
-      console.log( "scope.onaylanmislar RRRRRS" );
-      console.log( $scope.onaylanmislar );
-
-        /*for (var i = 0; i < d.data.length; i++) {
-            $scope.selectedGroup = $scope.onaylanmislar[i].group_id;
-        };*/
     });
 
     $scope.delete_manager = function (id) {
@@ -97,6 +86,7 @@ app.controller('ManagersController', function ($scope, $routeParams, managersFac
         options.website = $scope.website;
         options.password = $scope.password;
         options.add_manager = true;
+        options.group_id = 1;
 
         managersFactory.add(options);
 
@@ -111,6 +101,23 @@ app.controller('ManagersController', function ($scope, $routeParams, managersFac
         $scope.display_name = "";
         $scope.password = "";
         $scope.password_again = "";
+
+    }
+
+    $scope.edit_manager = function (edit_manager_id) {
+        $scope.temp_yonetici = profilesFactory.get_user(edit_manager_id);
+
+        $scope.first_name = $scope.temp_yonetici.first_name;
+        $scope.last_name = $scope.temp_yonetici.last_name;
+        $scope.username = $scope.temp_yonetici.username;
+        $scope.email = $scope.temp_yonetici.email;
+        $scope.website = $scope.temp_yonetici.website;
+        $scope.display_name = $scope.temp_yonetici.display_name;
+        $scope.yonetici_onayi = $scope.temp_yonetici.yonetici_onayi;
+
+        console.log("$scope.temp_yonetici");
+        console.log($scope.temp_yonetici);
+
 
     }
 
