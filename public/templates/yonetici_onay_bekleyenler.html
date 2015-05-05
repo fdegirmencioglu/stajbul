@@ -44,7 +44,13 @@
                         <td>{{ onaysiz.first_name}} {{ onaysiz.last_name}}</td>
                         <td>{{ onaysiz.username}}</td>
                         <td>{{ onaysiz.display_name}}</td>
-                        <td>Yönetici</td>
+                        <!--<td>{{ onaysiz.group_id}} </td>-->
+                        <td>
+                        <div ng-if="onaysiz.group_id==1">Yönetici</div> 
+                        <div ng-if="onaysiz.group_id==2">Akademisyen</div>
+                        <div ng-if="onaysiz.group_id==3">Firma</div>
+                        <div ng-if="onaysiz.group_id==4">Öğrenci</div>
+                        </td>
                         <td>{{ onaysiz.last_login}}</td>
                         <td>{{ onaysiz.email}}</td>
                         <td>{{ onaysiz.activated}}</td>

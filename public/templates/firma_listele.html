@@ -1,6 +1,6 @@
 <div class="row">
     <div class="large-12 columns">
-        <h4 class="subheader"><i class="fa fa-bars fa-2x"></i>&nbsp;Yönetici Listesi</h4>
+        <h4 class="subheader"><i class="fa fa-bars fa-2x"></i>&nbsp;Firma Listesi</h4>
     </div>
 </div>
 
@@ -36,23 +36,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr dir-paginate="manager in managers | filter:aramaKutusu | itemsPerPage:5">
-                        <td>{{ manager.first_name}} {{ manager.last_name}}</td>
-                        <td>{{ manager.username}}</td>
-                        <td>{{ manager.display_name}}</td>
-                        <td>Yönetici</td>
-                        <td>{{ manager.last_login}}</td>
-                        <td>{{ manager.email}}</td>
-                        <td>{{ manager.activated}}</td>
+                    <tr dir-paginate="company in companies | filter:aramaKutusu | itemsPerPage:3">
+                        <td>{{ company.first_name}} {{ company.last_name}}</td>
+                        <td>{{ company.username}}</td>
+                        <td>{{ company.display_name}}</td>
+                        <td>Firma</td>
+                        <td>{{ company.last_login}}</td>
+                        <td>{{ company.email}}</td>
+                        <td>{{ company.activated}}</td>
 
                         <td>
                             <ul class="button-group">
-                                <!--<li><a href="/manager/profile/{{manager.id}}" class="button tiny radius orangeButtonColor">Düzenle</a></li>-->
-                                <li><a href="/manager/profile/{{manager.id}}" ng-click="edit_manager(manager.id)" class="button tiny radius orangeButtonColor">Düzenle</a></li>
+                                <!--<li><a href="/academician/profile/{{academician.id}}" class="button tiny radius orangeButtonColor">Düzenle</a></li>-->
+                                <li><a href="/company/profile/{{company.id}}" ng-click="edit_company(company.id)" class="button tiny radius orangeButtonColor">Düzenle</a></li>
                                 <li>
 
                                     <!--<a href="#" data-reveal-id="deleteUserModal">Click Me For A Modal</a>-->
-                                    <a href="#" ng-click="delete_manager(manager.id)" class="button tiny radius alert">Sil</a></li>
+                                    <a href="#" ng-click="delete_company(company.id)" class="button tiny radius alert">Sil</a></li>
                             </ul>
                         </td>
                     </tr>

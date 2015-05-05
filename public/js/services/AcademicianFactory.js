@@ -1,7 +1,7 @@
 app.factory('academicianFactory', function ($http) {
     var academicians = [];
     var aktif_kullanici = [];
-    
+
     return{
         get: function () {
             if (academicians.length == 0) {
@@ -13,7 +13,7 @@ app.factory('academicianFactory', function ($http) {
             return profiles;
         },
         add: function (options) {
-            $http.post('/users', {first_name: options.first_name, last_name: options.last_name, username: options.username, display_name: options.display_name, email: options.email, website: options.website, add_academician: options.add_academician, password: options.password, group_id: options.group_id }).
+            $http.post('/users', {first_name: options.first_name, last_name: options.last_name, username: options.username, display_name: options.display_name, email: options.email, website: options.website, add_academician: options.add_academician, password: options.password, group_id: options.group_id}).
                     success(function (data, status, headers, config) {
                         alert("veri eklenmiştir.");
                     }).
@@ -29,7 +29,21 @@ app.factory('academicianFactory', function ($http) {
                     error(function (err) { //data, status, headers, config
                         alert(err);
                     });
-        }
+        },
+        get: function (id) {
+            if (academicians.length == 0) {
+                return $http.get('/userswithroles/' + id)
+                        .success(function (response) {
+                            return response;
+                        });
+            }
+        },
+        remove: function (id) {
+            return $http.delete('/users/' + id)
+                    .success(function (response) {
+                        return response;
+                    });
+        },
     }
 });
 

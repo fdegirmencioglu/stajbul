@@ -233,14 +233,43 @@ class UsersController extends \BaseController {
         return UserImage::where('user_id', '=', $current_user_id)->get();
     }
 
-    public function get_userswithroles() {
-        //users tablosuyla users_groups tablosunun birleşiminden, group_id'si 1 olan(yönetici olan)'nın verilerini çek.
-        return DB::table('users')
-                        ->join('users_groups', function($join) {
-                            $join->on('users.id', '=', 'users_groups.user_id')
-                            ->where('users_groups.group_id', '=', 1);
-                        })
-                        ->get();
+    public function get_userswithroles($id) {
+
+        if ($id == 1) {
+            //users tablosuyla users_groups tablosunun birleşiminden, group_id'si 1 olan(yönetici olan)'nın verilerini çek.
+            return DB::table('users')
+                            ->join('users_groups', function($join) {
+                                $join->on('users.id', '=', 'users_groups.user_id')
+                                ->where('users_groups.group_id', '=', 1);
+                            })
+                            ->get();
+        } elseif ($id == 2) {
+            //users tablosuyla users_groups tablosunun birleşiminden, group_id'si 2 olan(akademisyen olan)'nın verilerini çek.
+            return DB::table('users')
+                            ->join('users_groups', function($join) {
+                                $join->on('users.id', '=', 'users_groups.user_id')
+                                ->where('users_groups.group_id', '=', 2);
+                            })
+                            ->get();
+        } elseif ($id == 3) {
+            //users tablosuyla users_groups tablosunun birleşiminden, group_id'si 3 olan(firma olan)'nın verilerini çek.
+            return DB::table('users')
+                            ->join('company_meta', 'user_id', '=','users.id')
+                            ->join('users_groups', function($join) {
+                                $join->on('company_meta.user_id', '=', 'users_groups.user_id')
+                                ->where('users_groups.group_id', '=', 3);
+                            })
+                            ->get();
+        } elseif ($id == 4) {
+            //users tablosuyla users_groups tablosunun birleşiminden, group_id'si 4 olan(öğrenci olan)'nın verilerini çek.
+            return DB::table('users')
+                            ->join('users_groups', function($join) {
+                                $join->on('users.id', '=', 'users_groups.user_id')
+                                ->where('users_groups.group_id', '=', 4);
+                            })
+                            ->get();
+        }
+
 
         /*       return DB::table('users')
           ->join('users_groups', function($join) {
@@ -266,13 +295,14 @@ class UsersController extends \BaseController {
         return DB::table('users')
                         ->join('users_groups', function($join) {
                             $join->on('users.id', '=', 'users_groups.user_id')
-                            ->where('yonetici_onayi', '=', 0);
+                            ->where('yonetici_onayi', '=', 0)
+                            ->where('activated', '=', 1);
                         })
                         ->get();
     }
 
     //Onaylanmış Kullanıcı Listesi
-    public function get_approved_user_list() {      
+    public function get_approved_user_list() {
 
         return DB::table('users')
                         ->join('users_groups', function($join) {
@@ -284,7 +314,7 @@ class UsersController extends \BaseController {
 
     //Yeni Kullanıcıyı onayla
     public function yeni_kullanici_onayla() {
-        
+
         $user = Sentry::getUserProvider()->findById(Input::get('user_id'));
         $user->yonetici_onayi = true;
         $user->save();

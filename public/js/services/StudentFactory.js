@@ -12,6 +12,14 @@ app.factory('studentFactory', function ($http) {
             }
             return profiles;
         },
+        get: function (id) {
+            if (students.length == 0) {
+                return $http.get('/userswithroles/' + id)
+                        .success(function (response) {
+                            return response;
+                        });
+            }
+        },
         add: function (options) {
             $http.post('/users', {first_name: options.first_name, last_name: options.last_name, username: options.username, display_name: options.display_name, email: options.email, website: options.website, add_student: options.add_student, password: options.password, group_id: options.group_id }).
                     success(function (data, status, headers, config) {
@@ -19,6 +27,12 @@ app.factory('studentFactory', function ($http) {
                     }).
                     error(function (err) {
                         alert(err);
+                    });
+        },
+        remove: function (id) {
+            return $http.delete('/users/' + id)
+                    .success(function (response) {
+                        return response;
                     });
         },
         save: function (options) {

@@ -85,32 +85,35 @@
                     <li class="divider"></li>
 
                     <!-- Yönetici-->
+                    
+                    <!--Yönetici Onayı Bekleyen Kişi Sayısı -->
                     <?php
                     $onayBekleyen = DB::table('users')
                             ->join('users_groups', function($join) {
                                 $join->on('users.id', '=', 'users_groups.user_id')
-                                ->where('yonetici_onayi', '=', 0);
+                                ->where('yonetici_onayi', '=', 0)
+                                ->where('activated', '=', 1);
                             })
                             ->count();
                     if (Sentry::getUser()->hasAnyAccess(['managers']) && Sentry::getUser()->yonetici_onayi) {
                         ?>
-                    <li><a href="admin/waiting_confirmation"><i class="fa fa-check fa-fw"></i>&nbsp;Onay Bekleyen&nbsp;<span class="badge badge-default">&nbsp;<?php echo $onayBekleyen?>&nbsp;</span></a></li>
-<?php } ?> 
+                        <li><a href="admin/waiting_confirmation"><i class="fa fa-check fa-fw"></i>&nbsp;Onay Bekleyen&nbsp;<span class="badge badge-default">&nbsp;<?php echo $onayBekleyen ?>&nbsp;</span></a></li>
+                    <?php } ?> 
 
                     <!-- Firma-->
                     <?php if (Sentry::getUser()->hasAnyAccess(['companies']) && Sentry::getUser()->yonetici_onayi) { ?>
                         <li><a href="#"><i class="fa fa-check fa-fw"></i>&nbsp;Onay Bekleyen&nbsp;<span class="badge badge-default">&nbsp;3&nbsp;</span></a></li>
-<?php } ?> 
+                    <?php } ?> 
 
                     <!-- Akademisyen-->
                     <?php if (Sentry::getUser()->hasAnyAccess(['academicians']) && Sentry::getUser()->yonetici_onayi) { ?>
                         <li><a href="#"><i class="fa fa-check fa-fw"></i>&nbsp;Onay Bekleyen&nbsp;<span class="badge badge-default">&nbsp;3&nbsp;</span></a></li>
-<?php } ?> 
+                    <?php } ?> 
 
                     <!-- Öğrenci-->
                     <?php if (Sentry::getUser()->hasAnyAccess(['students']) && Sentry::getUser()->yonetici_onayi) { ?>
                         <li><a href="#"><i class="fa fa-check fa-fw"></i>&nbsp;PUANLA&nbsp;<span class="badge badge-default">&nbsp;3&nbsp;</span></a></li>
-<?php } ?> 
+                    <?php } ?> 
 
                     <li class="divider"></li>
                     <li class="has-dropdown not-click">
@@ -137,7 +140,21 @@
 
         <ul class="accordion reset-margin-left " data-accordion="myAccordionGroup"> 
 
-<?php if (Sentry::getUser()->hasAnyAccess(['managers']) && Sentry::getUser()->yonetici_onayi) { ?>
+
+            <!-- Yönetici Diğer Yeni Rol Bilgilerini Ekleme -->
+
+            <?php if (Sentry::getUser()->hasAnyAccess(['managers']) && Sentry::getUser()->yonetici_onayi) { ?>
+
+                <li class="accordion-navigation"> 
+                    <a href="#panel3c"><i class="fa fa-university fa-fw"></i>&nbsp;Akademisyen İşlemleri</a> 
+                    <div id="panel3c" class="content"> 
+                        <ul class="side-nav">
+                           <!-- <li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Akademisyen Ana Sayfa</a></li>-->
+                            <li><a href="/academician/new"><i class="fa fa-pencil fa-fw"></i>&nbsp;Akademisyen Ekle</a></li>
+                        </ul>
+                    </div> 
+                </li> 
+
                 <li class="accordion-navigation"> 
                     <a href="#panel1c"><i class="fa fa-star fa-fw"></i>&nbsp;Firma İşlemleri</a> 
                     <div id="panel1c" class="content"> 
@@ -149,55 +166,50 @@
                     <a href="#panel2c"><i class="fa fa-book fa-fw"></i>&nbsp;Öğrenci İşlemleri</a> 
                     <div id="panel2c" class="content"> 
                         <ul class="side-nav">
-                            <li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Öğrenci Ana Sayfa</a></li>
-                            <li><a href="/student/new"><i class="fa fa-copyright fa-fw"></i>&nbsp;Öğrenci Ekle</a></li>
+                            <!--<li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Öğrenci Ana Sayfa</a></li>-->
+                            <li><a href="/student/new"><i class="fa fa-pencil fa-fw"></i>&nbsp;Öğrenci Ekle</a></li>
                         </ul>
                     </div> 
                 </li> 
+                <!-- Yönetici Diğer Yeni Rol Bilgilerini Ekleme Sonu-->
 
-                <li class="accordion-navigation"> 
-                    <a href="#panel3c"><i class="fa fa-university fa-fw"></i>&nbsp;Akademisyen İşlemleri</a> 
-                    <div id="panel3c" class="content"> 
-                        <ul class="side-nav">
-                            <li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Akademisyen Ana Sayfa</a></li>
-                            <li><a href="/academician/new"><i class="fa fa-copyright fa-fw"></i>&nbsp;Akademisyen Ekle</a></li>
-                        </ul>
-                    </div> 
-                </li> 
-
+                <!-- Yönetici Listeleme İşlemleri-->
                 <li class="accordion-navigation"> 
                     <a href="#panel4c"><i class="fa fa-th-list fa-fw"></i>&nbsp;Listeleme İşlemleri</a> 
                     <div id="panel4c" class="content"> 
                         <ul class="side-nav">
-                            <li><a href="#"><i class="fa fa-book fa-fw"></i>&nbsp;Öğrenci Listele</a></li>
-                            <li><a href="#"><i class="fa fa-star fa-fw"></i>&nbsp;Firma Listele</a></li>
-                            <li><a href="#"><i class="fa fa-university fa-fw"></i>&nbsp;Akademisyen Listele</a></li>
-                            <li><a href="/admin/list"><i class="fa fa-user-secret fa-fw"></i>&nbsp;Yönetici Listele</a></li>
+                            <li><a href="admin/academician_list"><i class="fa fa-university fa-fw"></i>&nbsp;Akademisyen Listele</a></li>
+                            <li><a href="admin/company_list"><i class="fa fa-star fa-fw"></i>&nbsp;Firma Listele</a></li>
                             <li><a href="/admin/log_list"><i class="fa fa-file-text-o fa-fw"></i>&nbsp;Log Listele</a></li>
+                            <li><a href="admin/student_list"><i class="fa fa-book fa-fw"></i>&nbsp;Öğrenci Listele</a></li>
+                            <li><a href="/admin/list"><i class="fa fa-user-secret fa-fw"></i>&nbsp;Yönetici Listele</a></li>
                         </ul>
                     </div> 
                 </li> 
+                <!-- Yönetici Listeleme İşlemleri Sonu-->
 
+                <!-- Yönetici İşlemleri-->
                 <li class="accordion-navigation"> 
                     <a href="#panel5c"><i class="fa fa-lightbulb-o fa-fw"></i>&nbsp;Yönetici İşlemleri</a> 
                     <div id="panel5c" class="content"> 
                         <ul class="side-nav">
-                            <li><a href="/admin/new"><i class="fa fa-building fa-fw"></i>&nbsp;Yönetici Ekleme</a></li>
+                            <li><a href="/admin/confirmed"><i class="fa fa-check fa-fw"></i>&nbsp;Onaylanmış Üyeler</a></li>
                             <li><a href="/admin/profile"><i class="fa fa-cogs fa-fw"></i>&nbsp;Profilim</a></li>
                             <li><a href="/admin/waiting_confirmation"><i class="fa fa-question fa-fw"></i>&nbsp;Yeni Üye Onay</a></li>
-                            <li><a href="/admin/confirmed"><i class="fa fa-check fa-fw"></i>&nbsp;Onaylanmış Üyeler</a></li>
+                            <li><a href="/admin/new"><i class="fa fa-building fa-fw"></i>&nbsp;Yönetici Ekleme</a></li>  
                             <li><a href="/admin/assign_role"><i class="fa fa-user-secret fa-fw"></i>&nbsp;Yönetici Rol Atama</a></li>
                         </ul>
                     </div> 
                 </li> 
+                <!-- Yönetici İşlemleri Sonu-->
 
-<?php } ?>
+            <?php } ?>
 
             <li class="accordion-navigation"> 
 
                 <?php if (Sentry::getUser()->yonetici_onayi) { ?>
                     <a href="#panel6c"><i class="fa fa-folder-o fa-fw"></i>&nbsp;Staj Raporu</a> 
-<?php } ?> 
+                <?php } ?> 
 
                 <div id="panel6c" class="content"> 
                     <ul class="side-nav">
@@ -215,12 +227,12 @@
 
                         <?php if (Sentry::getUser()->hasAnyAccess(['academicians'])) { ?>
                             <li><a href="#"><i class="fa fa-play fa-fw"></i>&nbsp;Akademisyen Onay(A)</a></li>
-<?php } ?>
+                        <?php } ?>
                     </ul>
                 </div> 
             </li> 
 
-<?php if (Sentry::getUser()->hasAnyAccess(['companies'])) { ?>
+            <?php if (Sentry::getUser()->hasAnyAccess(['companies'])) { ?>
                 <li class="accordion-navigation"> 
                     <a href="#panel7c"><i class="fa fa-briefcase fa-fw"></i>&nbsp;Firma İşlemler</a> 
                     <div id="panel7c" class="content"> 
@@ -235,7 +247,7 @@
                 </li> 
             <?php } ?>
 
-<?php if (Sentry::getUser()->hasAnyAccess(['students'])) { ?>
+            <?php if (Sentry::getUser()->hasAnyAccess(['students'])) { ?>
                 <li class="accordion-navigation"> 
                     <a href="#panel8c"><i class="fa fa-cog fa-fw"></i>&nbsp;Öğrenci İşlemler</a> 
                     <div id="panel8c" class="content"> 
@@ -249,7 +261,7 @@
                 </li> 
             <?php } ?>
 
-<?php if (Sentry::getUser()->hasAnyAccess(['academicians'])) { ?>
+            <?php if (Sentry::getUser()->hasAnyAccess(['academicians'])) { ?>
                 <li class="accordion-navigation"> 
                     <a href="#panel9c"><i class="fa fa-graduation-cap fa-fw"></i>&nbsp;Akademisyen İşlemler</a> 
                     <div id="panel9c" class="content"> 
@@ -260,13 +272,13 @@
                         </ul>
                     </div> 
                 </li>
-<?php } ?>
+            <?php } ?>
 
 
             <li class="accordion-navigation"> 
                 <?php if (Sentry::getUser()->yonetici_onayi) { ?>
                     <a href="#panel11c"><i class="fa fa-paper-plane fa-fw"></i>&nbsp;İletişim</a> 
-<?php } ?>                 
+                <?php } ?>                 
                 <div id="panel11c" class="content"> 
                     <ul class="side-nav">
                         <li><a href="#"><i class="fa fa-envelope-o fa-fw"></i>&nbsp;Mesaj Gönder</a></li>
@@ -350,7 +362,7 @@ if (Sentry::getUser()->hasAnyAccess(['companies'])) {
 
 
 <script>
-    $(document).foundation();
+        $(document).foundation();
 </script>
 
 </body>

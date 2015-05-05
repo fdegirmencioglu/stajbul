@@ -61,7 +61,7 @@ app.factory('managersFactory', function ($http) {
                     });
         },
         onayi_geri_cek: function (id) { //Onayı geri çeker
-            $http.post('/admin/unapprove_user', {user_id: id}). 
+            $http.post('/admin/unapprove_user', {user_id: id}).
                     success(function (data, status, headers, config) {
                         //alert("Onay Geri Çekilmiştir.");
                     }).
@@ -85,11 +85,13 @@ app.factory('managersFactory', function ($http) {
                     });
             //console.log(aktif_kullanici);
         },
-        get: function () {
+        get: function (id) {
             if (managers.length == 0) {
-                return $http.get('/userswithroles')
+                return $http.get('/userswithroles/' + id)
                         .success(function (response) {
                             return response;
+                        //console.log("get() response");
+                        //console.log(response);
 
                         });
             }

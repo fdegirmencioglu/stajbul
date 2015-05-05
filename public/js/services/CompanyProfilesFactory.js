@@ -2,6 +2,7 @@ app.factory('companyProfilesFactory', function ($http) {
     var profiles = [];
     var aktif_kullanici = [];
     var cities = [];
+    var companies = [];
     return{
         get: function () {
             if (profiles.length == 0) {
@@ -16,19 +17,27 @@ app.factory('companyProfilesFactory', function ($http) {
             }
             return profiles;
         },
-        getCities: function () {
-            if (cities.length == 0) {
-                return $http.get('/city')
+        get: function (id) {
+            if (companies.length == 0) {
+                return $http.get('/userswithroles/' + id)
                         .success(function (response) {
                             return response;
-                            /*for (var i=0; ii=response.length, i<ii; i++) {
-                             console.log(response[i]);
-                             profiles.push(response[i]);
-                             };*/
                         });
             }
-            return cities;
         },
+                getCities: function () {
+                    if (cities.length == 0) {
+                        return $http.get('/city')
+                                .success(function (response) {
+                                    return response;
+                                    /*for (var i=0; ii=response.length, i<ii; i++) {
+                                     console.log(response[i]);
+                                     profiles.push(response[i]);
+                                     };*/
+                                });
+                    }
+                    return cities;
+                },
         //Aktif kullanıcının firmasını bulmak için metod
         get_current_company: function () {
             //id'si current_company_id olan dom elementinin değerini Angular üzerinden çekip aktif_kullanıcı_id'ye atar. 
@@ -47,6 +56,17 @@ app.factory('companyProfilesFactory', function ($http) {
                         //return aktif_kullanici;
                     });
             //console.log(aktif_kullanici);
+        },
+        //Kayıtlı kullanıcıyı bulmak için metod
+        get_user: function (id) {
+            //$http(ajax gibi çalışır) nesnesi üzerinden get işlemi gerçekleştirir. metod içierisindeki url işleme sokulur ve Laravel'de karşılık bulan metodu çalıştırır. 
+            return $http.get('/company/' + id) //localhost:8000/users/1
+                    .success(function (response) {
+                        //Laravel üzerinden gelen cevabı geriye döndürür. 
+                            console.log('response');    
+                            console.log(response);
+                        return response;
+                    });
         },
         current_company_city_id: function () {
             //id'si current_company_id olan dom elementinin değerini Angular üzerinden çekip aktif_kullanıcı_id'ye atar. 
@@ -81,12 +101,18 @@ app.factory('companyProfilesFactory', function ($http) {
                     });
         },
         add: function (options) {
-            $http.post('/users', {first_name: options.first_name, last_name: options.last_name, username: options.username, display_name: options.display_name, email: options.email, website: options.website, add_company: options.add_company, password: options.password}).
+            $http.post('/users', {first_name: options.first_name, last_name: options.last_name, username: options.username, display_name: options.display_name, email: options.email, website: options.website, add_company: options.add_company, password: options.password, group_id: options.group_id}).
                     success(function (data, status, headers, config) {
                         alert("veri eklenmiştir.");
                     }).
                     error(function (err) {
                         alert(err);
+                    });
+        },
+        remove: function (id) {
+            return $http.delete('/users/' + id)
+                    .success(function (response) {
+                        return response;
                     });
         },
         save: function (options) {
@@ -98,8 +124,6 @@ app.factory('companyProfilesFactory', function ($http) {
                         alert(err);
                     });
         }
-
-
     }
 
 });

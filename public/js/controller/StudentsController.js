@@ -1,11 +1,8 @@
 app.controller('StudentsController', function ($scope, $upload, studentFactory, logsFactory) {
-  
-    //Bütün öğrencileri getir
-    /*studentFactory.get().then(function (obj) {
-        $scope.students = obj.data;
-    });*/
 
-        //Yeni Firma Ekle
+    var groupID = 4;
+
+    //Yeni Öğrenci Ekle
     $scope.add_new_student = function () {
         var options = {};
         options.first_name = $scope.first_name;
@@ -21,7 +18,7 @@ app.controller('StudentsController', function ($scope, $upload, studentFactory, 
         studentFactory.add(options);
 
         add_student_log();
- 
+
         $scope.first_name = "";
         $scope.last_name = "";
         $scope.username = "";
@@ -29,7 +26,22 @@ app.controller('StudentsController', function ($scope, $upload, studentFactory, 
         $scope.website = "";
         $scope.display_name = "";
         $scope.password = "";
-        $scope.password_again = ""; 
+        $scope.password_again = "";
+    };
+    
+    //Kişiler hangi gruptansa(rolde ise), sayfada, tablonun rol alanında göster 
+    studentFactory.get(groupID).then(function (d) {
+        $scope.students = d.data;
+        console.log(" studentFactory.get(groupID) $scope.students ");
+        console.log($scope.students);
+
+    });
+    
+     $scope.delete_student = function (id) {
+        studentFactory.remove(id).then(function (d) {
+            var sonuc = d.data;
+        });
+        window.location.reload();
     }
 
 
@@ -38,6 +50,6 @@ app.controller('StudentsController', function ($scope, $upload, studentFactory, 
         var options = {};
         options.process = "Yeni Öğrenci Ekleme";
         logsFactory.add(options);
-    }
+    };
 
 });

@@ -1,15 +1,6 @@
 <?php
 
-/*
-  |--------------------------------------------------------------------------
-  | Application Routes
-  |--------------------------------------------------------------------------
-  |
-  | Here is where you can register all of the routes for an application.
-  | It's a breeze. Simply tell Laravel the URIs it should respond to
-  | and give it the Closure to execute when that URI is requested.
-  |
- */
+//LOGIN Yönlendirmeleri
 Route::get('login', 'SessionsController@create');
 //Route::get('logout', 'SessionsController@destroy');
 
@@ -41,41 +32,69 @@ Route::get('/home', function() {
 Route::get('/login/register', function() {
     return View::make('login.register');
 });
+
+
 //======== YÖNETİCİ YÖNLENDİRMELERİ ======
 //Yönetici Profili
 Route::get('/admin/profile', function() {
     if (!Sentry::check()) { //Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
         return View::make('login.index');
-    } else {             //Kullanıcı sisteme giriş yaptıysa -> home'a gits
+    } else {             //Kullanıcı sisteme giriş yaptıysa -> home'a git
         return View::make('admin.profile');
     }
 });
+
 //managerId'si belli olan yöneticinin, profil bilgilerinin düzenlenebileceği adres
 Route::get('/manager/profile/{managerId}', function() {
     if (!Sentry::check()) { //Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
         return View::make('login.index');
-    } else {             //Kullanıcı sisteme giriş yaptıysa -> home'a gits
+    } else {             //Kullanıcı sisteme giriş yaptıysa -> home'a git
         return View::make('admin.profile');
     }
 });
 
 
+//academicianId'si belli olan Akademisyenin, profil bilgilerinin düzenlenebileceği adres
+Route::get('/academician/profile/{academicianId}', function() {
+    if (!Sentry::check()) { //Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
+        return View::make('login.index');
+    } else {             //Kullanıcı sisteme giriş yaptıysa -> home'a git
+        return View::make('academician.profile');
+    }
+});
+
+//studentId'si belli olan Öğrencinin, profil bilgilerinin düzenlenebileceği adres
+Route::get('/student/profile/{studentId}', function() {
+    if (!Sentry::check()) { //Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
+        return View::make('login.index');
+    } else {             //Kullanıcı sisteme giriş yaptıysa -> home'a git
+        return View::make('student.profile');
+    }
+});
+
+//companyId'si belli olan firmanın, profil bilgilerinin düzenlenebileceği adres
+Route::get('/company/profile/{companyId}', function() {
+    if (!Sentry::check()) { //Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
+        return View::make('login.index');
+    } else {             //Kullanıcı sisteme giriş yaptıysa -> home'a git
+        return View::make('company.profile');
+    }
+});
 
 //Yeni Yönetici Ekle
 Route::get('/admin/new', function() {
     if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
         return View::make('login.index');
-    } else {              //Kullanıcı sisteme giriş yaptıysa -> home'a git
+    } else {              //Kullanıcı sisteme giriş yaptıysa -> admin/new adresine git
         return View::make('admin.new');
     }
 });
-
 
 //Yönetici Log Listele
 Route::get('/admin/log_list', function() {
     if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
         return View::make('login.index');
-    } else {              //Kullanıcı sisteme giriş yaptıysa -> home'a git
+    } else {              //Kullanıcı sisteme giriş yaptıysa -> admin/log_list adresine git
         return View::make('admin.log_list');
     }
 });
@@ -84,39 +103,52 @@ Route::get('/admin/log_list', function() {
 Route::get('/admin/list', function() {
     if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
         return View::make('login.index');
-    } else {              //Kullanıcı sisteme giriş yaptıysa -> home'a git
+    } else {              //Kullanıcı sisteme giriş yaptıysa -> admin/list adresine git
         return View::make('admin.list');
     }
 });
 
+//Yönetici Akademisyen Listele
+Route::get('/admin/academician_list', function() {
+    if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
+        return View::make('login.index');
+    } else {              //Kullanıcı sisteme giriş yaptıysa -> admin/academician_list adresine git
+        return View::make('admin.academician_list');
+    }
+});
 
+//Yönetici Firma Listele
+Route::get('/admin/company_list', function() {
+    if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
+        return View::make('login.index');
+    } else {              //Kullanıcı sisteme giriş yaptıysa -> admin/company_list adresine git
+        return View::make('admin.company_list');
+    }
+});
 
+//Yönetici Öğrenci Listele
+Route::get('/admin/student_list', function() {
+    if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
+        return View::make('login.index');
+    } else {              //Kullanıcı sisteme giriş yaptıysa -> admin/student_list adresine git
+        return View::make('admin.student_list');
+    }
+});
 
 //Yönetici Rol Atama
 Route::get('/admin/assign_role', function() {
     if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
         return View::make('login.index');
-    } else {              //Kullanıcı sisteme giriş yaptıysa -> home'a git
+    } else {              //Kullanıcı sisteme giriş yaptıysa -> admin/assign_role adresine git
         return View::make('admin.assign_role');
     }
 });
-
-//Yönetici Listele
-/* Route::get('/admin/log/list', function() {
-  if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git
-  return View::make('login.index');
-  } else {              //Kullanıcı sisteme giriş yaptıysa -> home'a git
-  return View::make('admin.list');
-  }
-  }); */
-
-
 
 //Onay Bekleyen Kullanıcı Listesi 
 Route::get('/admin/waiting_confirmation/', function() {
     if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
         return View::make('login.index');
-    } else {              //Kullanıcı sisteme giriş yaptıysa -> home'a git
+    } else {              //Kullanıcı sisteme giriş yaptıysa -> admin/waiting_confirmation adresine git
         return View::make('admin.waiting_confirmation');
     }
 });
@@ -125,7 +157,7 @@ Route::get('/admin/waiting_confirmation/', function() {
 Route::get('/admin/confirmed/', function() {
     if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
         return View::make('login.index');
-    } else {              //Kullanıcı sisteme giriş yaptıysa -> home'a git
+    } else {              //Kullanıcı sisteme giriş yaptıysa -> admin/confirmed adresine git
         return View::make('admin.confirmed');
     }
 });
@@ -139,18 +171,14 @@ Route::get('/admin/approved_user_list', 'UsersController@get_approved_user_list'
 Route::post('/admin/unapprove_user', 'UsersController@onayi_geri_cek');
 Route::post('/admin/approve_user', 'UsersController@yeni_kullanici_onayla');
 
-//Route::resource('testtablosu', 'TestDenemelikController');
-//Route::get('Captcha.captcha', ['uses'=>'CaptchaController@captcha']);
-
 Route::resource('sessions', 'SessionsController');
-//Route::controller('password', 'RemindersController');
 Route::resource('users', 'UsersController');
 
 Route::post('/admin/profile', 'UsersController@photo');
 Route::get('get_current_user_photo', 'UsersController@get_photo');
-//Bütün yöneticileri getir
-Route::get('userswithroles', 'UsersController@get_userswithroles');
 
+//Bütün yöneticileri getir
+Route::get('userswithroles/{group_id}', 'UsersController@get_userswithroles');
 
 Route::get('groups', 'UsersController@get_groups');
 
@@ -167,7 +195,7 @@ Route::post('/admin/change_role', 'UsersController@change_role');
 Route::get('/academician/new', function() {
     if (!Sentry::check()) { //Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
         return View::make('login.index');
-    } else {             //Kullanıcı sisteme giriş yaptıysa -> home'a gits
+    } else {             //Kullanıcı sisteme giriş yaptıysa -> academician/new adresine git
         return View::make('academician.new');
     }
 });
@@ -178,7 +206,7 @@ Route::get('/academician/new', function() {
 Route::get('/student/new', function() {
     if (!Sentry::check()) { //Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
         return View::make('login.index');
-    } else {             //Kullanıcı sisteme giriş yaptıysa -> home'a gits
+    } else {             //Kullanıcı sisteme giriş yaptıysa -> student/new_list adresine git
         return View::make('student.new');
     }
 });
@@ -194,11 +222,11 @@ Route::get('/company/profile', function() {
     }
 });
 
-//Yeni Yönetici Ekle
+//Yeni Firma Ekle
 Route::get('/company/new', function() {
     if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
         return View::make('login.index');
-    } else {              //Kullanıcı sisteme giriş yaptıysa -> home'a git
+    } else {              //Kullanıcı sisteme giriş yaptıysa ->company/new adresine git
         return View::make('company.new');
     }
 });

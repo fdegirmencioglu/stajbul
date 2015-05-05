@@ -8,6 +8,7 @@ app.controller('ManagersController', function ($scope, $routeParams, managersFac
     $scope.display_name = "";
     $scope.password = "";
     $scope.password_again = "";
+    var groupID = 1;
 
 
     //Bütün grupları getir. Gruplar aynı zamanda rolleri işaret etmektedir.
@@ -29,10 +30,13 @@ app.controller('ManagersController', function ($scope, $routeParams, managersFac
         ;
         $scope.groups = groups;
     });
+    
+      
 
     //Kişiler hangi gruptansa(rolde ise), sayfada, tablonun rol alanında göster 
-    managersFactory.get().then(function (d) {
+    managersFactory.get(groupID).then(function (d) {
         $scope.managers = d.data;
+        
 
     });
 
@@ -59,7 +63,11 @@ app.controller('ManagersController', function ($scope, $routeParams, managersFac
 
     //Onaylanmamış Üyeler
     managersFactory.onaylanmamis_kullanici_listesi().then(function (d) {
+
+        
         $scope.onaylanmamislar = d.data;
+        console.log("$scope.onaylanmamislar");
+        console.log($scope.onaylanmamislar);
     });
 
     //Onaylanmış Üyeler

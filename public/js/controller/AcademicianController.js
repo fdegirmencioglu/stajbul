@@ -1,10 +1,8 @@
 app.controller('AcademiciansController', function ($scope, $upload, academicianFactory, logsFactory) {
- 
-    //Bütün akademisyenleri getir
-    /*academicianFactory.get().then(function (obj) {
-        $scope.academicians = obj.data;
-    });*/
 
+    var groupID = 2;
+    
+    
     //Yeni Akademisyen Ekle
     $scope.add_new_academician = function () {
         var options = {};
@@ -22,7 +20,7 @@ app.controller('AcademiciansController', function ($scope, $upload, academicianF
         academicianFactory.add(options);
 
         add_academician_log();
- 
+
         $scope.first_name = "";
         $scope.last_name = "";
         $scope.username = "";
@@ -30,7 +28,22 @@ app.controller('AcademiciansController', function ($scope, $upload, academicianF
         $scope.website = "";
         $scope.display_name = "";
         $scope.password = "";
-        $scope.password_again = ""; 
+        $scope.password_again = "";
+    }
+    
+    //Kişiler hangi gruptansa(rolde ise), sayfada, tablonun rol alanında göster 
+    academicianFactory.get(groupID).then(function (d) {
+        $scope.academics = d.data;
+        //console.log(" academicianFactory.get(groupID) $scope.academics ");
+        //console.log($scope.academics);
+
+    });
+    
+    $scope.delete_academician = function (id) {
+        academicianFactory.remove(id).then(function (d) {
+            var sonuc = d.data;
+        });
+        window.location.reload();
     }
 
 

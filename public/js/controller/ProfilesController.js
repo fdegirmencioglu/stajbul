@@ -40,7 +40,8 @@ app.controller('ProfilesController', function ($scope, $upload, $location, $rout
             $scope.display_name = $scope.yonetici.display_name;
             $scope.yonetici_onayi = $scope.yonetici.yonetici_onayi;
 
-           // console.log($scope.display_name);
+            //console.log('$scope.display_name');
+            //console.log($scope.display_name);
         });
     }
 
