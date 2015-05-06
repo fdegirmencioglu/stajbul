@@ -1,4 +1,4 @@
-app.controller('CompanyProfilesController', function ($scope, $upload, companyProfilesFactory, profilesFactory, logsFactory) {
+app.controller('CompanyProfilesController', function ($scope, $upload, companyProfilesFactory, profilesFactory, logsFactory, $routeParams) {
 
     $scope.auth_person = "";
     $scope.the_auth_to = "";
@@ -16,6 +16,20 @@ app.controller('CompanyProfilesController', function ($scope, $upload, companyPr
     $scope.group_id = "";
     $scope.cities = [];
     var groupID = 3;
+
+
+
+ if ($routeParams.companyId != undefined) {
+
+        companyProfilesFactory.get_user($routeParams.companyId).then(function (d) {
+            
+            console.log("BÖÖYYYYYYYYYYYYYYYYYYY");
+            console.log(d.data);
+
+        });
+
+}
+
 
 
     companyProfilesFactory.get().then(function (obj) {
