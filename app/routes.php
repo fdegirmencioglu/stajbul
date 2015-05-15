@@ -249,6 +249,32 @@ Route::resource('logs', 'LogsController');
 Route::get('logs', array('uses' => 'LogsController@index'));
 */
 
+//======== MESAJLAR & BİLDİRİLER ======
+Route::resource('posts', 'PostsController');
+
+Route::get('/posts/new', function() {
+    if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
+        return View::make('login.index');
+    } else {              //Kullanıcı sisteme giriş yaptıysa ->company/new adresine git
+        return View::make('posts.new');
+    }
+});
+
+Route::get('/posts/messages', function() {
+    if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
+        return View::make('login.index');
+    } else {              //Kullanıcı sisteme giriş yaptıysa ->company/new adresine git
+        return View::make('posts.list');
+    }
+});
+
+Route::get('/posts/notifications', function() {
+    if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 
+        return View::make('login.index');
+    } else {              //Kullanıcı sisteme giriş yaptıysa ->company/new adresine git
+        return View::make('posts.list');
+    }
+});
 
 
 
