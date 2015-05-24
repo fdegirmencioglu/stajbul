@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddSilindiToPostsTable extends Migration {
+class AddAliciGroupIdToPostsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -14,7 +14,9 @@ class AddSilindiToPostsTable extends Migration {
 	{
 		Schema::table('posts', function(Blueprint $table)
 		{
-			$table->boolean('silindi')->default(0);
+			//$table->integer('alici_group_id')->default(0);
+			$table->integer('alici_group_id')->references('id')->on('groups'); 
+
 		});
 	}
 
@@ -27,7 +29,7 @@ class AddSilindiToPostsTable extends Migration {
 	{
 		Schema::table('posts', function(Blueprint $table)
 		{
-			 $table->dropColumn('silindi');
+			$table->dropColumn('alici_group_id');
 		});
 	}
 

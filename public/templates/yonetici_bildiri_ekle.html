@@ -1,0 +1,93 @@
+<div class="row">
+    <div class="large-12 columns">
+        <h4 class="subheader"><i class="fa fa-bars fa-2x"></i>&nbsp;{{ messages_notifications.title }} Listesi</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="large-12">
+        <fieldset>
+            <legend>Liste</legend>
+            <form>
+                <div class="row">
+                    <div class="small-4 columns right">
+                        <div class="row">
+                            <div class="small-3 columns">
+                                <label for="right-label" class="right inline">Ara:</label>
+                            </div>
+                            <div class="small-9 columns">
+                                <input type="text" ng-model="aramaKutusu" id="right-label" placeholder="Arama Parametresi" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th width="10%">Adı Soyadı</th>
+                        <th width="10%">Kullanıcı Adı</th>
+                        <th width="15%">Görünen Ad</th>
+                        <th width="10%">Rol</th>
+                        <th width="10%">Son Giriş Tarihi</th>
+                        <th width="10%">E-Posta</th>
+                        <th width="10%">Aktif / Pasif</th>
+                        <th width="25%">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr dir-paginate="messnoti in messages_notifications | filter:aramaKutusu | itemsPerPage:3">
+
+                        
+
+                        <td>{{ messnoti.baslik}}</td>
+                        <td>{{ messnoti.icerik}}</td>
+                        <td>{{ messnoti.tipi}}</td>
+                        <td>{{messnoti.okundu}}</td>
+
+                        <td>
+                            <ul class="button-group">
+                                <!--<li><a href="/academician/profile/{{academician.id}}" class="button tiny radius orangeButtonColor">Düzenle</a></li>-->
+                                 <?php if (Sentry::getUser()->hasAnyAccess(['managers']) && Sentry::getUser()->yonetici_onayi) { ?>
+                                         <li><a href="/academician/profile/{{academician.id}}" ng-click="edit_academician(academician.id)" class="button tiny radius orangeButtonColor">Yeni</a></li>
+                                
+                                <?php } ?> 
+
+                               
+                                <li>
+                                    <!--<a href="#" data-reveal-id="deleteUserModal">Click Me For A Modal</a>-->
+                                    <a href="#" ng-click="delete_academician(academician.id)" class="button tiny radius alert">Sil</a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+            <dir-pagination-controls
+                [max-size=""]
+                [direction-links=""]
+                [boundary-links=""]
+                [on-page-change=""]
+                [pagination-id=""]
+                [template-url="/js/directives/angular-utils-pagination/dirPagination.tpl.html"]>
+        </dir-pagination-controls>
+
+    </fieldset>
+</div>
+</div>
+
+<div id="deleteUserModal" class="reveal-modal medium" data-reveal>
+    <h4>Silme İşlemi</h4>
+    <hr>
+    <div class="large-12 columns">
+        <label>Kullanıcıyı silmek istediğinizden emin misiniz?<small>*</small>
+        </label>
+    </div>
+
+    <div class="large-12 columns">
+        <button class="radius button right">Sil</button>
+        <a class='close'>Close modal</a>
+    </div>
+</div>

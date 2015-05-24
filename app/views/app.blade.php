@@ -41,11 +41,11 @@
 
                     <?php if (Sentry::getUser()->yonetici_onayi) { ?>
                         <li class="divider"></li>
-                        <li><a href="/posts/notifications"><i class="fa fa-exclamation fa-fw"></i>&nbsp;Bildirimler&nbsp;<span class="badge badge-default">&nbsp;7&nbsp;</span></a></li>
+                        <li><a href="/posts/notifications"><i class="fa fa-exclamation fa-fw"></i>&nbsp;Bildirimler&nbsp;<span class="badge badge-default">&nbsp;@{{ notifications_lenght }}&nbsp;</span></a></li>
                         <li class="divider"></li>
-                        <li><a href="/posts/messages"><i class="fa fa-envelope-o fa-fw"></i>&nbsp;Mesajlar&nbsp;<span class="badge badge-default">&nbsp;1&nbsp;</span></a></li>
+                        <li><a href="/posts/messages"><i class="fa fa-envelope-o fa-fw"></i>&nbsp;Mesajlar&nbsp;<span class="badge badge-default">&nbsp;@{{ messages_lenght }}&nbsp;</span></a></li>
                         <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-envelope-o fa-fw"></i>&nbsp;Mesajlar&nbsp;<span class="badge badge-default">&nbsp;1&nbsp;</span></a></li>
+                        <!--<li><a href="#"><i class="fa fa-envelope-o fa-fw"></i>&nbsp;Mesajlar&nbsp;<span class="badge badge-default">&nbsp;1&nbsp;</span></a></li>-->
                         <li class="divider"></li>
                     <?php } ?>
                 </ul>  
@@ -350,13 +350,15 @@ if (Sentry::getUser()->hasAnyAccess(['companies'])) {
 <script type="text/javascript" src="/js/services/CompanyProfilesFactory.js"></script> 
 <script type="text/javascript" src="/js/services/StudentFactory.js"></script>   
 <script type="text/javascript" src="/js/services/AcademicianFactory.js"></script>  
+<script type="text/javascript" src="/js/services/PostsFactory.js"></script>
 
 <script type="text/javascript" src="/js/controller/ProfilesController.js"></script>
 <script type="text/javascript" src="/js/controller/ManagersController.js"></script> 
 <script type="text/javascript" src="/js/controller/CompanyProfilesController.js"></script>  
 <script type="text/javascript" src="/js/controller/LogsController.js"></script>  
 <script type="text/javascript" src="/js/controller/StudentsController.js"></script>  
-<script type="text/javascript" src="/js/controller/AcademicianController.js"></script> 
+<script type="text/javascript" src="/js/controller/AcademicianController.js"></script>
+<script type="text/javascript" src="/js/controller/PostsController.js"></script> 
 
 
 

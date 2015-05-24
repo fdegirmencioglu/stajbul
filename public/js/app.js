@@ -75,6 +75,15 @@ app.config(function ($routeProvider, $locationProvider) {
                 templateUrl: '/templates/ogrenci_listele.html',
                 controller: 'StudentsController'
             })
+            .when("/posts/new", {
+                templateUrl: '/templates/yonetici_bildiri_ekle.html',
+                controller: 'PostsController'
+            })
+            .when("/posts/:actiontype", {
+                templateUrl: '/templates/gonderi_listele.html',
+                controller: 'PostsController'
+            })
+
             ;
     /*.otherwise({
      

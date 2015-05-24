@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddAliciGroupIdToPostsTable' => $baseDir . '/app/database/migrations/2015_05_23_030607_add_alici_group_id_to_posts_table.php',
     'AddDisplayNameToUsers' => $baseDir . '/app/database/migrations/2015_03_03_160504_add_display_name_to_users.php',
     'AddManagerConfirmationToUsersTable' => $baseDir . '/app/database/migrations/2015_03_10_070751_add_manager_confirmation_to_users_table.php',
     'AddSilindiToPostsTable' => $baseDir . '/app/database/migrations/2015_05_15_002857_add_silindi_to_posts_table.php',

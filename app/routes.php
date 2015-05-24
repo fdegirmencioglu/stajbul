@@ -184,6 +184,11 @@ Route::get('groups', 'UsersController@get_groups');
 
 Route::post('/admin/change_role', 'UsersController@change_role');
 
+Route::get('/user_info/{user_id}', 'UsersController@show');
+
+Route::get('/get_users_for_post', 'UsersController@get_users_for_post');
+
+
 
 /* Route::post('upload/url/{id}', [
   'as' => 'photo', 'uses' => 'UsersController@photo'
@@ -251,6 +256,19 @@ Route::get('logs', array('uses' => 'LogsController@index'));
 
 //======== MESAJLAR & BİLDİRİLER ======
 Route::resource('posts', 'PostsController');
+
+Route::get('usersposts/{type}', 'PostsController@get_usersposts');
+
+Route::get('who_posted/{id}', 'PostsController@get_who_posted');
+
+Route::get('unread_notifications', 'PostsController@get_unread_notifications');
+Route::get('unread_messages', 'PostsController@get_unread_messages');
+
+Route::post('/change_posts_status', 'PostsController@change_posts_status');
+
+
+
+
 
 Route::get('/posts/new', function() {
     if (!Sentry::check()) {//Kullanıcı sisteme giriş yapmadıysa -> auth/login'e git 

@@ -1,4 +1,17 @@
-app.controller('ProfilesController', function ($scope, $upload, $location, $routeParams, profilesFactory, logsFactory) {
+app.controller('ProfilesController', function ($scope, $upload, $location, $routeParams, profilesFactory, logsFactory, postsFactory) {
+
+    postsFactory.getUserUnreadNotificationsLenght().then(function (d) {
+        console.log( "d.data notification" );
+        console.log( d.data );
+        $scope.notifications_lenght = d.data;
+    });
+
+    postsFactory.getUserUnreadMessagesLenght().then(function (d) {
+        console.log( "d.data messages" );
+        console.log( d.data );
+
+        $scope.messages_lenght = d.data;
+    });
 
     profilesFactory.get().then(function (d) {
         $scope.users = d.data;

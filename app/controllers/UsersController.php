@@ -355,4 +355,9 @@ class UsersController extends \BaseController {
         }
     }
 
+    //Mesaj gönderimi için kullanıcıların email ve id'lerini içeren listeyi getir
+    public function get_users_for_post(){
+        return DB::table('users')->where('yonetici_onayi', '=', 1)->get();
+    }
+
 }
